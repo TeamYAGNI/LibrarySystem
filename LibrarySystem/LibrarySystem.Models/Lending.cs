@@ -1,6 +1,6 @@
 ﻿namespace LibrarySystem.Models
 {
-    public class Book
+    public class Lending
     {
     }
 }
