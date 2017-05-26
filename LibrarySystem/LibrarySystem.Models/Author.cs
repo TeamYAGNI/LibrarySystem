@@ -4,6 +4,8 @@
 // <summary>Holds implementation of Author model.</summary>
 
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibrarySystem.Models
 {
@@ -29,12 +31,15 @@ namespace LibrarySystem.Models
         /// Gets or sets the primary key of the <see cref="Author"/> entity.
         /// </summary>
         /// <value>Primary key of the <see cref="Author"/> entity.</value>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the <see cref="Author"/> entity.
         /// </summary>
         /// <value>Name of the <see cref="Author"/> entity.</value>
+        [Required]
+        [StringLength(50, ErrorMessage = "Author Name Invalid Length", MinimumLength = 3)]
         public string Name { get; set; }
 
         /// <summary>
