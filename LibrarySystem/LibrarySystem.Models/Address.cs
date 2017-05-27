@@ -67,9 +67,15 @@ namespace LibrarySystem.Models
         /// <value>Initial collection of clients of the <see cref="Address"/> entity.</value>
         public ICollection<Client> Clients
         {
-            get { return this.clients; }
+            get
+            {
+                return this.clients;
+            }
 
-            set { this.clients = value; }
+            set
+            {
+                this.clients = value;
+            }
         }
 
         /// <summary>
@@ -78,9 +84,15 @@ namespace LibrarySystem.Models
         /// <value>Initial collection of employees of the <see cref="Address"/> entity.</value>
         public ICollection<Employee> Employees
         {
-            get { return this.employees; }
+            get
+            {
+                return this.employees;
+            }
 
-            set { this.employees = value; }
+            set
+            {
+                this.employees = value;
+            }
         }
     }
 }
