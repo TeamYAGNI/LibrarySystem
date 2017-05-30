@@ -1,9 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LibrarySystem.Models
 {
     public class Book
     {
+        private ICollection<Author> authors;
+        private ICollection<Genre> genres;
+        private ICollection<Client> clients;
+
+        public Book()
+        {
+            this.authors = new HashSet<Author>();
+            this.genres = new HashSet<Genre>();
+            this.clients = new HashSet<Client>();
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -24,5 +36,23 @@ namespace LibrarySystem.Models
         public int PublisherId { get; set; }
 
         public virtual Publisher Publisher { get; set; }
+
+        public virtual ICollection<Author> Authors
+        {
+            get { return this.authors; }
+            set { this.authors = value; }
+        }
+
+        public virtual ICollection<Genre> Genres
+        {
+            get { return this.genres; }
+            set { this.genres = value; }
+        }
+
+        public virtual ICollection<Client> Clients
+        {
+            get { return this.clients; }
+            set { this.clients = value; }
+        }
     }
 }
