@@ -1,6 +1,13 @@
-﻿namespace LibrarySystem.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LibrarySystem.Models
 {
     public class City
     {
+        public int Id { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Name { get; set; }
     }
 }
