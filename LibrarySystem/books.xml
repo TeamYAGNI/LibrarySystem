@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <book id="1">
+    <author>Gambardella, Matthew</author>
+    <title>XML Developer's Guide</title>
+    <isbn>0000-0000-000</isbn>
+  </book>
+  <book id="2">
+    <author>Ralls, Kim</author>
+    <title>Midnight Rain</title>
+    <isbn>0000-0000-001</isbn>
+  </book>
+</ArrayOfBook>

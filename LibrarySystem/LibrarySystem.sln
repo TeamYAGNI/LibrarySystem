@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Data", "Libra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Models", "LibrarySystem.Models\LibrarySystem.Models.csproj", "{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.FileImporters", "LibrarySystem.FileImporters\LibrarySystem.FileImporters.csproj", "{50CBCFE6-367F-4BEC-9599-B960DF8DD394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.FileExporters", "LibrarySystem.FileExporters\LibrarySystem.FileExporters.csproj", "{59500C07-FEEB-4833-9E02-E13B14FCFAAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50CBCFE6-367F-4BEC-9599-B960DF8DD394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50CBCFE6-367F-4BEC-9599-B960DF8DD394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50CBCFE6-367F-4BEC-9599-B960DF8DD394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50CBCFE6-367F-4BEC-9599-B960DF8DD394}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
