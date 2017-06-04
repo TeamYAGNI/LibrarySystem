@@ -52,6 +52,11 @@ namespace LibrarySystem.FileExporters
         /// <param name="data"></param>
         public void ExportJournals(IEnumerable<DTOJournal> journals)
         {
+            if (!Directory.Exists(this.directory))
+            {
+                Directory.CreateDirectory(this.directory);
+            }
+
             string journalsJson = JsonConvert.SerializeObject(journals, Formatting.Indented);
             File.WriteAllText(this.directory + "\\" + this.fileName, journalsJson);
         }
