@@ -58,8 +58,9 @@
     <Compile Include="GenreTests\Constructor_Should.cs" />
     <Compile Include="JournalTests\Constructor_Should.cs" />
     <Compile Include="LendingTests\Constructor_Should.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublisherTests\Constructor_Should.cs" />
+    <Compile Include="SubjectTests\Constructor_Should.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
