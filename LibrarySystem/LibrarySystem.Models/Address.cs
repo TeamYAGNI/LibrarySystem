@@ -4,6 +4,8 @@
 // <summary>Holds implementation of Address model.</summary>
 
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibrarySystem.Models
 {
@@ -35,37 +37,42 @@ namespace LibrarySystem.Models
         /// Gets or sets the primary key of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>Primary key of the <see cref="Address"/> entity.</value>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the street of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>Street of the <see cref="Address"/> entity.</value>
+        [Required]
+        [StringLength(100, ErrorMessage = "Address Street Invalid Length", MinimumLength = 1)]
         public string Street { get; set; }
 
         /// <summary>
         /// Gets or sets the street number of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>Street number of the <see cref="Address"/> entity.</value>
+        [Range(1, 2000, ErrorMessage = "Address StreetNumber cannot be {0}. It must be between {1} and {2}.")]
         public int? StreetNumber { get; set; }
 
         /// <summary>
         /// Gets or sets foreign key of the City of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>Primary key of the City of the <see cref="Address"/> entity.</value>
+        [Required]
         public int CityId { get; set; }
 
         /// <summary>
         /// Gets or sets the City of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>City of the <see cref="Address"/> entity.</value>
-        public City City { get; set; }
+        public virtual City City { get; set; }
 
         /// <summary>
         /// Gets or sets the clients of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>Initial collection of clients of the <see cref="Address"/> entity.</value>
-        public ICollection<Client> Clients
+        public virtual ICollection<Client> Clients
         {
             get
             {
@@ -82,7 +89,7 @@ namespace LibrarySystem.Models
         /// Gets or sets the employees of the <see cref="Address"/> entity.
         /// </summary>
         /// <value>Initial collection of employees of the <see cref="Address"/> entity.</value>
-        public ICollection<Employee> Employees
+        public virtual ICollection<Employee> Employees
         {
             get
             {
