@@ -1,12 +1,13 @@
-﻿// <copyright file="FileReader.cs" company="YAGNI">
+﻿// <copyright file="JsonWriter.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds implementation of abstract file reader.</summary>
+// <summary>Holds implementation of JSON file writer.</summary>
+
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 using LibrarySystem.Models;
+using Newtonsoft.Json;
 
 namespace LibrarySystem.FileExporters
 {
@@ -28,7 +29,7 @@ namespace LibrarySystem.FileExporters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="directory"></param>
         /// <param name="fileName"></param>
         public JsonWriter(string directory, string fileName)
         {
@@ -49,7 +50,7 @@ namespace LibrarySystem.FileExporters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="journals"></param>
         public void ExportJournals(IEnumerable<DTOJournal> journals)
         {
             if (!Directory.Exists(this.directory))

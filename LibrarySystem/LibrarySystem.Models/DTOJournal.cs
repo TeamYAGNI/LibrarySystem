@@ -1,7 +1,8 @@
 ﻿// <copyright file="DTOJournal.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds implementation of JSON file importer.</summary>
+// <summary>Holds implementation of Journal DTO.</summary>
+
 using Newtonsoft.Json;
 
 namespace LibrarySystem.Models

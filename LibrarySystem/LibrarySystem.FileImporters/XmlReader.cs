@@ -1,7 +1,8 @@
 ﻿// <copyright file="XmlReader.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds implementation of XML reader file.</summary>
+// <summary>Holds implementation of XML file reader.</summary>
+
 using System;
 using System.Collections.Generic;
 using System.IO;

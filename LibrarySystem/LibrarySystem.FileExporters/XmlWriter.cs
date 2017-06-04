@@ -2,6 +2,7 @@
 // All rights reserved.
 // </copyright>
 // <summary>Holds implementation of XML file writer.</summary>
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +29,7 @@ namespace LibrarySystem.FileExporters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="directory"></param>
         /// <param name="fileName"></param>
         public XmlWriter(string directory, string fileName)
         {
@@ -49,7 +50,7 @@ namespace LibrarySystem.FileExporters
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="books"></param>
         public void ExportBooks(IEnumerable<DTOBook> books)
         {
             if (!Directory.Exists(this.directory))

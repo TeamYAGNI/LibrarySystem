@@ -1,7 +1,8 @@
-﻿// <copyright file="JsonReader.cs" company="YAGNI">
+﻿// <copyright file="DTOBook.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds implementation of JSON file importer.</summary>
+// <summary>Holds implementation of Book DTO.</summary>
+
 using System.Xml.Serialization;
 
 namespace LibrarySystem.Models
@@ -9,7 +10,7 @@ namespace LibrarySystem.Models
     /// <summary>
     /// 
     /// </summary>
-    [XmlType(TypeName ="book")]
+    [XmlType(TypeName = "book")]
     public class DTOBook
     {
         /// <summary>

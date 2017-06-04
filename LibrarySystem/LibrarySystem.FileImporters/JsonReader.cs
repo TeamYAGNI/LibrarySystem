@@ -1,7 +1,8 @@
 ﻿// <copyright file="JsonReader.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds implementation of JSON file importer.</summary>
+// <summary>Holds implementation of JSON file reader.</summary>
+
 using System;
 using System.Collections.Generic;
 using System.IO;
