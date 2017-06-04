@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace LibrarySystem.Models.UnitTests.AuthorTests
+namespace LibrarySystem.Models.UnitTests.JournalTests
 {
     [TestFixture]
     public class Constructor_Should
