@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4FEAE5BE-CED1-4902-81FE-5AE11A51CA40}</ProjectGuid>
+    <ProjectGuid>{C720EEAF-EE42-43F9-9444-2EE407267519}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LibrarySystem.Models.UnitTests</RootNamespace>
@@ -53,16 +53,13 @@
     <Compile Include="AuthorTests\Constructor_Should.cs" />
     <Compile Include="BookTests\Constructor_Should.cs" />
     <Compile Include="CityTests\Constructor_Should.cs" />
+    <Compile Include="ClientTests\Constructor_Should.cs" />
     <Compile Include="EmployeeTests\Constructor_Should.cs" />
-    <Compile Include="Genre\Constructor_Should.cs" />
+    <Compile Include="GenreTests\Constructor_Should.cs" />
     <Compile Include="JournalTests\Constructor_Should.cs" />
     <Compile Include="LendingTests\Constructor_Should.cs" />
-    <Compile Include="PublisherTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ClientTests\Constructor_Should.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <Compile Include="PublisherTests\Constructor_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -70,63 +67,6 @@
   <ItemGroup>
     <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
       <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
-      <Name>LibrarySystem.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
-      <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
-      <Name>LibrarySystem.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
-      <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
-      <Name>LibrarySystem.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
-      <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
-      <Name>LibrarySystem.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
-      <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
-      <Name>LibrarySystem.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
-      <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
