@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AddressTests\Constructor_Should.cs" />
     <Compile Include="AuthorTests\Constructor_Should.cs" />
+    <Compile Include="BookTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
