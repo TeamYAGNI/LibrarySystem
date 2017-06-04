@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournal_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Is.InstanceOf<Journal>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithTitleProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("Title"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithImpactFactorProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("ImpactFactor"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithISSNProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("ISSN"));
         }
 
@@ -75,11 +75,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithIssueNumberProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("IssueNumber"));
         }
 
@@ -87,11 +87,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithYearOfPublishingProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("YearOfPublishing"));
         }
 
@@ -99,11 +99,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithPublisherIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("PublisherId"));
         }
 
@@ -111,11 +111,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithPublisherProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("Publisher"));
         }
 
@@ -123,11 +123,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithQuantityProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("Quantity"));
         }
 
@@ -135,11 +135,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithAvailableProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("Available"));
         }
 
@@ -147,11 +147,11 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithSubjectsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal, Has.Property("Subjects"));
         }
 
@@ -159,14 +159,13 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
         [Category("Models.Journal.Constructor")]
         public void InstantiateSubjectsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var journal = new Journal();
 
-            //Assert
+            // Assert
             Assert.That(journal.Subjects.Count, Is.Zero);
             Assert.That(journal.Subjects, Is.TypeOf<HashSet<Subject>>());
         }
-
     }
 }

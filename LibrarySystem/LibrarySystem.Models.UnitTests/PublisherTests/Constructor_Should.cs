@@ -16,11 +16,11 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisher_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher, Is.InstanceOf<Publisher>());
         }
 
@@ -28,11 +28,11 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisherWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher, Has.Property("Id"));
         }
 
@@ -40,11 +40,11 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisherWithNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher, Has.Property("Name"));
         }
 
@@ -52,11 +52,11 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisherWithBooksProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher, Has.Property("Books"));
         }
 
@@ -64,11 +64,11 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisherWithJournalsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher, Has.Property("Journals"));
         }
 
@@ -76,11 +76,11 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisherBookCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher.Books.Count, Is.Zero);
             Assert.That(publisher.Books, Is.TypeOf<HashSet<Book>>());
         }
@@ -89,14 +89,13 @@ namespace LibrarySystem.Models.UnitTests.PublisherTests
         [Category("Models.Publisher.Constructor")]
         public void InstantiatePublisherJournalCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var publisher = new Publisher();
 
-            //Assert
+            // Assert
             Assert.That(publisher.Journals.Count, Is.Zero);
             Assert.That(publisher.Journals, Is.TypeOf<HashSet<Journal>>());
         }
-
     }
 }

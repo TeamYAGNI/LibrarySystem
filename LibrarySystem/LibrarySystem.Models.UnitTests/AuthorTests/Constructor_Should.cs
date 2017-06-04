@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.AuthorTests
         [Category("Models.Author.Constructor")]
         public void InstantiateAuthor_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var author = new Author();
 
-            //Assert
+            // Assert
             Assert.That(author, Is.InstanceOf<Author>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.AuthorTests
         [Category("Models.Author.Constructor")]
         public void InstantiateAuthorWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var author = new Author();
 
-            //Assert
+            // Assert
             Assert.That(author, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.AuthorTests
         [Category("Models.Author.Constructor")]
         public void InstantiateAuthorWithNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var author = new Author();
 
-            //Assert
+            // Assert
             Assert.That(author, Has.Property("Name"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.AuthorTests
         [Category("Models.Author.Constructor")]
         public void InstantiateAuthorWithBooksProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var author = new Author();
 
-            //Assert
+            // Assert
             Assert.That(author, Has.Property("Books"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.AuthorTests
         [Category("Models.Author.Constructor")]
         public void InstantiateAuthorBookCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var author = new Author();
 
-            //Assert
+            // Assert
             Assert.That(author.Books.Count, Is.Zero);
             Assert.That(author.Books, Is.TypeOf<HashSet<Book>>());
         }

@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubject_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Is.InstanceOf<Subject>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubjectWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubjectWithNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Has.Property("Name"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubjectWithSuperSubjectIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Has.Property("SuperSubjectId"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubjectWithSuperSubjectProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Has.Property("SuperSubject"));
         }
 
@@ -75,11 +75,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubjectWithIssueSubSubjectsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Has.Property("SubSubjects"));
         }
         
@@ -87,11 +87,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubSubjectsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject.SubSubjects.Count, Is.Zero);
             Assert.That(subject.SubSubjects, Is.TypeOf<HashSet<Subject>>());
         }
@@ -100,11 +100,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateSubjectWithIssueJournalsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject, Has.Property("Journals"));
         }
 
@@ -112,11 +112,11 @@ namespace LibrarySystem.Models.UnitTests.SubjectTests
         [Category("Models.Subject.Constructor")]
         public void InstantiateJournalsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var subject = new Subject();
 
-            //Assert
+            // Assert
             Assert.That(subject.Journals.Count, Is.Zero);
             Assert.That(subject.Journals, Is.TypeOf<HashSet<Journal>>());
         }

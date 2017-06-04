@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddress_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Is.InstanceOf<Address>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithStreetProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("Street"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithStreetNumberProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("StreetNumber"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithCityIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("CityId"));
         }
 
@@ -75,11 +75,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithCityProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("City"));
         }
 
@@ -87,11 +87,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithClientsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("Clients"));
         }
 
@@ -99,11 +99,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateAddressWithEmployeesProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address, Has.Property("Employees"));
         }
 
@@ -111,11 +111,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateClientsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address.Clients.Count, Is.Zero);
             Assert.That(address.Clients, Is.TypeOf<HashSet<Client>>());
         }
@@ -124,11 +124,11 @@ namespace LibrarySystem.Models.UnitTests.AddressTests
         [Category("Models.Address.Constructor")]
         public void InstantiateEmployeesCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var address = new Address();
 
-            //Assert
+            // Assert
             Assert.That(address.Employees.Count, Is.Zero);
             Assert.That(address.Employees, Is.TypeOf<HashSet<Employee>>());
         }

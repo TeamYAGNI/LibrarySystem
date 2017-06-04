@@ -1,10 +1,19 @@
+// <copyright file="201706042101400_Initial.cs" company="YAGNI">
+// All rights reserved.
+// </copyright>
+
+using System.Data.Entity.Migrations;
+
 namespace LibrarySystem.Data.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
+    /// <summary>
+    /// Represent a <see cref="Initial"/> class, heir of <see cref="DbMigration"/>.
+    /// </summary>
     public partial class Initial : DbMigration
     {
+        /// <summary>
+        /// Operations to be performed during the upgrade process.
+        /// </summary>
         public override void Up()
         {
             CreateTable(
@@ -194,57 +203,59 @@ namespace LibrarySystem.Data.Migrations
                 .ForeignKey("dbo.Journals", t => t.Journal_Id)
                 .Index(t => t.Subject_Id)
                 .Index(t => t.Journal_Id);
-            
         }
-        
+
+        /// <summary>
+        /// Operations to be performed during the downgrade process.
+        /// </summary>
         public override void Down()
         {
-            DropForeignKey("dbo.Employees", "ReportsToId", "dbo.Employees");
-            DropForeignKey("dbo.Employees", "AddressId", "dbo.Addresses");
-            DropForeignKey("dbo.Lendings", "ClientId", "dbo.Clients");
-            DropForeignKey("dbo.Subjects", "SuperSubjectId", "dbo.Subjects");
-            DropForeignKey("dbo.SubjectJournals", "Journal_Id", "dbo.Journals");
-            DropForeignKey("dbo.SubjectJournals", "Subject_Id", "dbo.Subjects");
-            DropForeignKey("dbo.Journals", "PublisherId", "dbo.Publishers");
-            DropForeignKey("dbo.Books", "PublisherId", "dbo.Publishers");
-            DropForeignKey("dbo.Lendings", "BookId", "dbo.Books");
-            DropForeignKey("dbo.Genres", "SuperGenreId", "dbo.Genres");
-            DropForeignKey("dbo.GenreBooks", "Book_Id", "dbo.Books");
-            DropForeignKey("dbo.GenreBooks", "Genre_Id", "dbo.Genres");
-            DropForeignKey("dbo.AuthorBooks", "Book_Id", "dbo.Books");
-            DropForeignKey("dbo.AuthorBooks", "Author_Id", "dbo.Authors");
-            DropForeignKey("dbo.Clients", "AddressId", "dbo.Addresses");
-            DropForeignKey("dbo.Addresses", "CityId", "dbo.Cities");
-            DropIndex("dbo.SubjectJournals", new[] { "Journal_Id" });
-            DropIndex("dbo.SubjectJournals", new[] { "Subject_Id" });
-            DropIndex("dbo.GenreBooks", new[] { "Book_Id" });
-            DropIndex("dbo.GenreBooks", new[] { "Genre_Id" });
-            DropIndex("dbo.AuthorBooks", new[] { "Book_Id" });
-            DropIndex("dbo.AuthorBooks", new[] { "Author_Id" });
-            DropIndex("dbo.Employees", new[] { "ReportsToId" });
-            DropIndex("dbo.Employees", new[] { "AddressId" });
-            DropIndex("dbo.Subjects", new[] { "SuperSubjectId" });
-            DropIndex("dbo.Journals", new[] { "PublisherId" });
-            DropIndex("dbo.Genres", new[] { "SuperGenreId" });
-            DropIndex("dbo.Books", new[] { "PublisherId" });
-            DropIndex("dbo.Lendings", new[] { "ClientId" });
-            DropIndex("dbo.Lendings", new[] { "BookId" });
-            DropIndex("dbo.Clients", new[] { "AddressId" });
-            DropIndex("dbo.Addresses", new[] { "CityId" });
-            DropTable("dbo.SubjectJournals");
-            DropTable("dbo.GenreBooks");
-            DropTable("dbo.AuthorBooks");
-            DropTable("dbo.Employees");
-            DropTable("dbo.Subjects");
-            DropTable("dbo.Journals");
-            DropTable("dbo.Publishers");
-            DropTable("dbo.Genres");
-            DropTable("dbo.Authors");
-            DropTable("dbo.Books");
-            DropTable("dbo.Lendings");
-            DropTable("dbo.Clients");
-            DropTable("dbo.Cities");
-            DropTable("dbo.Addresses");
+            this.DropForeignKey("dbo.Employees", "ReportsToId", "dbo.Employees");
+            this.DropForeignKey("dbo.Employees", "AddressId", "dbo.Addresses");
+            this.DropForeignKey("dbo.Lendings", "ClientId", "dbo.Clients");
+            this.DropForeignKey("dbo.Subjects", "SuperSubjectId", "dbo.Subjects");
+            this.DropForeignKey("dbo.SubjectJournals", "Journal_Id", "dbo.Journals");
+            this.DropForeignKey("dbo.SubjectJournals", "Subject_Id", "dbo.Subjects");
+            this.DropForeignKey("dbo.Journals", "PublisherId", "dbo.Publishers");
+            this.DropForeignKey("dbo.Books", "PublisherId", "dbo.Publishers");
+            this.DropForeignKey("dbo.Lendings", "BookId", "dbo.Books");
+            this.DropForeignKey("dbo.Genres", "SuperGenreId", "dbo.Genres");
+            this.DropForeignKey("dbo.GenreBooks", "Book_Id", "dbo.Books");
+            this.DropForeignKey("dbo.GenreBooks", "Genre_Id", "dbo.Genres");
+            this.DropForeignKey("dbo.AuthorBooks", "Book_Id", "dbo.Books");
+            this.DropForeignKey("dbo.AuthorBooks", "Author_Id", "dbo.Authors");
+            this.DropForeignKey("dbo.Clients", "AddressId", "dbo.Addresses");
+            this.DropForeignKey("dbo.Addresses", "CityId", "dbo.Cities");
+            this.DropIndex("dbo.SubjectJournals", new[] { "Journal_Id" });
+            this.DropIndex("dbo.SubjectJournals", new[] { "Subject_Id" });
+            this.DropIndex("dbo.GenreBooks", new[] { "Book_Id" });
+            this.DropIndex("dbo.GenreBooks", new[] { "Genre_Id" });
+            this.DropIndex("dbo.AuthorBooks", new[] { "Book_Id" });
+            this.DropIndex("dbo.AuthorBooks", new[] { "Author_Id" });
+            this.DropIndex("dbo.Employees", new[] { "ReportsToId" });
+            this.DropIndex("dbo.Employees", new[] { "AddressId" });
+            this.DropIndex("dbo.Subjects", new[] { "SuperSubjectId" });
+            this.DropIndex("dbo.Journals", new[] { "PublisherId" });
+            this.DropIndex("dbo.Genres", new[] { "SuperGenreId" });
+            this.DropIndex("dbo.Books", new[] { "PublisherId" });
+            this.DropIndex("dbo.Lendings", new[] { "ClientId" });
+            this.DropIndex("dbo.Lendings", new[] { "BookId" });
+            this.DropIndex("dbo.Clients", new[] { "AddressId" });
+            this.DropIndex("dbo.Addresses", new[] { "CityId" });
+            this.DropTable("dbo.SubjectJournals");
+            this.DropTable("dbo.GenreBooks");
+            this.DropTable("dbo.AuthorBooks");
+            this.DropTable("dbo.Employees");
+            this.DropTable("dbo.Subjects");
+            this.DropTable("dbo.Journals");
+            this.DropTable("dbo.Publishers");
+            this.DropTable("dbo.Genres");
+            this.DropTable("dbo.Authors");
+            this.DropTable("dbo.Books");
+            this.DropTable("dbo.Lendings");
+            this.DropTable("dbo.Clients");
+            this.DropTable("dbo.Cities");
+            this.DropTable("dbo.Addresses");
         }
     }
 }

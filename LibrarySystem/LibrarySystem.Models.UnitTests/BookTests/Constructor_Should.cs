@@ -3,10 +3,9 @@
 // </copyright>
 // <summary>Holds unit tests of Book entity model constructor.</summary>
 
-using System.Collections;
 using System.Collections.Generic;
+
 using NUnit.Framework;
-using System;
 
 namespace LibrarySystem.Models.UnitTests.BookTests
 {
@@ -17,11 +16,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBook_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Is.InstanceOf<Book>());
         }
 
@@ -29,11 +28,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Id"));
         }
 
@@ -41,11 +40,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithTitleProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Title"));
         }
 
@@ -53,11 +52,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithISBNProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("ISBN"));
         }
 
@@ -65,11 +64,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithAuthorsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Authors"));
         }
 
@@ -77,11 +76,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithGenresProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Genres"));
         }
 
@@ -89,11 +88,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithDescriptionProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Description"));
         }
 
@@ -101,11 +100,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithPageCountProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("PageCount"));
         }
 
@@ -113,11 +112,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithYearOfPublishingProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("YearOfPublishing"));
         }
 
@@ -125,11 +124,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithPublisherIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("PublisherId"));
         }
 
@@ -137,33 +136,35 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithPublisherProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Publisher"));
         }
+
         [Test]
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithQuantityProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Quantity"));
         }
+
         [Test]
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithAvailableProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Available"));
         }
 
@@ -171,11 +172,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateBookWithLendingsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book, Has.Property("Lendings"));
         }
 
@@ -183,11 +184,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateAuthorsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book.Authors.Count, Is.Zero);
             Assert.That(book.Authors, Is.TypeOf<HashSet<Author>>());
         }
@@ -196,11 +197,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateGenresCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book.Genres.Count, Is.Zero);
             Assert.That(book.Genres, Is.TypeOf<HashSet<Genre>>());
         }
@@ -209,11 +210,11 @@ namespace LibrarySystem.Models.UnitTests.BookTests
         [Category("Models.Book.Constructor")]
         public void InstantiateLendingsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var book = new Book();
 
-            //Assert
+            // Assert
             Assert.That(book.Lendings.Count, Is.Zero);
             Assert.That(book.Lendings, Is.TypeOf<HashSet<Lending>>());
         }

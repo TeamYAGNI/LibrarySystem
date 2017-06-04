@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.CityTests
         [Category("Models.City.Constructor")]
         public void InstantiateCity_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var city = new City();
 
-            //Assert
+            // Assert
             Assert.That(city, Is.InstanceOf<City>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.CityTests
         [Category("Models.City.Constructor")]
         public void InstantiateCityWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var city = new City();
 
-            //Assert
+            // Assert
             Assert.That(city, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.CityTests
         [Category("Models.City.Constructor")]
         public void InstantiateCityWithNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var city = new City();
 
-            //Assert
+            // Assert
             Assert.That(city, Has.Property("Name"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.CityTests
         [Category("Models.City.Constructor")]
         public void InstantiateCityWithAddressesProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var city = new City();
 
-            //Assert
+            // Assert
             Assert.That(city, Has.Property("Addresses"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.CityTests
         [Category("Models.City.Constructor")]
         public void InstantiateAddressesCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var city = new City();
 
-            //Assert
+            // Assert
             Assert.That(city.Addresses.Count, Is.Zero);
             Assert.That(city.Addresses, Is.TypeOf<HashSet<Address>>());
         }

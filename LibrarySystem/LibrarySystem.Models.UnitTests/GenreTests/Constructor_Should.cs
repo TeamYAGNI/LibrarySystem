@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenre_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Is.InstanceOf<Genre>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenreWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenreWithNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Has.Property("Name"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenreWithSuperGenreIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Has.Property("SuperGenreId"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenreWithSuperGenreProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Has.Property("SuperGenre"));
         }
 
@@ -75,11 +75,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenreWithSubGenresProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Has.Property("SubGenres"));
         }
 
@@ -87,11 +87,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateSubGenresCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre.SubGenres.Count, Is.Zero);
             Assert.That(genre.SubGenres, Is.TypeOf<HashSet<Genre>>());
         }
@@ -100,11 +100,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateGenreWithBooksProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre, Has.Property("Books"));
         }
 
@@ -112,11 +112,11 @@ namespace LibrarySystem.Models.UnitTests.GenreTests
         [Category("Models.Genre.Constructor")]
         public void InstantiateBooksCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var genre = new Genre();
 
-            //Assert
+            // Assert
             Assert.That(genre.Books.Count, Is.Zero);
             Assert.That(genre.Books, Is.TypeOf<HashSet<Book>>());
         }

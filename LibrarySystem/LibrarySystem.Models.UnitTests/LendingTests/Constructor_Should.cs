@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLending_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Is.InstanceOf<Lending>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithBookIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("BookId"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithBookProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("Book"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithClientIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("ClientId"));
         }
 
@@ -75,11 +75,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithClientProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("Client"));
         }
 
@@ -87,11 +87,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithBorrоwDateProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("BorrоwDate"));
         }
 
@@ -99,11 +99,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithReturnDateProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("ReturnDate"));
         }
 
@@ -111,11 +111,11 @@ namespace LibrarySystem.Models.UnitTests.LendingTests
         [Category("Models.Lending.Constructor")]
         public void InstantiateLendingWithRemarksProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var lending = new Lending();
 
-            //Assert
+            // Assert
             Assert.That(lending, Has.Property("Remarks"));
         }
     }

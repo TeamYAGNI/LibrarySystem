@@ -41,7 +41,7 @@ namespace LibrarySystem.Models
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets the full name of the <see cref="Employee"/> entity.
+        /// Gets the full name of the <see cref="Employee"/> entity.
         /// </summary>
         /// <value>Full name of the <see cref="Employee"/> entity.</value>
         [NotMapped]

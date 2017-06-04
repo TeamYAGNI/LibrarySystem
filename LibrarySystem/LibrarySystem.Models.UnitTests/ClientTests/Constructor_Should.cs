@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClient_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Is.InstanceOf<Client>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("Name"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithPINProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("PIN"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithPhoneProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("Phone"));
         }
 
@@ -75,11 +75,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithEmailProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("Email"));
         }
 
@@ -87,11 +87,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithAddressIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("AddressId"));
         }
 
@@ -99,11 +99,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithAddressProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("Address"));
         }
 
@@ -111,11 +111,11 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateClientWithLendingsProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client, Has.Property("Lendings"));
         }
 
@@ -123,14 +123,13 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
         [Category("Models.Client.Constructor")]
         public void InstantiateLendingsCollection_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var client = new Client();
 
-            //Assert
+            // Assert
             Assert.That(client.Lendings.Count, Is.Zero);
             Assert.That(client.Lendings, Is.TypeOf<HashSet<Lending>>());
         }
-
     }
 }

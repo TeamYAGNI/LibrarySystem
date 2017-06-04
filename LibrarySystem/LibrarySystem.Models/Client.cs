@@ -108,6 +108,5 @@ namespace LibrarySystem.Models
                 this.lendings = value;
             }
         }
-        
     }
 }

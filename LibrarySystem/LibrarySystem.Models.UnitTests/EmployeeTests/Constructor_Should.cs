@@ -15,11 +15,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployee_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Is.InstanceOf<Employee>());
         }
 
@@ -27,11 +27,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("Id"));
         }
 
@@ -39,11 +39,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithFirstNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("FirstName"));
         }
 
@@ -51,11 +51,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithLastNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("LastName"));
         }
 
@@ -63,11 +63,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithFullNameProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("FullName"));
         }
 
@@ -75,7 +75,7 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void ReturnStringJoiningFirstAndLastName_WhenInvoked()
         {
-            //Arrange
+            // Arrange
             string firstName = "John";
             string lastName = "Doe";
 
@@ -85,8 +85,8 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
             employee.FirstName = firstName;
             employee.LastName = lastName;
 
-            //Act
-            //Assert
+            // Act
+            // Assert
             Assert.AreEqual(expectedFullName, employee.FullName);
         }
 
@@ -94,11 +94,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithJobTitleProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("JobTitle"));
         }
 
@@ -106,11 +106,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithAddressIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("AddressId"));
         }
 
@@ -118,11 +118,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithAddressProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("Address"));
         }
 
@@ -130,11 +130,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithReportsToIdProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("ReportsToId"));
         }
 
@@ -142,11 +142,11 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
         [Category("Models.Employee.Constructor")]
         public void InstantiateEmployeeWithReportsToProperty_WhenNoArgumentsArePassed()
         {
-            //Arrange
-            //Act
+            // Arrange
+            // Act
             var employee = new Employee();
 
-            //Assert
+            // Assert
             Assert.That(employee, Has.Property("ReportsTo"));
         }
     }
