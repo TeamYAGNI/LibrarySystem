@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System;
 
-namespace LibrarySystem.Models.UnitTests.AuthorTests
+namespace LibrarySystem.Models.UnitTests.BookTests
 {
     [TestFixture]
     public class Constructor_Should
