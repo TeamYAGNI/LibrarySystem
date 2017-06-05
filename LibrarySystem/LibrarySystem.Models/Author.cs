@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using LibrarySystem.Models.Enumerations;
 
 namespace LibrarySystem.Models
 {
@@ -35,12 +36,39 @@ namespace LibrarySystem.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the <see cref="Author"/> entity.
+        /// Gets or sets the first name of the <see cref="Author"/> entity.
         /// </summary>
-        /// <value>Name of the <see cref="Author"/> entity.</value>
+        /// <value>First name of the <see cref="Author"/> entity.</value>
         [Required]
-        [StringLength(50, ErrorMessage = "Author Name Invalid Length", MinimumLength = 3)]
-        public string Name { get; set; }
+        [StringLength(20, ErrorMessage = "Author FirstName Invalid Length", MinimumLength = 1)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name of the <see cref="Author"/> entity.
+        /// </summary>
+        /// <value>Last name of the <see cref="Author"/> entity.</value>
+        [Required]
+        [StringLength(20, ErrorMessage = "Author LastName Invalid Length", MinimumLength = 1)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets the full name of the <see cref="Author"/> entity.
+        /// </summary>
+        /// <value>Full name of the <see cref="Author"/> entity.</value>
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", this.FirstName, this.LastName);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the gender type of the <see cref="Author"/> entity.
+        /// </summary>
+        /// <value>Gender type of the <see cref="Author"/> entity.</value>
+        public GenderType GenderType { get; set; }
 
         /// <summary>
         /// Gets or sets the books of the <see cref="Author"/> entity.

@@ -27,7 +27,6 @@ namespace LibrarySystem.Models
         /// </summary>
         /// <value>First name of the <see cref="Employee"/> entity.</value>
         [Required]
-        [Column("First Name")]
         [StringLength(20, ErrorMessage = "Employee FirstName Invalid Length", MinimumLength = 1)]
         public string FirstName { get; set; }
 
@@ -36,7 +35,6 @@ namespace LibrarySystem.Models
         /// </summary>
         /// <value>Last name of the <see cref="Employee"/> entity.</value>
         [Required]
-        [Column("Last Name")]
         [StringLength(20, ErrorMessage = "Employee LastName Invalid Length", MinimumLength = 1)]
         public string LastName { get; set; }
 
@@ -52,6 +50,12 @@ namespace LibrarySystem.Models
                 return string.Format("{0} {1}", this.FirstName, this.LastName);
             }
         }
+
+        /// <summary>
+        /// Gets or sets the gender type of the <see cref="Employee"/> entity.
+        /// </summary>
+        /// <value>Gender type of the <see cref="Employee"/> entity.</value>
+        public GenderType GenderType { get; set; }
 
         /// <summary>
         /// Gets or sets the job title of the <see cref="Employee"/> entity.

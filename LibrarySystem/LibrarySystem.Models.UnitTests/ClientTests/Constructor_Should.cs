@@ -4,6 +4,7 @@
 // <summary>Holds unit tests of Journal entity model constructor.</summary>
  
  using System.Collections.Generic;
+ using LibrarySystem.Models.Enumerations;
  using NUnit.Framework;
 
 namespace LibrarySystem.Models.UnitTests.ClientTests
@@ -37,14 +38,70 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
 
         [Test]
         [Category("Models.Client.Constructor")]
-        public void InstantiateClientWithNameProperty_WhenNoArgumentsArePassed()
+        public void InstantiateClientWithFirstNameProperty_WhenNoArgumentsArePassed()
         {
             // Arrange
             // Act
             var client = new Client();
 
             // Assert
-            Assert.That(client, Has.Property("Name"));
+            Assert.That(client, Has.Property("FirstName"));
+        }
+
+        [Test]
+        [Category("Models.Client.Constructor")]
+        public void InstantiateClientWithLastNameProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var client = new Client();
+
+            // Assert
+            Assert.That(client, Has.Property("LastName"));
+        }
+
+        [Test]
+        [Category("Models.Client.Constructor")]
+        public void InstantiateClientWithFullNameProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var client = new Client();
+
+            // Assert
+            Assert.That(client, Has.Property("FullName"));
+        }
+
+        [Test]
+        [Category("Models.Client.Constructor")]
+        public void ReturnStringJoiningFirstAndLastName_WhenInvoked()
+        {
+            // Arrange
+            string firstName = "John";
+            string lastName = "Doe";
+
+            string expectedFullName = "John Doe";
+
+            var client = new Client();
+            client.FirstName = firstName;
+            client.LastName = lastName;
+
+            // Act
+            // Assert
+            Assert.AreEqual(expectedFullName, client.FullName);
+        }
+
+        [Test]
+        [Category("Models.Client.Constructor")]
+        public void InstantiateClientWithGenderTypeProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var client = new Client();
+
+            // Assert
+            Assert.That(client, Has.Property("GenderType"));
+            Assert.That(client.GenderType, Is.EqualTo(GenderType.NotSpecified));
         }
 
         [Test]

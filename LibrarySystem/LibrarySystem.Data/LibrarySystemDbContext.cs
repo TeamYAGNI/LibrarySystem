@@ -3,9 +3,10 @@
 // </copyright>
 // <summary>Holds implementation of LibrarySystemDbContext class.</summary>
 
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration.Conventions;
-
 using LibrarySystem.Models;
 
 namespace LibrarySystem.Data
@@ -18,12 +19,12 @@ namespace LibrarySystem.Data
         /// <summary>
         /// Name of the connection string that describe witch database server <see cref="LibrarySystemDbContext"/> instance to use and how.
         /// </summary>
-        //// private const string ConnectionString = "LibrarySystemSQLExpress";
+        private const string ConnectionString = "LibrarySystemSQLExpress";
 
         /// <summary>
         /// Name of the connection string that describe witch database server <see cref="LibrarySystemDbContext"/> instance to use and how.
         /// </summary>
-        private const string ConnectionString = "LibrarySystemSQLServer";
+        ////private const string ConnectionString = "LibrarySystemSQLServer";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LibrarySystemDbContext"/> class.
@@ -101,6 +102,52 @@ namespace LibrarySystem.Data
             // Fluent API
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            // Unique keys
+            modelBuilder
+                .Entity<Book>()
+                .Property(b => b.ISBN)
+                .HasMaxLength(13)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_ISBN") { IsUnique = true }));
+
+            modelBuilder
+                .Entity<Journal>()
+                .Property(j => j.ISSN)
+                .HasMaxLength(9)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_ISSN") { IsUnique = true }));
+
+            modelBuilder
+                .Entity<Publisher>()
+                .Property(p => p.Name)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_Name") { IsUnique = true }));
+
+            modelBuilder
+                .Entity<Genre>()
+                .Property(g => g.Name)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_Name") { IsUnique = true }));
+
+            modelBuilder
+                .Entity<Subject>()
+                .Property(s => s.Name)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_Name") { IsUnique = true }));
+
+            modelBuilder
+                .Entity<Client>()
+                .Property(c => c.PIN)
+                .HasMaxLength(10)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_PIN") { IsUnique = true }));
 
             base.OnModelCreating(modelBuilder);
         }

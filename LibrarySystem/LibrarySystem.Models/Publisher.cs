@@ -30,7 +30,6 @@ namespace LibrarySystem.Models
         public Publisher()
         {
             this.books = new HashSet<Book>();
-
             this.journals = new HashSet<Journal>();
         }
 

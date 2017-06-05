@@ -4,6 +4,7 @@
 // <summary>Holds unit tests of Journal entity model constructor.</summary>
  
  using System.Collections.Generic;
+ using LibrarySystem.Models.Enumerations;
  using NUnit.Framework;
 
 namespace LibrarySystem.Models.UnitTests.EmployeeTests
@@ -88,6 +89,19 @@ namespace LibrarySystem.Models.UnitTests.EmployeeTests
             // Act
             // Assert
             Assert.AreEqual(expectedFullName, employee.FullName);
+        }
+
+        [Test]
+        [Category("Models.Employee.Constructor")]
+        public void InstantiateEmployeeWithGenderTypeProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var employee = new Employee();
+
+            // Assert
+            Assert.That(employee, Has.Property("GenderType"));
+            Assert.That(employee.GenderType, Is.EqualTo(GenderType.NotSpecified));
         }
 
         [Test]

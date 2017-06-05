@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using LibrarySystem.Models.Enumerations;
 
 namespace LibrarySystem.Models
 {
@@ -50,12 +51,39 @@ namespace LibrarySystem.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the <see cref="Client"/> entity.
+        /// Gets or sets the first name of the <see cref="Client"/> entity.
         /// </summary>
-        /// <value>Name of the <see cref="Client"/> entity.</value>
+        /// <value>First name of the <see cref="Client"/> entity.</value>
         [Required]
-        [StringLength(50, ErrorMessage = "Book Title Invalid Length", MinimumLength = 1)]
-        public string Name { get; set; }
+        [StringLength(20, ErrorMessage = "Client FirstName Invalid Length", MinimumLength = 1)]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name of the <see cref="Client"/> entity.
+        /// </summary>
+        /// <value>Last name of the <see cref="Client"/> entity.</value>
+        [Required]
+        [StringLength(20, ErrorMessage = "Client LastName Invalid Length", MinimumLength = 1)]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets the full name of the <see cref="Client"/> entity.
+        /// </summary>
+        /// <value>Full name of the <see cref="Client"/> entity.</value>
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", this.FirstName, this.LastName);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the gender type of the <see cref="Client"/> entity.
+        /// </summary>
+        /// <value>Gender type of the <see cref="Client"/> entity.</value>
+        public GenderType GenderType { get; set; }
 
         /// <summary>
         /// Gets or sets the Personal Identification Number of the <see cref="Client"/> entity.
@@ -63,7 +91,7 @@ namespace LibrarySystem.Models
         /// <value>Personal Identification Number of the <see cref="Client"/> entity.</value>
         [Required]
         [RegularExpression(PINPattern, ErrorMessage = "Client PIN Invalid Length")]
-        public int PIN { get; set; }
+        public string PIN { get; set; }
 
         /// <summary>
         /// Gets or sets the phone number of the <see cref="Client"/> entity.
