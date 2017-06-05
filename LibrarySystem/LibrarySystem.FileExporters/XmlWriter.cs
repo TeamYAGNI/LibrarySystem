@@ -5,63 +5,57 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Xml.Serialization;
+using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
 
 namespace LibrarySystem.FileExporters
 {
     /// <summary>
-    /// 
+    /// Represent a <see cref="XmlWriter"/> class.
     /// </summary>
     public class XmlWriter
     {
         /// <summary>
-        /// 
+        /// Text writer wrapper interface handle.
         /// </summary>
-        private string directory;
+        private ITextWriterWrapper textWriterWrapper;
 
         /// <summary>
-        /// 
+        /// XML Books serializer object handle.
         /// </summary>
-        private string fileName;
+        private XmlSerializer xmlBooksSerializer;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="XmlWriter"/> class.
         /// </summary>
-        /// <param name="directory"></param>
-        /// <param name="fileName"></param>
-        public XmlWriter(string directory, string fileName)
+        /// <param name="ITextWriterWrapper">Stream writer to be used for writing text data.</param>
+        /// <param name="xmlBooksSerializer">XML serializer to be used for converting object data</param>
+        public XmlWriter(ITextWriterWrapper textWriterWrapper, XmlSerializer xmlBooksSerializer)
         {
-            if (string.IsNullOrEmpty(directory))
+            if (textWriterWrapper == null)
             {
-                throw new ArgumentException("Direcotry path cannot be null or empty string!");
+                throw new ArgumentNullException("Text stream wrapper cannot be null.");
             }
 
-            if (string.IsNullOrEmpty(fileName))
+            if (xmlBooksSerializer == null)
             {
-                throw new ArgumentException("File name cannot be null or empty string!");
+                throw new ArgumentNullException("XML Books serializer cannot be null.");
             }
 
-            this.directory = directory;
-            this.fileName = fileName;
+            this.xmlBooksSerializer = xmlBooksSerializer;
+            this.textWriterWrapper = textWriterWrapper;
         }
 
         /// <summary>
-        /// 
+        /// Exports the specified collection of Book DTOs to XML text file.
         /// </summary>
-        /// <param name="books"></param>
+        /// <param name="books">Collection of Book DTOs.</param>
         public void ExportBooks(IEnumerable<DTOBook> books)
         {
-            if (!Directory.Exists(this.directory))
+            using (this.textWriterWrapper.TextWriter)
             {
-                Directory.CreateDirectory(this.directory);
-            }
-
-            XmlSerializer serializer = new XmlSerializer(typeof(List<DTOBook>));
-            using (TextWriter writer = new StreamWriter(this.directory + "\\" + this.fileName))
-            {
-                serializer.Serialize(writer, books);
+                this.xmlBooksSerializer.Serialize(this.textWriterWrapper.TextWriter, books);
             }
         }
     }

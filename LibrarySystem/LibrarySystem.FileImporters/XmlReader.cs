@@ -6,61 +6,57 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using LibrarySystem.Models;
 
 namespace LibrarySystem.FileImporters
 {
     /// <summary>
-    /// 
+    /// Represent a <see cref="XmlReader"/> class.
     /// </summary>
     public class XmlReader
     {
         /// <summary>
-        /// 
+        /// Stream reader object handle.
         /// </summary>
-        private const string DescendantName = "book";
+        private StreamReader streamReader;
 
         /// <summary>
-        /// 
+        /// XML Books deserializer object handle.
         /// </summary>
-        private string filePath;
+        private XmlSerializer xmlBooksSerializer;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="XmlReader"/> class.
         /// </summary>
-        /// <param name="filePath"></param>
-        public XmlReader(string filePath)
+        /// <param name="streamReader">Stream reader to be used for reading text data.</param>
+        /// <param name="xmlBooksSerializer">XML deserializer to be used for converting XML text.</param>
+        public XmlReader(StreamReader streamReader, XmlSerializer xmlBooksSerializer)
         {
-            if (string.IsNullOrEmpty(filePath))
+            if (streamReader == null)
             {
-                throw new ArgumentException("File path cannot be null or empty string!");
+                throw new ArgumentNullException("Stream reader cannot be null.");
             }
 
-            this.filePath = filePath;
+            if (xmlBooksSerializer == null)
+            {
+                throw new ArgumentNullException("XML Books serializer cannot be null.");
+            }
+
+            this.streamReader = streamReader;
+            this.xmlBooksSerializer = xmlBooksSerializer;
         }
 
         /// <summary>
-        /// 
+        /// Imports the specified collection of Book DTOs from XML text file.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Collection of Journal DTOs</returns>
         public IEnumerable<DTOBook> ImportBooks()
         {
-            var xmlDocument = XDocument.Load(this.filePath);
-            var xmlFormatBooks = xmlDocument.Descendants(DescendantName);
-            var pocoBooks = new List<DTOBook>();
-
-            foreach (var book in xmlFormatBooks)
+            using (this.streamReader)
             {
-                var stringReader = new StringReader(book.ToString());
-                var xmlSerializer = new XmlSerializer(typeof(DTOBook));
-                var current = (DTOBook)xmlSerializer.Deserialize(stringReader);
-
-                pocoBooks.Add(current);
+                return (IEnumerable<DTOBook>)this.xmlBooksSerializer.Deserialize(this.streamReader);
             }
-
-            return pocoBooks;
         }
     }
 }

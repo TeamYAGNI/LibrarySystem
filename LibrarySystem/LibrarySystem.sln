@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.FileImporters
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.FileExporters", "LibrarySystem.FileExporters\LibrarySystem.FileExporters.csproj", "{59500C07-FEEB-4833-9E02-E13B14FCFAAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.FileExporters.UnitTests", "LibrarySystem.FileExporters.UnitTests\LibrarySystem.FileExporters.UnitTests.csproj", "{80468EE4-FD4B-4A51-B7C1-87D578778632}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59500C07-FEEB-4833-9E02-E13B14FCFAAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80468EE4-FD4B-4A51-B7C1-87D578778632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80468EE4-FD4B-4A51-B7C1-87D578778632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80468EE4-FD4B-4A51-B7C1-87D578778632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80468EE4-FD4B-4A51-B7C1-87D578778632}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

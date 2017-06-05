@@ -3,8 +3,14 @@
 // </copyright>
 
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using LibrarySystem.FileExporters;
+using LibrarySystem.FileExporters.Utils;
 using LibrarySystem.FileImporters;
+using LibrarySystem.FileImporters.Utils;
+using LibrarySystem.Models;
 
 namespace LibrarySystem.ConsoleClient
 {
@@ -18,8 +24,10 @@ namespace LibrarySystem.ConsoleClient
         /// </summary>
         public static void Main()
         {
-            var xmlImportFilePath = "./../../../books.xml";
-            var xmlFileReader = new XmlReader(xmlImportFilePath);
+            // Read XML Books
+            var xmlFileReader = new XmlReader(
+                new StreamReader("./../../../books.xml"),
+                new XmlSerializer(typeof(List<DTOBook>)));
             var xmlBooks = xmlFileReader.ImportBooks();
             foreach (var xmlBook in xmlBooks)
             {
@@ -29,12 +37,16 @@ namespace LibrarySystem.ConsoleClient
                 Console.WriteLine($"---- ISBN: {xmlBook.ISBN}\n");
             }
 
-            var xmlExportFileDirectory = "./../../../";
-            var xmlExportFileName = "books-inventory.xml";
-            var xmlFileWriter = new XmlWriter(xmlExportFileDirectory, xmlExportFileName);
+            // Write XML Books
+            var xmlFileWriter = new XmlWriter(
+                new TextWriterWrapper("./../../../", "books-inventory.xml"),
+                new XmlSerializer(typeof(List<DTOBook>)));
             xmlFileWriter.ExportBooks(xmlBooks);
-            
-            JsonReader jsonImporter = new JsonReader("./../../../journals.json");
+
+            // Read JSON Journals
+            var jsonImporter = new JsonReader(
+                new StreamReader("./../../../journals.json"),
+                new JsonJournalsDeserializer());
             var journals = jsonImporter.ImportJournals();
             foreach (var journal in journals)
             {
@@ -43,9 +55,10 @@ namespace LibrarySystem.ConsoleClient
                 Console.WriteLine($"---- ISSN: {journal.ISSN}\n");
             }
 
-            var jsonExportFileDirectory = "./../../../";
-            var jsonExportFileName = "journals-inventory.json";
-            JsonWriter jsonExporter = new JsonWriter(jsonExportFileDirectory, jsonExportFileName);
+            // Write JSON Journals
+            var jsonExporter = new JsonWriter(
+                new TextWriterWrapper("./../../../", "journals-inventory.json"),
+                new JsonSerializerWrapper());
             jsonExporter.ExportJournals(journals);
         }
     }

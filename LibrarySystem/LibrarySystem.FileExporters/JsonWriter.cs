@@ -5,61 +5,62 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
+using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
-using Newtonsoft.Json;
 
 namespace LibrarySystem.FileExporters
 {
     /// <summary>
-    /// 
+    /// Represent a <see cref="JsonWriter"/> class.
     /// </summary>
     public class JsonWriter
     {
         /// <summary>
-        /// 
+        /// Text writer wrapper interface handle.
         /// </summary>
-        private string directory;
+        private ITextWriterWrapper textWriterWrapper;
 
         /// <summary>
-        /// 
+        /// JSON Journals serializer object handle.
         /// </summary>
-        private string fileName;
+        private IJsonSerializerWrapper jsonSerializerWrapper;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="JsonWriter"/> class.
         /// </summary>
-        /// <param name="directory"></param>
-        /// <param name="fileName"></param>
-        public JsonWriter(string directory, string fileName)
+        /// <param name="textStreamWriter">Stream writer to be used for writing text data.</param>
+        /// <param name="jsonJournalsSerializer">JSON serializer to be used for converting object data</param>
+        public JsonWriter(ITextWriterWrapper textWriterWrapper, IJsonSerializerWrapper jsonSerializerWrapper)
         {
-            if (string.IsNullOrEmpty(directory))
+            if (textWriterWrapper == null)
             {
-                throw new ArgumentException("Direcotry path cannot be null or empty string!");
+                throw new ArgumentNullException("Text writer wrapper cannot be null.");
             }
 
-            if (string.IsNullOrEmpty(fileName))
+            if (jsonSerializerWrapper == null)
             {
-                throw new ArgumentException("File name cannot be null or empty string!");
+                throw new ArgumentNullException("JSON serializer wrapper cannot be null.");
             }
 
-            this.directory = directory;
-            this.fileName = fileName;
+            this.textWriterWrapper = textWriterWrapper;
+            this.jsonSerializerWrapper = jsonSerializerWrapper;
         }
 
         /// <summary>
-        /// 
+        /// Exports the specified collection of Journal DTOs to JSON text file.
         /// </summary>
-        /// <param name="journals"></param>
+        /// <param name="journals">Collection of Journal DTOs.</param>
         public void ExportJournals(IEnumerable<DTOJournal> journals)
         {
-            if (!Directory.Exists(this.directory))
+            if (journals == null)
             {
-                Directory.CreateDirectory(this.directory);
+                throw new ArgumentNullException("Journals cannot be null.");
             }
 
-            string journalsJson = JsonConvert.SerializeObject(journals, Formatting.Indented);
-            File.WriteAllText(this.directory + "\\" + this.fileName, journalsJson);
+            using (this.textWriterWrapper.TextWriter)
+            {
+                this.textWriterWrapper.TextWriter.Write(this.jsonSerializerWrapper.Serialize(journals));
+            }
         }
     }
 }

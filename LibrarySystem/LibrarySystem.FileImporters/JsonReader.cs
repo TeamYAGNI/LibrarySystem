@@ -6,44 +6,56 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using LibrarySystem.FileImporters.Utils;
 using LibrarySystem.Models;
-using Newtonsoft.Json;
 
 namespace LibrarySystem.FileImporters
 {
     /// <summary>
-    /// 
+    /// Represent a <see cref="JsonReader"/> class.
     /// </summary>
     public class JsonReader
     {
         /// <summary>
-        /// 
+        /// Stream reader object handle.
         /// </summary>
-        private string filePath;
+        private StreamReader streamReader;
 
         /// <summary>
-        /// 
+        /// JSON Journals deserializer object handle.
         /// </summary>
-        /// <param name="filePath"></param>
-        public JsonReader(string filePath)
+        private JsonJournalsDeserializer jsonJournalsDeserializer;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonReader"/> class.
+        /// </summary>
+        /// <param name="streamReader">Stream reader to be used for reading text data.</param>
+        /// <param name="jsonJournalsDeserializer">JSON deserializer to be used for converting JSON text.</param>
+        public JsonReader(StreamReader streamReader, JsonJournalsDeserializer jsonJournalsDeserializer)
         {
-            if (string.IsNullOrEmpty(filePath))
+            if (streamReader == null)
             {
-                throw new ArgumentException("File path cannot be null or empty string!");
+                throw new ArgumentNullException("Stream reader cannot be null.");
             }
-            
-            this.filePath = filePath;
+
+            if (jsonJournalsDeserializer == null)
+            {
+                throw new ArgumentNullException("JSON Journals deserializer cannot be null.");
+            }
+
+            this.streamReader = streamReader;
+            this.jsonJournalsDeserializer = jsonJournalsDeserializer;
         }
 
         /// <summary>
-        /// 
+        /// Imports the specified collection of Journal DTOs from JSON text file.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Collection of Journal DTOs.</returns>
         public IEnumerable<DTOJournal> ImportJournals()
         {
-            using (StreamReader file = File.OpenText(this.filePath))
+            using (this.streamReader)
             {
-                return JsonConvert.DeserializeObject<IEnumerable<DTOJournal>>(file.ReadToEnd());
+                return this.jsonJournalsDeserializer.Deserialize(this.streamReader.ReadToEnd());
             }
         }
     }
