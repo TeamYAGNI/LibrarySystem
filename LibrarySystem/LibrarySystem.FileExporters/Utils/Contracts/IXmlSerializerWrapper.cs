@@ -3,18 +3,18 @@
 // </copyright>
 // <summary>Holds implementation of text writer wrapper interface.</summary>
 
-using System.IO;
+using System.Xml.Serialization;
 
 namespace LibrarySystem.FileExporters.Utils.Contracts
 {
     /// <summary>
     /// 
     /// </summary>
-    public interface ITextWriterWrapper
+    public interface IXmlSerializerWrapper
     {
         /// <summary>
         /// 
         /// </summary>
-        TextWriter TextWriter { get; }
+        XmlSerializer XmlSerializer { get; }
     }
 }

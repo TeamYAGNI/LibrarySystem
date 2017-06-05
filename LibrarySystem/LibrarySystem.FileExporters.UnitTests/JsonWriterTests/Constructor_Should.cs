@@ -20,7 +20,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
         {
             // Arrange
             var mockTextWriterWrapper = new Mock<ITextWriterWrapper>();
-            var mockJsonSerializerWrapper = new Mock<JsonSerializerWrapper>();
+            var mockJsonSerializerWrapper = new Mock<IJsonSerializerWrapper>();
 
             // Act
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
@@ -34,7 +34,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
         public void Throw_WhenNoTextStreamWriterArgumentIsPassed()
         {
             // Arrange
-            var mockJsonSerializerWrapper = new Mock<JsonSerializerWrapper>();
+            var mockJsonSerializerWrapper = new Mock<IJsonSerializerWrapper>();
 
             // Act & Assert
             Assert.Throws<ArgumentNullException>(() => new JsonWriter(null, mockJsonSerializerWrapper.Object));

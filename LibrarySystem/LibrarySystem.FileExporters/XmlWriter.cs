@@ -22,29 +22,29 @@ namespace LibrarySystem.FileExporters
         private ITextWriterWrapper textWriterWrapper;
 
         /// <summary>
-        /// XML Books serializer object handle.
+        /// XML Books serializer wrapper interface handle.
         /// </summary>
-        private XmlSerializer xmlBooksSerializer;
+        private IXmlSerializerWrapper xmlSerializerWrapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlWriter"/> class.
         /// </summary>
         /// <param name="ITextWriterWrapper">Stream writer to be used for writing text data.</param>
-        /// <param name="xmlBooksSerializer">XML serializer to be used for converting object data</param>
-        public XmlWriter(ITextWriterWrapper textWriterWrapper, XmlSerializer xmlBooksSerializer)
+        /// <param name="xmlSerializerWrapper">XML serializer to be used for converting object data</param>
+        public XmlWriter(ITextWriterWrapper textWriterWrapper, IXmlSerializerWrapper xmlSerializerWrapper)
         {
             if (textWriterWrapper == null)
             {
                 throw new ArgumentNullException("Text stream wrapper cannot be null.");
             }
 
-            if (xmlBooksSerializer == null)
+            if (xmlSerializerWrapper == null)
             {
                 throw new ArgumentNullException("XML Books serializer cannot be null.");
             }
 
-            this.xmlBooksSerializer = xmlBooksSerializer;
             this.textWriterWrapper = textWriterWrapper;
+            this.xmlSerializerWrapper = xmlSerializerWrapper;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace LibrarySystem.FileExporters
         {
             using (this.textWriterWrapper.TextWriter)
             {
-                this.xmlBooksSerializer.Serialize(this.textWriterWrapper.TextWriter, books);
+                this.xmlSerializerWrapper.XmlSerializer.Serialize(this.textWriterWrapper.TextWriter, books);
             }
         }
     }

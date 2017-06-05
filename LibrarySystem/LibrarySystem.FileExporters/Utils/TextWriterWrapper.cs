@@ -37,6 +37,6 @@ namespace LibrarySystem.FileExporters.Utils
         /// <summary>
         /// 
         /// </summary>
-        public TextWriter TextWriter { get; set; }
+        public TextWriter TextWriter { get; private set; }
     }
 }

@@ -48,8 +48,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Contracts\IJsonSerializerWrapper.cs" />
     <Compile Include="Utils\Contracts\ITextWriterWrapper.cs" />
+    <Compile Include="Utils\Contracts\IXmlSerializerWrapper.cs" />
     <Compile Include="Utils\JsonSerializerWrapper.cs" />
     <Compile Include="Utils\TextWriterWrapper.cs" />
+    <Compile Include="Utils\XmlSerializerWrapper.cs" />
     <Compile Include="XmlWriter.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -40,7 +40,8 @@ namespace LibrarySystem.ConsoleClient
             // Write XML Books
             var xmlFileWriter = new XmlWriter(
                 new TextWriterWrapper("./../../../", "books-inventory.xml"),
-                new XmlSerializer(typeof(List<DTOBook>)));
+                new XmlSerializerWrapper(
+                    new XmlSerializer(typeof(List<DTOBook>))));
             xmlFileWriter.ExportBooks(xmlBooks);
 
             // Read JSON Journals
