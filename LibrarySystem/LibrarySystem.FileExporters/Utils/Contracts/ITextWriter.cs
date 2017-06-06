@@ -10,11 +10,11 @@ namespace LibrarySystem.FileExporters.Utils.Contracts
     /// <summary>
     /// 
     /// </summary>
-    public interface ITextWriterWrapper
+    public interface ITextWriter
     {
         /// <summary>
         /// 
         /// </summary>
-        TextWriter TextWriter { get; }
+        TextWriter GetTextWriter();
     }
 }

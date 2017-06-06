@@ -53,15 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonWriterTests\Constructor_Should.cs" />
-    <Compile Include="JsonWriterTests\ExportJournals_Should.cs" />
+    <Compile Include="Utils\JsonSerializerWrapperTests\Serialize_Should.cs" />
+    <Compile Include="Utils\TextWriterWrapperTests\Constructor_Should.cs" />
+    <Compile Include="XmlWriterTests\ExportBooks_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlWriterTests\Constructor_Should.cs" />
+    <Compile Include="JsonWriterTests\ExportJournals_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XmlWriterTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\LibrarySystem.FileExporters\LibrarySystem.FileExporters.csproj">
       <Project>{59500c07-feeb-4833-9e02-e13b14fcfaad}</Project>

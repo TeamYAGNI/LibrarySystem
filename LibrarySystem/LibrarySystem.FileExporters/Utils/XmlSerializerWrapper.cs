@@ -4,16 +4,24 @@
 // <summary>Holds implementation of JSON serializer wrapper.</summary>
 
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Xml.Serialization;
 using LibrarySystem.FileExporters.Utils.Contracts;
+using LibrarySystem.Models;
 
 namespace LibrarySystem.FileExporters.Utils
 {
     /// <summary>
     /// Represent a <see cref="XmlSerializerWrapper"/> class.
     /// </summary>
-    public class XmlSerializerWrapper : IXmlSerializerWrapper
+    public class XmlSerializerWrapper : IXmlSerializer
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        private XmlSerializer xmlSerializer;
+
         /// <summary>
         /// 
         /// </summary>
@@ -24,13 +32,16 @@ namespace LibrarySystem.FileExporters.Utils
             {
                 throw new ArgumentNullException("Text stream wrapper cannot be null.");
             }
-
-            this.XmlSerializer = xmlSerializer;
+        
+            this.xmlSerializer = xmlSerializer;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public XmlSerializer XmlSerializer { get; private set; }
+        public void Serialize(TextWriter textWriter, IEnumerable<DTOBook> books)
+        {
+
+        }
     }
 }

@@ -13,16 +13,16 @@ using NUnit.Framework;
 namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
 {
     [TestFixture]
-    public class ExportJournals_Should
+    public class ExportBooks_Should
     {
         [Test]
         [Category("FileExplorers.JsonWriter.Constructor")]
-        public void CallWriteMethodOnce_WhenAllArgumentsArePassed()
+        public void CallGetTextWriterMethodOnce_WhenAllArgumentsArePassed()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriterWrapper>();
-            mockTextWriterWrapper.Setup(p => p.TextWriter.Write(It.IsAny<string>()));
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializerWrapper>();
+            var mockTextWriterWrapper = new Mock<ITextWriter>();
+            mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
+            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
             var journals = new Mock<IEnumerable<DTOJournal>>();
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 
@@ -30,7 +30,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
             jsonWriter.ExportJournals(journals.Object);
 
             // Assert
-            mockTextWriterWrapper.Verify(x => x.TextWriter.Write(It.IsAny<string>()), Times.Once());
+            mockTextWriterWrapper.Verify(x => x.GetTextWriter().Write(It.IsAny<string>()), Times.Once());
         }
 
         [Test]
@@ -38,9 +38,9 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
         public void CallSerializeMethodOnce_WhenAllArgumentsArePassed()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriterWrapper>();
-            mockTextWriterWrapper.Setup(p => p.TextWriter.Write(It.IsAny<string>()));
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializerWrapper>();
+            var mockTextWriterWrapper = new Mock<ITextWriter>();
+            mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
+            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
             var journals = new Mock<IEnumerable<DTOJournal>>();
             mockJsonSerializerWrapper.Setup(p => p.Serialize(journals.Object));
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
@@ -54,11 +54,11 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
 
         [Test]
         [Category("FileExplorers.JsonWriter.Constructor")]
-        public void Throw_WhenNoJournalsArgumentIsPassed()
+        public void ThrowArgumentNullException_WhenJournalsArgumentIsNull()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriterWrapper>();
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializerWrapper>();
+            var mockTextWriterWrapper = new Mock<ITextWriter>();
+            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 
             // Act & Assert

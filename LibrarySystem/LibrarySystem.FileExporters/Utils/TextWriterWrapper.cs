@@ -12,8 +12,13 @@ namespace LibrarySystem.FileExporters.Utils
     /// <summary>
     /// 
     /// </summary>
-    public class TextWriterWrapper : ITextWriterWrapper
+    public class TextWriterWrapper : ITextWriter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        private StreamWriter textWriter;
+
         /// <summary>
         /// 
         /// </summary>
@@ -30,13 +35,21 @@ namespace LibrarySystem.FileExporters.Utils
             {
                 throw new ArgumentException("File name cannot be null or empty string!");
             }
+            
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
 
-            this.TextWriter = new StreamWriter(directory + "\\" + fileName);
+            this.textWriter = new StreamWriter(directory + "\\" + fileName);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public TextWriter TextWriter { get; private set; }
+        public TextWriter GetTextWriter()
+        {
+            return this.textWriter;
+        }
     }
 }

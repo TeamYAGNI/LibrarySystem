@@ -18,19 +18,19 @@ namespace LibrarySystem.FileExporters
         /// <summary>
         /// Text writer wrapper interface handle.
         /// </summary>
-        private ITextWriterWrapper textWriterWrapper;
+        private ITextWriter textWriterWrapper;
 
         /// <summary>
         /// JSON Journals serializer object handle.
         /// </summary>
-        private IJsonSerializerWrapper jsonSerializerWrapper;
+        private IJsonSerializer jsonSerializerWrapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonWriter"/> class.
         /// </summary>
         /// <param name="textStreamWriter">Stream writer to be used for writing text data.</param>
         /// <param name="jsonJournalsSerializer">JSON serializer to be used for converting object data</param>
-        public JsonWriter(ITextWriterWrapper textWriterWrapper, IJsonSerializerWrapper jsonSerializerWrapper)
+        public JsonWriter(ITextWriter textWriterWrapper, IJsonSerializer jsonSerializerWrapper)
         {
             if (textWriterWrapper == null)
             {
@@ -57,9 +57,9 @@ namespace LibrarySystem.FileExporters
                 throw new ArgumentNullException("Journals cannot be null.");
             }
 
-            using (this.textWriterWrapper.TextWriter)
+            using (this.textWriterWrapper.GetTextWriter())
             {
-                this.textWriterWrapper.TextWriter.Write(this.jsonSerializerWrapper.Serialize(journals));
+                this.textWriterWrapper.GetTextWriter().Write(this.jsonSerializerWrapper.Serialize(journals));
             }
         }
     }

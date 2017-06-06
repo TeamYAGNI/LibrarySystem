@@ -11,7 +11,7 @@ namespace LibrarySystem.FileExporters.Utils.Contracts
     /// <summary>
     /// 
     /// </summary>
-    public interface IJsonSerializerWrapper
+    public interface IJsonSerializer
     {
         /// <summary>
         /// 

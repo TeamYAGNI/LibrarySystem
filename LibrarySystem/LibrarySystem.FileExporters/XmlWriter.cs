@@ -19,19 +19,19 @@ namespace LibrarySystem.FileExporters
         /// <summary>
         /// Text writer wrapper interface handle.
         /// </summary>
-        private ITextWriterWrapper textWriterWrapper;
+        private ITextWriter textWriterWrapper;
 
         /// <summary>
         /// XML Books serializer wrapper interface handle.
         /// </summary>
-        private IXmlSerializerWrapper xmlSerializerWrapper;
+        private IXmlSerializer xmlSerializerWrapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlWriter"/> class.
         /// </summary>
         /// <param name="ITextWriterWrapper">Stream writer to be used for writing text data.</param>
         /// <param name="xmlSerializerWrapper">XML serializer to be used for converting object data</param>
-        public XmlWriter(ITextWriterWrapper textWriterWrapper, IXmlSerializerWrapper xmlSerializerWrapper)
+        public XmlWriter(ITextWriter textWriterWrapper, IXmlSerializer xmlSerializerWrapper)
         {
             if (textWriterWrapper == null)
             {
@@ -53,9 +53,14 @@ namespace LibrarySystem.FileExporters
         /// <param name="books">Collection of Book DTOs.</param>
         public void ExportBooks(IEnumerable<DTOBook> books)
         {
-            using (this.textWriterWrapper.TextWriter)
+            if (books == null)
             {
-                this.xmlSerializerWrapper.XmlSerializer.Serialize(this.textWriterWrapper.TextWriter, books);
+                throw new ArgumentNullException("Journals cannot be null.");
+            }
+
+            using (this.textWriterWrapper.GetTextWriter())
+            {
+                this.xmlSerializerWrapper.Serialize(this.textWriterWrapper.GetTextWriter(), books);
             }
         }
     }

@@ -8,39 +8,39 @@ using LibrarySystem.FileExporters.Utils.Contracts;
 using Moq;
 using NUnit.Framework;
 
-namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
+namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
 {
     [TestFixture]
     public class Constructor_Should
     {
         [Test]
-        [Category("FileExplorers.JsonWriter.Constructor")]
-        public void InstantiateJsonWriter_WhenAllArgumentsArePassed()
+        [Category("FileExplorers.XmlWriter.Constructor")]
+        public void InstantiateXmlWriter_WhenAllArgumentsArePassed()
         {
             // Arrange
             var mockTextWriterWrapper = new Mock<ITextWriter>();
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
+            var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
 
             // Act
-            var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
+            var xmlWriter = new XmlWriter(mockTextWriterWrapper.Object, mockXmlSerializerWrapper.Object);
 
             // Assert
-            Assert.That(jsonWriter, Is.InstanceOf<JsonWriter>());
+            Assert.That(xmlWriter, Is.InstanceOf<XmlWriter>());
         }
 
         [Test]
-        [Category("FileExplorers.JsonWriter.Constructor")]
+        [Category("FileExplorers.XmlWriter.Constructor")]
         public void ThrowArgumentNullException_WhenTextStreamWriterArgumentIsNull()
         {
             // Arrange
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
+            var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new JsonWriter(null, mockJsonSerializerWrapper.Object));
+            Assert.Throws<ArgumentNullException>(() => new XmlWriter(null, mockXmlSerializerWrapper.Object));
         }
 
         [Test]
-        [Category("FileExplorers.JsonWriter.Constructor")]
+        [Category("FileExplorers.XmlWriter.Constructor")]
         public void ThrowArgumentNullException_WhenJsonJournalsSerializerArgumentIsNull()
         {
             // Arrange
