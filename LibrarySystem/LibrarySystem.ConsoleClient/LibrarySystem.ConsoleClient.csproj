@@ -32,7 +32,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Data\LibrarySystem.Data.csproj">
+      <Project>{61618AA7-D25B-4187-86DA-5573D6ACA674}</Project>
+      <Name>LibrarySystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
+      <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
+      <Name>LibrarySystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Repositories\LibrarySystem.Repositories.csproj">
+      <Project>{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}</Project>
+      <Name>LibrarySystem.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
