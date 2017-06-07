@@ -45,11 +45,11 @@ namespace LibrarySystem.Repositories
                 .ToList();
         }
 
-        public IEnumerable<Book> GetBooksByAuthor(string firstName, string lastName)
+        public IEnumerable<Book> GetBooksByAuthor(string authorFirstName, string authorLastName)
         {
             return this.LibraryDbContext.Books
                 .Where(b => b.Authors
-                    .Any(a => a.FirstName == firstName && a.LastName == lastName))
+                    .Any(a => a.FirstName == authorFirstName && a.LastName == authorLastName))
                 .ToList();
         }
 

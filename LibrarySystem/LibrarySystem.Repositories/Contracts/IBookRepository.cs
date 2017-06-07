@@ -13,7 +13,7 @@ namespace LibrarySystem.Repositories.Contracts
 
         string GetBookDescriptionByISBN(string ISBN);
 
-        IEnumerable<Book> GetBooksByAuthor(string firstName, string lastName);
+        IEnumerable<Book> GetBooksByAuthor(string authorFirstName, string authorLastName);
 
         IEnumerable<Book> GetBooksByPublisher(string publisherName);
 
