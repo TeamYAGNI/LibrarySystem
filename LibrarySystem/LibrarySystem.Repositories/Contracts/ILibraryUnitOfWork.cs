@@ -7,5 +7,7 @@
         IJournalRepository Journals { get; }
 
         IGenreRepository Genres { get; }
+
+        IPublisherRepository Publishers { get; }
     }
 }
