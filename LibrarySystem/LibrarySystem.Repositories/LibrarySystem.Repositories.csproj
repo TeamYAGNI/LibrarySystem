@@ -59,12 +59,12 @@
     <Compile Include="BookRepository.cs" />
     <Compile Include="CityRepository.cs" />
     <Compile Include="ClientRepository.cs" />
-    <Compile Include="Contracts\IBookRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Contracts\ILibraryUnitOfWork.cs" />
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="GenreRepository.cs" />
+    <Compile Include="Contracts\IBookRepository.cs" />
     <Compile Include="Contracts\IJournalRepository.cs" />
     <Compile Include="JournalRepository.cs" />
     <Compile Include="LendingRepository.cs" />

@@ -9,12 +9,14 @@ namespace LibrarySystem.Repositories
         private readonly LibrarySystemDbContext context;
 
         private IBookRepository books;
+        private IJournalRepository journals;
 
-        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books)
+        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals)
         {
             this.context = context;
 
             this.Books = books;
+            this.Journals = journals;
         }
 
         public IBookRepository Books
@@ -29,6 +31,21 @@ namespace LibrarySystem.Repositories
                 Guard.WhenArgument(value, "Books").IsNull().Throw();
 
                 this.books = value;
+            }
+        }
+
+        public IJournalRepository Journals
+        {
+            get
+            {
+                return this.journals;
+            }
+
+            set
+            {
+                Guard.WhenArgument(value, "Journals").IsNull().Throw();
+
+                this.journals = value;
             }
         }
 

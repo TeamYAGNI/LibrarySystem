@@ -56,6 +56,11 @@ namespace LibrarySystem.Repositories
                 .FirstOrDefault();
         }
 
+        public IEnumerable<Journal> GetJournalsBySubject(string subject)
+        {
+            return this.LibraryDbContext.Journals.Where(j => j.Subjects.Any(s => s.Name == subject)).AsEnumerable();
+        }
+
         public IEnumerable<Journal> GetJournalsByPublisherName(string publisherName)
         {
             return this.Find(j => j.Publisher.Name == publisherName);

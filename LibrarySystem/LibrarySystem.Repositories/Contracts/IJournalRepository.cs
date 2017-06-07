@@ -3,7 +3,7 @@ using LibrarySystem.Models;
 
 namespace LibrarySystem.Repositories.Contracts
 {
-    public interface IJournalRepository
+    public interface IJournalRepository : IRepository<Journal>
     {
         Journal FindJournalByISSN(string ISSN);
 
@@ -22,6 +22,8 @@ namespace LibrarySystem.Repositories.Contracts
         int GetIssueNumberByISSN(string ISSN);
 
         IEnumerable<Journal> GetJournalsByPublisherName(string publisherName);
+
+        IEnumerable<Journal> GetJournalsBySubject(string subject);
 
         IEnumerable<Journal> GetTop5JournalsOrderedByImpactFactor();
     }
