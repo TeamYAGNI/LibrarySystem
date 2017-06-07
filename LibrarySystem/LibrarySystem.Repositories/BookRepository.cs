@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Repositories.Contracts;
@@ -12,6 +11,14 @@ namespace LibrarySystem.Repositories
     {
         public BookRepository(LibrarySystemDbContext context) : base(context)
         {
+        }
+
+        private LibrarySystemDbContext LibraryDbContext
+        {
+            get
+            {
+                return this.Context as LibrarySystemDbContext;
+            }
         }
 
         public int GetAvailableBookCopiesByBookTitle(string title)
@@ -35,14 +42,6 @@ namespace LibrarySystem.Repositories
                 .Where(b => b.Authors
                     .Any(a => a.FirstName == firstName && a.LastName == lastName))
                 .ToList();
-        }
-
-        private LibrarySystemDbContext LibraryDbContext
-        {
-            get
-            {
-                return base.Context as LibrarySystemDbContext;
-            }
         }
     }
 }

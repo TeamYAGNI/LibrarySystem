@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using Bytes2you.Validation;
 using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Data;
 
 namespace LibrarySystem.Repositories.Abstractions
 {

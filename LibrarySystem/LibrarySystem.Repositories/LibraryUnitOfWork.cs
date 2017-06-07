@@ -1,7 +1,6 @@
 ﻿using Bytes2you.Validation;
 using LibrarySystem.Data;
 using LibrarySystem.Repositories.Contracts;
-using System.Data.Entity;
 
 namespace LibrarySystem.Repositories
 {
@@ -23,7 +22,6 @@ namespace LibrarySystem.Repositories
             get
             {
                 return this.books;
-
             }
 
             private set

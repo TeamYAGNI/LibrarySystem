@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibrarySystem.Data\LibrarySystem.Data.csproj">
-      <Project>{61618AA7-D25B-4187-86DA-5573D6ACA674}</Project>
+      <Project>{61618aa7-d25b-4187-86da-5573d6aca674}</Project>
       <Name>LibrarySystem.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
