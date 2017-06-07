@@ -13,8 +13,9 @@ namespace LibrarySystem.Repositories
         private IGenreRepository genres;
         private IAuthorRepository authors;
         private IPublisherRepository publishers;
+        private ISubjectRepository subjects;
 
-        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers)
+        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
             this.context = context;
@@ -24,6 +25,7 @@ namespace LibrarySystem.Repositories
             this.Genres = genres;
             this.Authors = authors;
             this.Publishers = publishers;
+            this.Subjects = subjects;
         }
 
         public IAuthorRepository Authors
@@ -38,6 +40,21 @@ namespace LibrarySystem.Repositories
                 Guard.WhenArgument(value, "Authors").IsNull().Throw();
 
                 this.authors = value;
+            }
+        }
+
+        public ISubjectRepository Subjects
+        {
+            get
+            {
+                return this.subjects;
+            }
+
+            private set
+            {
+                Guard.WhenArgument(value, "Subjects").IsNull().Throw();
+
+                this.subjects = value;
             }
         }
 

@@ -9,5 +9,9 @@
         IGenreRepository Genres { get; }
 
         IPublisherRepository Publishers { get; }
+
+        IAuthorRepository Authors { get; }
+
+        ISubjectRepository Subjects { get; }
     }
 }
