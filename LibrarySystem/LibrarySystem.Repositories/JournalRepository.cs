@@ -58,7 +58,7 @@ namespace LibrarySystem.Repositories
 
         public IEnumerable<Journal> GetJournalsBySubject(string subject)
         {
-            return this.LibraryDbContext.Journals.Where(j => j.Subjects.Any(s => s.Name == subject)).AsEnumerable();
+            return this.LibraryDbContext.Journals.Where(j => j.Subjects.Any(s => s.Name == subject)).ToList();
         }
 
         public IEnumerable<Journal> GetJournalsByPublisherName(string publisherName)
@@ -82,7 +82,7 @@ namespace LibrarySystem.Repositories
                 .Where(j => j.ImpactFactor != null)
                 .OrderByDescending(j => j.ImpactFactor)
                 .Take(5)
-                .AsEnumerable();
+                .ToList();
         }
 
         public IEnumerable<Journal> GetAllJournalsThatAreInUse()

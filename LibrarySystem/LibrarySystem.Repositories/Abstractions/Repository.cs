@@ -45,7 +45,7 @@ namespace LibrarySystem.Repositories.Abstractions
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return this.Context.Set<TEntity>().Where(predicate);
+            return this.Context.Set<TEntity>().Where(predicate).ToList();
         }
 
         public TEntity Get(int id)

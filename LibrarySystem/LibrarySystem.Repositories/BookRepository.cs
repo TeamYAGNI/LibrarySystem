@@ -56,9 +56,9 @@ namespace LibrarySystem.Repositories
         public IEnumerable<Book> GetBooksByPublisherAndAuthor(string publisherName, string authorFirstName, string authorLastName)
         {
             return this.LibraryDbContext.Books.Where(
-                b => b.Publisher.Name == publisherName &&
-                     b.Authors.Any(a => a.FirstName == authorFirstName && a.LastName == authorLastName))
-                     .AsEnumerable();
+                    b => b.Publisher.Name == publisherName &&
+                         b.Authors.Any(a => a.FirstName == authorFirstName && a.LastName == authorLastName))
+                .ToList();
         }   
 
         public Book GetBookByISBN(string ISBN)
@@ -68,17 +68,10 @@ namespace LibrarySystem.Repositories
 
         public string GetBookDescriptionByISBN(string ISBN)
         {
-            var description = this.LibraryDbContext.Books
+            return this.LibraryDbContext.Books
                 .Where(b => b.ISBN == ISBN)
                 .Select(b => b.Description)
                 .FirstOrDefault();
-
-            if (description != null)
-            {
-                return description;
-            }
-
-            return "Book has no description";
         }
 
         public IEnumerable<Book> GetBooksByTitle(string title)
