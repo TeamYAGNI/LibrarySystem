@@ -42,11 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleProviders\ConsoleCommandReader.cs" />
+    <Compile Include="ConsoleProviders\ConsoleResponseWriter.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Framework.Contracts\LibrarySystem.Framework.Contracts.csproj">
+      <Project>{e341a03b-1a85-487e-bfe0-ed3dcc0edbd4}</Project>
+      <Name>LibrarySystem.Framework.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
