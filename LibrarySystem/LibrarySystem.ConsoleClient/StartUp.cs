@@ -2,6 +2,10 @@
 // All rights reserved.
 // </copyright>
 
+using LibrarySystem.ConsoleClient.ContainerConfiguration;
+using LibrarySystem.Framework.Contracts;
+using Ninject;
+
 namespace LibrarySystem.ConsoleClient
 {
     /// <summary>
@@ -14,6 +18,8 @@ namespace LibrarySystem.ConsoleClient
         /// </summary>
         public static void Main()
         {
+            IEngine engine = new StandardKernel(new LibrarySystemNinjectModule()).Get<IEngine>();
+            engine.Start();
         }
     }
 }

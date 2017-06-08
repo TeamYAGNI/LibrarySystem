@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Framework.Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Framework", "LibrarySystem.Framework\LibrarySystem.Framework.csproj", "{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.ConsoleClient.UnitTests", "LibrarySystem.ConsoleClient.UnitTests\LibrarySystem.ConsoleClient.UnitTests.csproj", "{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
