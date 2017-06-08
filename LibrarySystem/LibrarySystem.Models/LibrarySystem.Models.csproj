@@ -49,6 +49,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Enumerations\GenderType.cs" />
     <Compile Include="Enumerations\JobTitle.cs" />
+    <Compile Include="Factory\IModelsFactory.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Journal.cs" />
     <Compile Include="Lending.cs" />
