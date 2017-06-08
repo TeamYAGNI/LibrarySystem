@@ -19,11 +19,11 @@ namespace LibrarySystem.Repositories.UnitTests.BookRepositoryTests
             //Arrange
             var connection = DbConnectionFactory.CreateTransient();
             var dbContext = new LibrarySystemDbContext(connection);
-            var repository = new BookRepository(dbContext);
+            var bookRepository = new BookRepository(dbContext);
 
             //Act
             //Assert
-            Assert.That(repository, Is.InstanceOf<BookRepository>());
+            Assert.That(bookRepository, Is.InstanceOf<BookRepository>());
         }
     }
 }

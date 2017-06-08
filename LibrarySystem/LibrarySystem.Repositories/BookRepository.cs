@@ -79,7 +79,7 @@ namespace LibrarySystem.Repositories
             return this.Find(b => b.Title == title);
         }
 
-        public IEnumerable<Book> GetAllBooksThatAreInUse()
+        public IEnumerable<Book> GetAllBooksInUse()
         {
             return this.Find(b => b.Quantity != b.Available);
         }

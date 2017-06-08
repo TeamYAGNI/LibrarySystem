@@ -5,7 +5,7 @@ namespace LibrarySystem.Repositories.Contracts
 {
     public interface IBookRepository : IRepository<Book>
     {
-        IEnumerable<Book> GetAllBooksThatAreInUse();
+        IEnumerable<Book> GetAllBooksInUse();
 
         int GetAvailableQuantityByISBN(string ISBN);
 

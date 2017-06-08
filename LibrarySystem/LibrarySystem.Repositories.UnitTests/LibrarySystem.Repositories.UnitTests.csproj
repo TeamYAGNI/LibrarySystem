@@ -71,6 +71,17 @@
     <Compile Include="Abstractions\RepositoryTests\RemoveRange_Should.cs" />
     <Compile Include="Abstractions\RepositoryTests\Remove_Should.cs" />
     <Compile Include="BookRepositoryTests\Constructor_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetAllBooksInUse_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetAvailableQuantityByISBN_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetBookByISBN_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetBookDescriptionByISBN_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetBooksByAuthor_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetBooksByPublisherAndAuthor_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetBooksByPublisher_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetBooksByTitle_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetInitialQuantityByISBN_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetMostRecentBookByAuthor_Should.cs" />
+    <Compile Include="BookRepositoryTests\GetMostRecentBookByPublisher_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
