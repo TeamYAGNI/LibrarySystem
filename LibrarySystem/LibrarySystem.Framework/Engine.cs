@@ -74,10 +74,12 @@ namespace LibrarySystem.Framework
                     string executionResult = this.commandProcessor.ProcessCommand(commandLine);
                     builder.AppendLine(executionResult);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    builder.AppendLine("//TODO: Implement Proper User Error Messages");
+                    builder.AppendLine(ex.Message + "//TODO: Implement Proper User Error Messages");
                 }
+
+                commandLine = this.commandReader.ReadLine();
             }
 
             this.responseWriter.Write(builder.ToString());

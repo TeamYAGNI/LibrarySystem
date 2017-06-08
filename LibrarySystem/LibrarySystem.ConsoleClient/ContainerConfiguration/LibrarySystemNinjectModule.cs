@@ -38,7 +38,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommandProcessor>().To<CommandProcessor>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
 
             // CommandFactory Bindings
-            this.Bind<ICommandsFactory>().ToFactory().WhenInjectedExactlyInto<ICommandProcessor>().InSingletonScope();
+            this.Bind<ICommandsFactory>().ToFactory().WhenInjectedInto<ICommandProcessor>().InSingletonScope();
             this.Bind<ICommand>().ToMethod(context => this.GetCommand(context))
                 .NamedLikeFactoryMethod((ICommandsFactory factory) => factory.GetCommand(null));
 
