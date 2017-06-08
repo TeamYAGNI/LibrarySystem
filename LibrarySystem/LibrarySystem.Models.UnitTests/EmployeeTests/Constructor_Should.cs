@@ -2,9 +2,8 @@
 // All rights reserved.
 // </copyright>
 // <summary>Holds unit tests of Journal entity model constructor.</summary>
- 
- using System.Collections.Generic;
- using LibrarySystem.Models.Enumerations;
+
+using LibrarySystem.Models.Enumerations;
  using NUnit.Framework;
 
 namespace LibrarySystem.Models.UnitTests.EmployeeTests

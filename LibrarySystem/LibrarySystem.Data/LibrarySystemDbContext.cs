@@ -4,6 +4,7 @@
 // <summary>Holds implementation of LibrarySystemDbContext class.</summary>
 
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -31,6 +32,15 @@ namespace LibrarySystem.Data
         /// </summary>
         public LibrarySystemDbContext()
             : base(ConnectionString)
+        {
+        }
+
+        /// <summary>
+        /// Constructor used by Effort for unit testing.
+        /// </summary>
+        /// <param name="connection"></param>
+        public LibrarySystemDbContext(DbConnection connection)
+            : base(connection, true)
         {
         }
 
