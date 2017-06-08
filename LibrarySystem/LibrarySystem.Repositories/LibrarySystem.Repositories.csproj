@@ -70,6 +70,7 @@
     <Compile Include="Contracts\IAuthorRepository.cs" />
     <Compile Include="Contracts\IPublisherRepository.cs" />
     <Compile Include="Contracts\ISubjectRepository.cs" />
+    <Compile Include="Contracts\IClientRepository.cs" />
     <Compile Include="JournalRepository.cs" />
     <Compile Include="LendingRepository.cs" />
     <Compile Include="LibraryUnitOfWork.cs" />

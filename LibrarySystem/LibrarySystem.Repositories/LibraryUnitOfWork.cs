@@ -4,7 +4,7 @@ using LibrarySystem.Repositories.Contracts;
 
 namespace LibrarySystem.Repositories
 {
-    public class LibraryUnitOfWork : ILibraryUnitOfWork
+    public class LibraryUnitOfWork : IUnitOfWork, ILibraryUnitOfWork
     {
         private readonly LibrarySystemDbContext context;
 
@@ -14,8 +14,9 @@ namespace LibrarySystem.Repositories
         private IAuthorRepository authors;
         private IPublisherRepository publishers;
         private ISubjectRepository subjects;
+        private IClientRepository clients;
 
-        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects)
+        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
             this.context = context;
@@ -26,6 +27,7 @@ namespace LibrarySystem.Repositories
             this.Authors = authors;
             this.Publishers = publishers;
             this.Subjects = subjects;
+            this.Clients = clients;
         }
 
         public IAuthorRepository Authors
@@ -40,6 +42,21 @@ namespace LibrarySystem.Repositories
                 Guard.WhenArgument(value, "Authors").IsNull().Throw();
 
                 this.authors = value;
+            }
+        }
+
+        public IClientRepository Clients
+        {
+            get
+            {
+                return this.clients;
+            }
+
+            private set
+            {
+                Guard.WhenArgument(value, "Clients").IsNull().Throw();
+
+                this.clients = value;
             }
         }
 
