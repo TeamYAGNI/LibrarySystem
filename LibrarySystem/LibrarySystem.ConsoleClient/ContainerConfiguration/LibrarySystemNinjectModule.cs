@@ -7,12 +7,15 @@ using System.Linq;
 
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.ConsoleClient.ConsoleProviders;
+using LibrarySystem.ConsoleClient.Interceptors;
 using LibrarySystem.Framework;
 using LibrarySystem.Framework.Contracts;
 using LibrarySystem.Framework.Providers;
+using LibrarySystem.Models.Factory;
 
 using Ninject.Activation;
 using Ninject.Extensions.Factory;
+using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Modules;
 
 namespace LibrarySystem.ConsoleClient.ContainerConfiguration
@@ -42,6 +45,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             // Command Bindings
 
             // Command Dependancies Bindings
+            this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
+            this.Bind<IValidator>().To<Validator>().WhenInjectedExactlyInto<ModelValidation>().InSingletonScope();
         }
 
         /// <summary>
@@ -56,7 +61,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             switch (commandName.ToLower())
             {
                 case "commandNameToLower": // TODO: Add case for each command!
-                    // return context.Kernel.Get<ICommand>("commandName");
+                                           // return context.Kernel.Get<ICommand>("commandName");
                 default:
                     throw new InvalidOperationException(string.Format("There is no such command as {0}!", commandName)); // TODO: Implement InvalidCommandException;
             }
