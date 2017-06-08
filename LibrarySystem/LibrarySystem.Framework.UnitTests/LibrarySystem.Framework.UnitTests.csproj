@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Commands.Contracts\LibrarySystem.Commands.Contracts.csproj">
+      <Project>{6796AA66-40A1-41D9-87A8-7B9A3C75FC54}</Project>
+      <Name>LibrarySystem.Commands.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Framework.Contracts\LibrarySystem.Framework.Contracts.csproj">
       <Project>{e341a03b-1a85-487e-bfe0-ed3dcc0edbd4}</Project>
       <Name>LibrarySystem.Framework.Contracts</Name>
