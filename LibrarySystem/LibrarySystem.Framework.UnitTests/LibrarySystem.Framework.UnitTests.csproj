@@ -55,8 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CommandProcessorTests\Constructor_Should.cs" />
     <Compile Include="Providers\CommandProcessorTests\ProcessCommand_Should.cs" />
-    <Compile Include="Providers\ValidatorTests\Constructor_Should.cs" />
-    <Compile Include="Providers\ValidatorTests\GetValidationErrors_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
