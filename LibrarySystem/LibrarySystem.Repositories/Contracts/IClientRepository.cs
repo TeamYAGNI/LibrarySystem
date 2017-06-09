@@ -21,5 +21,9 @@ namespace LibrarySystem.Repositories.Contracts
         string GetClientPhoneByPIN(string PIN);
 
         IEnumerable<Client> GetClientsByGenderType(GenderType genderType);
+
+        IEnumerable<Client> GetAllClientsWithLendings();
+
+        IEnumerable<Client> GetAllClientsWithLendingsOlderThanAMonth();
     }
 }

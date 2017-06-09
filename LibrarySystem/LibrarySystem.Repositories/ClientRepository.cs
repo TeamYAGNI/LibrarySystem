@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Models;
@@ -70,6 +71,17 @@ namespace LibrarySystem.Repositories
         public bool ClientHasJournal(string PIN)
         {
             return this.LibraryDbContext.Clients.FirstOrDefault(c => c.PIN == PIN)?.Journals.Count > 0;
+        }
+
+        public IEnumerable<Client> GetAllClientsWithLendings()
+        {
+            return this.LibraryDbContext.Clients.Where(c => c.Lendings.Any(l => l.ClientId == c.Id)).ToList();
+        }
+
+        public IEnumerable<Client> GetAllClientsWithLendingsOlderThanAMonth()
+        {
+            return this.LibraryDbContext.Clients.Where(
+                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < DateTime.Today)).ToList();
         }
     }
 }

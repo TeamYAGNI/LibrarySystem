@@ -9,6 +9,6 @@ namespace LibrarySystem.Repositories.Contracts
 
         Address GetAddressByEmployeeId(int id);
 
-        IEnumerable<Address> GetAllAddresseByGivenCityName(string cityName);
+        IEnumerable<Address> GetAllAddressesByGivenCityName(string cityName);
     }
 }

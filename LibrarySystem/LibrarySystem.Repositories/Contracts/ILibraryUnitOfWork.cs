@@ -21,5 +21,8 @@
         IAddressRepository Addresses { get; }
 
         ICityRepository Cities { get; }
+
+        ILendingRepository Lendings { get; }
+
     }
 }

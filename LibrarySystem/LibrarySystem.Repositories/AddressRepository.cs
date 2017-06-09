@@ -21,7 +21,7 @@ namespace LibrarySystem.Repositories
             }
         }
 
-        public IEnumerable<Address> GetAllAddresseByGivenCityName(string cityName)
+        public IEnumerable<Address> GetAllAddressesByGivenCityName(string cityName)
         {
             return this.Find(a => a.City.Name == cityName);
         }

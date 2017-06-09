@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Repositories.Contracts;
@@ -98,6 +99,17 @@ namespace LibrarySystem.Repositories
                 .Where(b => b.ISBN == ISBN)
                 .Select(b => b.Available)
                 .FirstOrDefault();
+        }
+
+        public IEnumerable<Book> GetAllLendedBooks()
+        {
+            return this.LibraryDbContext.Books.Where(b => b.Lendings.Any(l => l.BookId == b.Id)).ToList();
+        }
+
+        public IEnumerable<Book> GetAllBooksLendedBeforeMoreThanAMonth()
+        {
+            return this.LibraryDbContext.Books.Where(
+                b => b.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < DateTime.Today)).ToList();
         }
     }
 }

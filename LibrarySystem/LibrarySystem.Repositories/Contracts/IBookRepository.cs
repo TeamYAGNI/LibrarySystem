@@ -26,5 +26,9 @@ namespace LibrarySystem.Repositories.Contracts
         Book GetMostRecentBookByAuthor(string authorFirstName, string authorLastName);
 
         Book GetMostRecentBookByPublisher(string publisherName);
+
+        IEnumerable<Book> GetAllLendedBooks();
+
+        IEnumerable<Book> GetAllBooksLendedBeforeMoreThanAMonth();
     }
 }
