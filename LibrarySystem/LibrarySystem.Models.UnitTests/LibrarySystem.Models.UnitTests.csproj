@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.25.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.25\lib\net45\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.7.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -49,6 +55,17 @@
     <Compile Include="CityTests\Constructor_Should.cs" />
     <Compile Include="ClientTests\Constructor_Should.cs" />
     <Compile Include="EmployeeTests\Constructor_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateAddress_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateAuthor_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateBook_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateCity_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateClient_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateEmployee_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateGenre_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateJournal_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateLending_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreatePublisher_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateSubject_Should.cs" />
     <Compile Include="GenreTests\Constructor_Should.cs" />
     <Compile Include="JournalTests\Constructor_Should.cs" />
     <Compile Include="LendingTests\Constructor_Should.cs" />
