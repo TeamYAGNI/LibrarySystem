@@ -4,7 +4,7 @@ using LibrarySystem.Models.Enumerations;
 
 namespace LibrarySystem.Repositories.Contracts
 {
-    public interface IClientRepository
+    public interface IClientRepository : IRepository<Client>
     {
         bool ClientHasJournal(string PIN);
 

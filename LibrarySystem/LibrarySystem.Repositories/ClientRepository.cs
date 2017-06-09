@@ -56,10 +56,10 @@ namespace LibrarySystem.Repositories
             return this.LibraryDbContext.Clients.Where(c => c.Address.City.Name == cityName).ToList();
         }
 
-        public IEnumerable<Client> GetAllClientsByStreetNameAndNumber(string streetName, int? number = null)
+        public IEnumerable<Client> GetAllClientsByStreetNameAndNumber(string streetName, int? streetNumber = null)
         {
             return this.LibraryDbContext.Clients
-                .Where(c => c.Address.Street == streetName && c.Address.StreetNumber == number).ToList();
+                .Where(c => c.Address.Street == streetName && c.Address.StreetNumber == streetNumber).ToList();
         }
 
         public IEnumerable<Client> GetAllClientsWithJournals()
