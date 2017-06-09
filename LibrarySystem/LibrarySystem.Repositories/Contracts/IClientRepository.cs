@@ -6,9 +6,13 @@ namespace LibrarySystem.Repositories.Contracts
 {
     public interface IClientRepository
     {
+        bool ClientHasJournal(string PIN);
+
         IEnumerable<Client> GetAllClientsByStreetNameAndNumber(string streetName, int? number = default(int?));
 
         IEnumerable<Client> GetAllClientsFromCity(string cityName);
+
+        IEnumerable<Client> GetAllClientsWithJournals();
 
         string GetClientEmailByPIN(string PIN);
 

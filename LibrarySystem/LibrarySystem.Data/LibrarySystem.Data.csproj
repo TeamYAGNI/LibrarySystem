@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201706051440320_Added Unique Constraints.Designer.cs">
       <DependentUpon>201706051440320_Added Unique Constraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706090015391_Added client journals relation.cs" />
+    <Compile Include="Migrations\201706090015391_Added client journals relation.Designer.cs">
+      <DependentUpon>201706090015391_Added client journals relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706051440320_Added Unique Constraints.resx">
       <DependentUpon>201706051440320_Added Unique Constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706090015391_Added client journals relation.resx">
+      <DependentUpon>201706090015391_Added client journals relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

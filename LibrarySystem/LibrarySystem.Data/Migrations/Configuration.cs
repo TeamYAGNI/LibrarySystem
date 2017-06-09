@@ -20,9 +20,8 @@ namespace LibrarySystem.Data.Migrations
         /// </summary>
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = true;
-
-            // this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         /// <summary>

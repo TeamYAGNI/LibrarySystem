@@ -13,5 +13,7 @@
         IAuthorRepository Authors { get; }
 
         ISubjectRepository Subjects { get; }
+
+        IClientRepository Clients { get; }
     }
 }

@@ -36,11 +36,18 @@ namespace LibrarySystem.Models
         private ICollection<Lending> lendings;
 
         /// <summary>
+        /// Journals of the <see cref="Client"/> entity.
+        /// </summary>
+        private ICollection<Journal> journals;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
         /// </summary>
         public Client()
         {
             this.lendings = new HashSet<Lending>();
+
+            this.journals = new HashSet<Journal>();
         }
 
         /// <summary>
@@ -134,6 +141,23 @@ namespace LibrarySystem.Models
             set
             {
                 this.lendings = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the journals of the <see cref="Client"/> entity.
+        /// </summary>
+        /// <value>Initial collection of journals of the <see cref="Client"/> entity.</value>
+        public virtual ICollection<Journal> Journals
+        {
+            get
+            {
+                return this.journals;
+            }
+
+            set
+            {
+                this.journals = value;
             }
         }
     }

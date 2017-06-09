@@ -61,5 +61,15 @@ namespace LibrarySystem.Repositories
             return this.LibraryDbContext.Clients
                 .Where(c => c.Address.Street == streetName && c.Address.StreetNumber == number).ToList();
         }
+
+        public IEnumerable<Client> GetAllClientsWithJournals()
+        {
+            return this.LibraryDbContext.Clients.Where(c => c.Journals.Count > 0).ToList();
+        }
+
+        public bool ClientHasJournal(string PIN)
+        {
+            return this.LibraryDbContext.Clients.FirstOrDefault(c => c.PIN == PIN)?.Journals.Count > 0;
+        }
     }
 }
