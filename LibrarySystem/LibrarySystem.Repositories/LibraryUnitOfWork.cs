@@ -15,8 +15,10 @@ namespace LibrarySystem.Repositories
         private IPublisherRepository publishers;
         private ISubjectRepository subjects;
         private IClientRepository clients;
+        private IEmployeeRepository employees;
+        private IAddressRepository addresses;
 
-        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients)
+        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients, IEmployeeRepository employees, IAddressRepository addresses)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
             this.context = context;
@@ -28,6 +30,8 @@ namespace LibrarySystem.Repositories
             this.Publishers = publishers;
             this.Subjects = subjects;
             this.Clients = clients;
+            this.Employees = employees;
+            this.Addresses = addresses;
         }
 
         public IAuthorRepository Authors
@@ -57,6 +61,36 @@ namespace LibrarySystem.Repositories
                 Guard.WhenArgument(value, "Clients").IsNull().Throw();
 
                 this.clients = value;
+            }
+        }
+
+        public IEmployeeRepository Employees
+        {
+            get
+            {
+                return this.employees;
+            }
+
+            private set
+            {
+                Guard.WhenArgument(value, "Employees").IsNull().Throw();
+
+                this.employees = value;
+            }
+        }
+
+        public IAddressRepository Addresses
+        {
+            get
+            {
+                return this.addresses;
+            }
+
+            private set
+            {
+                Guard.WhenArgument(value, "Addresses").IsNull().Throw();
+
+                this.addresses = value;
             }
         }
 

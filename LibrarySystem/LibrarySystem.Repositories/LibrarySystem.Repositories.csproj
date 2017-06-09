@@ -72,6 +72,7 @@
     <Compile Include="Contracts\ISubjectRepository.cs" />
     <Compile Include="Contracts\IClientRepository.cs" />
     <Compile Include="Contracts\IEmployeeRepository.cs" />
+    <Compile Include="Contracts\IAddressRepository.cs" />
     <Compile Include="JournalRepository.cs" />
     <Compile Include="LendingRepository.cs" />
     <Compile Include="LibraryUnitOfWork.cs" />
