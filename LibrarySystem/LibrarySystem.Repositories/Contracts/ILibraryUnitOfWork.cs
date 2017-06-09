@@ -19,5 +19,7 @@
         IEmployeeRepository Employees { get; }
 
         IAddressRepository Addresses { get; }
+
+        ICityRepository Cities { get; }
     }
 }

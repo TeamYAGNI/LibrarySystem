@@ -17,8 +17,9 @@ namespace LibrarySystem.Repositories
         private IClientRepository clients;
         private IEmployeeRepository employees;
         private IAddressRepository addresses;
+        private ICityRepository cities;
 
-        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients, IEmployeeRepository employees, IAddressRepository addresses)
+        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients, IEmployeeRepository employees, IAddressRepository addresses, ICityRepository cities)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
             this.context = context;
@@ -32,6 +33,22 @@ namespace LibrarySystem.Repositories
             this.Clients = clients;
             this.Employees = employees;
             this.Addresses = addresses;
+            this.Cities = cities;
+        }
+
+        public ICityRepository Cities
+        {
+            get
+            {
+                return this.cities;
+            }
+
+            private set
+            {
+                Guard.WhenArgument(value, "Cities").IsNull().Throw();
+
+                this.cities = value;
+            }
         }
 
         public IAuthorRepository Authors
