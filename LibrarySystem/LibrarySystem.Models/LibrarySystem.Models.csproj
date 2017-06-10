@@ -49,14 +49,19 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Enumerations\GenderType.cs" />
     <Compile Include="Enumerations\JobTitle.cs" />
+    <Compile Include="Enumerations\UserType.cs" />
     <Compile Include="Factory\IModelsFactory.cs" />
     <Compile Include="Factory\ModelsFactory.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Journal.cs" />
     <Compile Include="Lending.cs" />
+    <Compile Include="Logs\Log.cs" />
+    <Compile Include="Logs\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="Subject.cs" />
+    <Compile Include="Users\Group.cs" />
+    <Compile Include="Users\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
