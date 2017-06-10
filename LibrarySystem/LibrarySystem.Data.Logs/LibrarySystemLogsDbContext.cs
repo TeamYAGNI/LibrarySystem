@@ -7,7 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using LibrarySystem.Models;
+
+using LibrarySystem.Data.Logs.Migrations;
+using LibrarySystem.Models.Logs;
 
 namespace LibrarySystem.Data.Logs
 {
@@ -27,17 +29,18 @@ namespace LibrarySystem.Data.Logs
         public LibrarySystemLogsDbContext()
             : base(ConnectionString)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LibrarySystemLogsDbContext, Configuration>(true));
         }
 
         /// <summary>
         /// Gets or sets access point to Addresses table in Database.
         /// </summary>
-        ////public virtual IDbSet<Log> Logs { get; set; }
+        public virtual IDbSet<Log> Logs { get; set; }
 
         /// <summary>
         /// Gets or sets access point to Authors table in Database.
         /// </summary>
-        ////public virtual IDbSet<LogType> LogTypes { get; set; }
+        public virtual IDbSet<LogType> LogTypes { get; set; }
 
         /// <summary>
         /// This method is called when the model for a derived context has been initialized,
@@ -53,13 +56,13 @@ namespace LibrarySystem.Data.Logs
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            ////modelBuilder
-            ////    .Entity<LogType>()
-            ////    .Property(l => l.Name)
-            ////    .HasMaxLength(256)
-            ////    .HasColumnAnnotation(
-            ////        "Index",
-            ////        new IndexAnnotation(new IndexAttribute("IX_NAME") { IsUnique = true }));
+            modelBuilder
+                .Entity<LogType>()
+                .Property(l => l.Name)
+                .HasMaxLength(256)
+                .HasColumnAnnotation(
+                    "Index",
+                    new IndexAnnotation(new IndexAttribute("IX_NAME") { IsUnique = true }));
 
             base.OnModelCreating(modelBuilder);
         }

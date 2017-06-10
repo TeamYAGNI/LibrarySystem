@@ -65,6 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LibrarySystemLogsDbContext.cs" />
+    <Compile Include="Migrations\201706102202054_Initial.cs" />
+    <Compile Include="Migrations\201706102202054_Initial.Designer.cs">
+      <DependentUpon>201706102202054_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +82,11 @@
       <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706102202054_Initial.resx">
+      <DependentUpon>201706102202054_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.1\build\net451\System.Data.SQLite.Core.targets')" />
