@@ -3,8 +3,12 @@
 // </copyright>
 // <summary>Holds implementation of LibrarySystemUsersDbContext class.</summary>
 
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration.Conventions;
+
+using LibrarySystem.Models.Users;
 
 namespace LibrarySystem.Data.Users
 {
@@ -29,12 +33,12 @@ namespace LibrarySystem.Data.Users
         /// <summary>
         /// Gets or sets access point to User table in Database.
         /// </summary>
-        ////public virtual IDbSet<User> Users { get; set; }
+        public virtual IDbSet<User> Users { get; set; }
 
         /// <summary>
         /// Gets or sets access point to User table in Database.
         /// </summary>
-        ////public virtual IDbSet<Group> Groups { get; set; }
+        public virtual IDbSet<Group> Groups { get; set; }
 
         /// <summary>
         /// This method is called when the model for a derived context has been initialized,
@@ -50,6 +54,22 @@ namespace LibrarySystem.Data.Users
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
             modelBuilder.HasDefaultSchema("public");
+
+            modelBuilder
+               .Entity<User>()
+               .Property(u => u.Username)
+               .HasMaxLength(50)
+               .HasColumnAnnotation(
+                   "Index",
+                   new IndexAnnotation(new IndexAttribute("IX_USERNAME") { IsUnique = true }));
+
+            modelBuilder
+               .Entity<Group>()
+               .Property(u => u.Name)
+               .HasMaxLength(50)
+               .HasColumnAnnotation(
+                   "Index",
+                   new IndexAnnotation(new IndexAttribute("IX_NAME") { IsUnique = true }));
 
             base.OnModelCreating(modelBuilder);
         }

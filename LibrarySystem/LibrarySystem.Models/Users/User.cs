@@ -49,7 +49,7 @@ namespace LibrarySystem.Models.Users
         /// </summary>
         /// <value>PassHash of the <see cref="User"/> entity.</value>
         [Required]
-        [StringLength(50, ErrorMessage = "User PassHash Invalid Length", MinimumLength = 16)]
+        [RegularExpression(@"(.{64})")]
         public string PassHash { get; set; }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace LibrarySystem.Models.Users
         /// </summary>
         /// <value>AuthKey of the <see cref="User"/> entity.</value>
         [Required]
-        [StringLength(50, ErrorMessage = "User AuthKey Invalid Length", MinimumLength = 16)]
+        [RegularExpression(@"(.{128})")]
         public string AuthKey { get; set; }
 
         /// <summary>
