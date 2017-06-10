@@ -20,7 +20,7 @@ namespace LibrarySystem.Framework
         /// <summary>
         /// Command indicates the end of command session.
         /// </summary>
-        private const string TerminateCommand = "Exit";
+        private const string TerminateCommand = "exit";
 
         /// <summary>
         /// Message shown when command session is closed.
@@ -67,7 +67,7 @@ namespace LibrarySystem.Framework
             StringBuilder builder = new StringBuilder();
             string commandLine = this.commandReader.ReadLine();
 
-            while (commandLine != TerminateCommand)
+            while (commandLine.ToLower() != TerminateCommand)
             {
                 try
                 {
