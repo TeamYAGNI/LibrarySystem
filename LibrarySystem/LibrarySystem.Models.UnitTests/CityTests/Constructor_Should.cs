@@ -1,7 +1,7 @@
 ﻿// <copyright file="Constructor_Should.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds unit tests of Journal entity model constructor.</summary>
+// <summary>Holds unit tests of City entity model constructor.</summary>
  
  using System.Collections.Generic;
  using NUnit.Framework;
