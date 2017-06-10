@@ -87,6 +87,19 @@ namespace LibrarySystem.Models
         public virtual Publisher Publisher { get; set; }
 
         /// <summary>
+        /// Gets or sets foreign key of the client of the <see cref="Journal"/> entity.
+        /// </summary>
+        /// <value>Primary key of the client of the <see cref="Journal"/> entity.</value>
+        [Required]
+        public int ClientId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the client of the <see cref="Journal"/> entity.
+        /// </summary>
+        /// <value>Client of the <see cref="Journal"/> entity.</value>
+        public virtual Client Client { get; set; }
+
+        /// <summary>
         /// Gets or sets the number of copies of the <see cref="Journal"/> entity in the library.
         /// </summary>
         /// <value>Current number of copies of the <see cref="Journal"/> entity in the library.</value>

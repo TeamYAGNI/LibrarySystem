@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.ConsoleClient", "LibrarySystem.ConsoleClient\LibrarySystem.ConsoleClient.csproj", "{C824C31F-675B-4FDA-A12C-F9B9163DCFD5}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Models", "LibrarySystem.Models\LibrarySystem.Models.csproj", "{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Models.UnitTests", "LibrarySystem.Models.UnitTests\LibrarySystem.Models.UnitTests.csproj", "{C720EEAF-EE42-43F9-9444-2EE407267519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Repositories", "LibrarySystem.Repositories\LibrarySystem.Repositories.csproj", "{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Repositories.UnitTests", "LibrarySystem.Repositories.UnitTests\LibrarySystem.Repositories.UnitTests.csproj", "{610C2E4C-6CF2-4B36-899A-163AF986BAC4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Commands", "LibrarySystem.Commands\LibrarySystem.Commands.csproj", "{303021B6-6799-4B4C-99DD-6BB7B7C734FB}"
 EndProject
@@ -24,8 +28,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Framework", "LibrarySystem.Framework\LibrarySystem.Framework.csproj", "{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.ConsoleClient.UnitTests", "LibrarySystem.ConsoleClient.UnitTests\LibrarySystem.ConsoleClient.UnitTests.csproj", "{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}"
-EndProject
-Global
+EndProjectGlobal
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -47,6 +50,14 @@ Global
 		{C720EEAF-EE42-43F9-9444-2EE407267519}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C720EEAF-EE42-43F9-9444-2EE407267519}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C720EEAF-EE42-43F9-9444-2EE407267519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{610C2E4C-6CF2-4B36-899A-163AF986BAC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{610C2E4C-6CF2-4B36-899A-163AF986BAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{610C2E4C-6CF2-4B36-899A-163AF986BAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{610C2E4C-6CF2-4B36-899A-163AF986BAC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{303021B6-6799-4B4C-99DD-6BB7B7C734FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{303021B6-6799-4B4C-99DD-6BB7B7C734FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{303021B6-6799-4B4C-99DD-6BB7B7C734FB}.Release|Any CPU.ActiveCfg = Release|Any CPU

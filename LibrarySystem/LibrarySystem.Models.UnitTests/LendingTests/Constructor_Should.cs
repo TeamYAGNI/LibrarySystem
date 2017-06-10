@@ -2,9 +2,8 @@
  // All rights reserved.
  // </copyright>
  // <summary>Holds unit tests of Journal entity model constructor.</summary>
- 
- using System.Collections.Generic;
- using NUnit.Framework;
+
+using NUnit.Framework;
 
 namespace LibrarySystem.Models.UnitTests.LendingTests
 {

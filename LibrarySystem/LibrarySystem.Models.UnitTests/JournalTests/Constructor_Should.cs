@@ -121,6 +121,30 @@ namespace LibrarySystem.Models.UnitTests.JournalTests
 
         [Test]
         [Category("Models.Journal.Constructor")]
+        public void InstantiateJournalWithClientIdProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var journal = new Journal();
+
+            // Assert
+            Assert.That(journal, Has.Property("ClientId"));
+        }
+
+        [Test]
+        [Category("Models.Journal.Constructor")]
+        public void InstantiateJournalWithClientProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var journal = new Journal();
+
+            // Assert
+            Assert.That(journal, Has.Property("Client"));
+        }
+
+        [Test]
+        [Category("Models.Journal.Constructor")]
         public void InstantiateJournalWithQuantityProperty_WhenNoArgumentsArePassed()
         {
             // Arrange

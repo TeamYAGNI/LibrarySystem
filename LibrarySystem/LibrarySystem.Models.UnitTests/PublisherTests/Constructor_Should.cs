@@ -3,7 +3,6 @@
 // </copyright>
 // <summary>Holds unit tests of Publisher entity model constructor.</summary>
 
-using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 

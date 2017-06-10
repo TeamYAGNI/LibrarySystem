@@ -188,5 +188,30 @@ namespace LibrarySystem.Models.UnitTests.ClientTests
             Assert.That(client.Lendings.Count, Is.Zero);
             Assert.That(client.Lendings, Is.TypeOf<HashSet<Lending>>());
         }
+
+        [Test]
+        [Category("Models.Client.Constructor")]
+        public void InstantiateClientWithJournalsProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var client = new Client();
+
+            // Assert
+            Assert.That(client, Has.Property("Journals"));
+        }
+
+        [Test]
+        [Category("Models.Client.Constructor")]
+        public void InstantiateJournalsCollection_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var client = new Client();
+
+            // Assert
+            Assert.That(client.Journals.Count, Is.Zero);
+            Assert.That(client.Journals, Is.TypeOf<HashSet<Journal>>());
+        }
     }
 }
