@@ -39,14 +39,18 @@ Update-Database -Verbose -StartUpProjectName LibrarySystem.Data
 ## Tested With
 
 * [NUnit](https://www.nunit.org/) - Unit-testing framework for all .Net languages with a strong TDD focus.
-* [Moq](https://github.com/moq/moq4/wiki) - The most popular and friendly mocking framework for .NET
+* [Moq](https://github.com/moq/moq4/wiki) - The most popular and friendly mocking framework for .NET.
+* [Effort.EF6](https://github.com/tamasflamich/effort) - Effort is a powerful tool that enables a convenient way to create automated tests for Entity Framework based applications that can run without the presence of the external database.
+* [NMemory](https://github.com/tamasflamich/nmemory) -A lightweight non-persistent in-memory relational database engine.
 
 ## Authors
 
 ### [***TeamYAGNI***](https://github.com/TeamYAGNI)
-* **Stefan Arnaudov** - [*Arnaudov_St*](http://telerikacademy.com/Users/Arnaudov_St)
-* **Gancho Chankov** - [*gchankov*](http://telerikacademy.com/Users/gchankov)
-* **Stefan Ludzhev** - [*ludzhev*](https://github.com/ludzhev)
+| Team member         | Username     |
+| -------------       | :--------:   |
+| **Stefan Arnaudov** | [*Arnaudov_St*](http://telerikacademy.com/Users/Arnaudov_St)  |
+| **Gancho Chankov**  | [*gchankov*](http://telerikacademy.com/Users/gchankov)     |
+| **Stefan Ludzhev**  | [*ludzhev*](https://github.com/ludzhev)      |
 
 ## License
 
