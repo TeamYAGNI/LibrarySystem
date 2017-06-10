@@ -2,16 +2,11 @@
 // All rights reserved.
 // </copyright>
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using LibrarySystem.Data;
-using LibrarySystem.Models;
-using LibrarySystem.Models.Enumerations;
-using LibrarySystem.Repositories;using LibrarySystem.ConsoleClient.ContainerConfiguration;
+using LibrarySystem.ConsoleClient.ContainerConfiguration;
 using LibrarySystem.Framework.Contracts;
-using Ninject;namespace LibrarySystem.ConsoleClient
+using Ninject;
+
+namespace LibrarySystem.ConsoleClient
 {
     /// <summary>
     /// Represent the Console Client of the Library System application starting point.

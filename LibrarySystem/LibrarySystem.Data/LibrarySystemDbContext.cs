@@ -36,9 +36,9 @@ namespace LibrarySystem.Data
         }
 
         /// <summary>
-        /// Constructor used by Effort for unit testing.
+        /// Initializes a new instance of the <see cref="LibrarySystemDbContext"/> class for the purpose of unit testing by Effort.
         /// </summary>
-        /// <param name="connection"></param>
+        /// <param name="connection">Connection string that describe witch database server <see cref="LibrarySystemDbContext"/> instance to use.</param>
         public LibrarySystemDbContext(DbConnection connection)
             : base(connection, true)
         {

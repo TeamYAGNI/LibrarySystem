@@ -1,6 +1,8 @@
 # LibrarySystem
 
-This is a course-project for the Databases Course in TelerikAcademy. It represent a Library management system with a console client application.
+This is a course-project for the Databases Course in TelerikAcademy. It represent a Library management system with a console
+client application.The data is host on SQL Server database but it is used PostgreSQL server for hosting User information and
+SQLite one for hosting administrative logs.
 
 // TODO: Describe all the functionalities...
 
@@ -19,12 +21,23 @@ Clone the repository on your local machine. [Read more...](https://help.github.c
 
 1.Install the required dependencies by building the solution (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>);
 
-Create or Update SQL Server database instance by typing following command in the Package Manager Console:
+Create or Update SQL Server database instance by typing following command in the Package Manager Console:	
 (Ensure Default Project in Package Manager Console is set to LibrarySystem.Data)
 ```
 Update-Database -Verbose -StartUpProjectName LibrarySystem.Data
 ```
 
+Create or Update PostgreSQL server database instance by typing following command in the Package Manager Console:
+(Ensure Default Project in Package Manager Console is set to LibrarySystem.Data.Users)
+```
+Update-Database -Verbose -StartUpProjectName LibrarySystem.Data.Users
+```
+
+Create or Update SQLite server database instance by typing following command in the Package Manager Console:
+(Ensure Default Project in Package Manager Console is set to LibrarySystem.Data.Logs)
+```
+Update-Database -Verbose -StartUpProjectName LibrarySystem.Data.Logs
+```
 ## Built With
 
 * [EntityFramework](https://docs.microsoft.com/en-us/ef/) - object-relational mapper that enables .NET developers to work with a database using .NET objects.
@@ -54,4 +67,4 @@ Update-Database -Verbose -StartUpProjectName LibrarySystem.Data
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
