@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Framework", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.ConsoleClient.UnitTests", "LibrarySystem.ConsoleClient.UnitTests\LibrarySystem.ConsoleClient.UnitTests.csproj", "{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Data.Users", "LibrarySystem.Data.Users\LibrarySystem.Data.Users.csproj", "{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
