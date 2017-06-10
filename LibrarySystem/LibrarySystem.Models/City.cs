@@ -1,7 +1,7 @@
 ﻿// <copyright file="City.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
-// <summary>Holds implementation of Book model.</summary>
+// <summary>Holds implementation of City model.</summary>
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
