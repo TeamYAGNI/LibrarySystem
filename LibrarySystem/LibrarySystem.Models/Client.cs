@@ -23,7 +23,7 @@ namespace LibrarySystem.Models
         /// <summary>
         /// Pattern for validation of the phone number of the <see cref="Client"/> entity.
         /// </summary>
-        private const string PhonePattern = @"^[0-9]{3, 14}$";
+        private const string PhonePattern = @"^\\+?\\d{10,14}$";
 
         /// <summary>
         /// Pattern for validation of the email address of the <see cref="Client"/> entity.
@@ -111,14 +111,13 @@ namespace LibrarySystem.Models
         /// Gets or sets the email address of the <see cref="Client"/> entity.
         /// </summary>
         /// <value>Email address of the <see cref="Client"/> entity.</value>
-        [RegularExpression(EmailPattern, ErrorMessage = "Client Phone Invalid Length")]
+        [RegularExpression(EmailPattern, ErrorMessage = "Invalid Client Email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets foreign key of the address of the <see cref="Client"/> entity.
         /// </summary>
         /// <value>Primary key of the address of the <see cref="Client"/> entity.</value>
-        [Required]
         public int AddressId { get; set; }
 
         /// <summary>

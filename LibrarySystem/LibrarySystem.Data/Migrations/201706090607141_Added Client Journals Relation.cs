@@ -2,8 +2,8 @@ namespace LibrarySystem.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class Addedclientjournalsrelation : DbMigration
+    
+    public partial class AddedClientJournalsRelation : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace LibrarySystem.Data.Migrations
             CreateIndex("dbo.Journals", "ClientId");
             AddForeignKey("dbo.Journals", "ClientId", "dbo.Clients", "Id");
         }
-
+        
         public override void Down()
         {
             DropForeignKey("dbo.Journals", "ClientId", "dbo.Clients");
