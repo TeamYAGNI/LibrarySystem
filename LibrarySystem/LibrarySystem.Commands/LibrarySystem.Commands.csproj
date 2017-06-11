@@ -45,6 +45,8 @@
     <Compile Include="Functional\ClientGetJournalCommand.cs" />
     <Compile Include="Functional\ClientReturnBookCommand.cs" />
     <Compile Include="Functional\ClientReturnJournalsCommand.cs" />
+    <Compile Include="Functional\UserLoginCommand.cs" />
+    <Compile Include="Functional\UserLogoutCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
