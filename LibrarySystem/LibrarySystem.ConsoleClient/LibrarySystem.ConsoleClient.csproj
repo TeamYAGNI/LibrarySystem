@@ -81,6 +81,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Commands\LibrarySystem.Commands.csproj">
+      <Project>{303021B6-6799-4B4C-99DD-6BB7B7C734FB}</Project>
+      <Name>LibrarySystem.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Data\LibrarySystem.Data.csproj">
       <Project>{61618aa7-d25b-4187-86da-5573d6aca674}</Project>
       <Name>LibrarySystem.Data</Name>

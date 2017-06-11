@@ -6,8 +6,9 @@ using System;
 using System.Linq;
 
 using LibrarySystem.Commands.Contracts;
-using LibrarySystem.ConsoleClient.LocalProviders;
+using LibrarySystem.Commands.Contracts.Exceptions;
 using LibrarySystem.ConsoleClient.Interceptors;
+using LibrarySystem.ConsoleClient.LocalProviders;
 using LibrarySystem.Framework;
 using LibrarySystem.Framework.Contracts;
 using LibrarySystem.Framework.Providers;
@@ -63,7 +64,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case "commandNameToLower": // TODO: Add case for each command!
                                            // return context.Kernel.Get<ICommand>("commandName");
                 default:
-                    throw new InvalidOperationException(string.Format("There is no such command as {0}!", commandName)); // TODO: Implement InvalidCommandException;
+                    throw new InvalidCommandException(commandName);
             }
         }
     }

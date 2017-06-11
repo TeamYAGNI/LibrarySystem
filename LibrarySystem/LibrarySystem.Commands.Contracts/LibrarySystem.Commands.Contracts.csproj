@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\InvalidCommandException.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandsFactory.cs" />
     <Compile Include="IDateTimeProvider.cs" />

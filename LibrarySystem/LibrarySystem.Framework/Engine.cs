@@ -9,6 +9,7 @@ using System.Text;
 using Bytes2you.Validation;
 
 using LibrarySystem.Framework.Contracts;
+using LibrarySystem.Commands.Contracts.Exceptions;
 
 namespace LibrarySystem.Framework
 {
@@ -64,7 +65,6 @@ namespace LibrarySystem.Framework
         /// </summary>
         public void Start()
         {
-            StringBuilder builder = new StringBuilder();
             string commandLine = this.commandReader.ReadLine();
 
             while (commandLine.ToLower() != TerminateCommand)
@@ -72,17 +72,20 @@ namespace LibrarySystem.Framework
                 try
                 {
                     string executionResult = this.commandProcessor.ProcessCommand(commandLine);
-                    builder.AppendLine(executionResult);
+                    this.responseWriter.WriteLine(executionResult);
                 }
-                catch (Exception ex)
+                catch (InvalidCommandException ex)
                 {
-                    builder.AppendLine(ex.Message + "//TODO: Implement Proper User Error Messages");
+                    this.responseWriter.WriteLine(ex.Message);
+                }
+                catch (Exception)
+                {
+                    this.responseWriter.WriteLine("Unexpected Error occur while handling your Command! Plese excuse us! You can try some other commands.");
                 }
 
                 commandLine = this.commandReader.ReadLine();
             }
 
-            this.responseWriter.Write(builder.ToString());
             this.responseWriter.WriteLine(TerminateMessage);
         }
     }
