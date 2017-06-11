@@ -50,9 +50,9 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         }
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="ICommand"/> implementator by a given command name in context argument.
+        /// Represent the method which provide a instance of <see cref="ICommand"/> implementator by a given command name in context argument.
         /// </summary>
-        /// <param name="context">The context in witch the factory method have been invoked</param>
+        /// <param name="context">The context in which the factory method have been invoked</param>
         /// <returns>Instance of <see cref="ICommand"/> implementator</returns>
         private ICommand GetCommand(IContext context)
         {

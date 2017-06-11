@@ -25,5 +25,7 @@ namespace LibrarySystem.Repositories.Contracts
         IEnumerable<Client> GetAllClientsWithLendings();
 
         IEnumerable<Client> GetAllClientsWithLendingsOlderThanAMonth();
+
+        Client GetClientByPin(string PIN);
     }
 }

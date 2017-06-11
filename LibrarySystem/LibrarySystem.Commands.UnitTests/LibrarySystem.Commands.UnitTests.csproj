@@ -49,10 +49,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FunctionalTests\ClientExitLibraryCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientExitLibraryCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetBookCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetBookCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetJournalCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetJournalCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnBookCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnBookCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnJournalsCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnJournalsCommandTests\Execute_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Commands.Contracts\LibrarySystem.Commands.Contracts.csproj">
+      <Project>{6796aa66-40a1-41d9-87a8-7b9a3c75fc54}</Project>
+      <Name>LibrarySystem.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Commands\LibrarySystem.Commands.csproj">
+      <Project>{303021b6-6799-4b4c-99dd-6bb7b7c734fb}</Project>
+      <Name>LibrarySystem.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Framework\LibrarySystem.Framework.csproj">
+      <Project>{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}</Project>
+      <Name>LibrarySystem.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
+      <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
+      <Name>LibrarySystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Repositories\LibrarySystem.Repositories.csproj">
+      <Project>{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}</Project>
+      <Name>LibrarySystem.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

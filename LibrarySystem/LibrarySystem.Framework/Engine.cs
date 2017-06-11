@@ -60,7 +60,7 @@ namespace LibrarySystem.Framework
         }
 
         /// <summary>
-        /// Represent the method witch holds the main logic of the <see cref="Engine"/> class.
+        /// Represent the method which holds the main logic of the <see cref="Engine"/> class.
         /// </summary>
         public void Start()
         {

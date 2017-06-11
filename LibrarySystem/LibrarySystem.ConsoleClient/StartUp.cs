@@ -9,9 +9,11 @@ using System.Text.RegularExpressions;
 using LibrarySystem.Data;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Enumerations;
-using LibrarySystem.Repositories;using LibrarySystem.ConsoleClient.ContainerConfiguration;
+using LibrarySystem.Repositories;
+using LibrarySystem.ConsoleClient.ContainerConfiguration;
 using LibrarySystem.Framework.Contracts;
-using Ninject;namespace LibrarySystem.ConsoleClient
+using Ninject;
+namespace LibrarySystem.ConsoleClient
 {
     /// <summary>
     /// Represent the Console Client of the Library System application starting point.
@@ -23,8 +25,9 @@ using Ninject;namespace LibrarySystem.ConsoleClient
         /// </summary>
         public static void Main()
         {
-            IEngine engine = new StandardKernel(new LibrarySystemNinjectModule()).Get<IEngine>();
-            engine.Start();
+            Console.WriteLine( (DateTime.Today.AddMonths(1).AddDays(1).AddHours(15).Date - DateTime.Today.Date.AddMonths(1)).Days);
+            //IEngine engine = new StandardKernel(new LibrarySystemNinjectModule()).Get<IEngine>();
+            //engine.Start();
         }
     }
 }

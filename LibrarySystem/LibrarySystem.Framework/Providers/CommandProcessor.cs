@@ -35,7 +35,7 @@ namespace LibrarySystem.Framework.Providers
         }
 
         /// <summary>
-        /// Represent the method witch process a command.
+        /// Represent the method which process a command.
         /// </summary>
         /// <param name="fullCommand">Full command to be processed.</param>
         /// <returns>Response as string.</returns>

@@ -49,13 +49,13 @@ namespace LibrarySystem.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets foreign key of the Genre to witch the <see cref="Genre"/> entity is sub-category.
+        /// Gets or sets foreign key of the Genre to which the <see cref="Genre"/> entity is sub-category.
         /// </summary>
         /// <value>Primary key of the sup-genre of the <see cref="Book"/> entity.</value>
         public int? SuperGenreId { get; set; }
 
         /// <summary>
-        /// Gets or sets the Genre to witch the <see cref="Genre"/> entity is sub-category.
+        /// Gets or sets the Genre to which the <see cref="Genre"/> entity is sub-category.
         /// </summary>
         /// <value>Sup-genre of the <see cref="Book"/> entity.</value>
         public virtual Genre SuperGenre { get; set; }

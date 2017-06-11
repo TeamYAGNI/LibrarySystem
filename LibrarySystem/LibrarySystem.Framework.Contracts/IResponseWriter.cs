@@ -11,13 +11,13 @@ namespace LibrarySystem.Framework.Contracts
     public interface IResponseWriter
     {
         /// <summary>
-        /// Represent the method witch writes response message.
+        /// Represent the method which writes response message.
         /// </summary>
         /// <param name="message">Message to be written.</param>
         void Write(string message);
 
         /// <summary>
-        /// Represent the method witch writes response message in a separate line.
+        /// Represent the method which writes response message in a separate line.
         /// </summary>
         /// <param name="message">Message to be written in a separate line.</param>
         void WriteLine(string message);

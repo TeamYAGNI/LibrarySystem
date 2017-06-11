@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LibrarySystem.Data;
+using LibrarySystem.Framework.Providers;
 using LibrarySystem.Repositories.Contracts;
 using LibrarySystem.Models;
 using LibrarySystem.Repositories.Abstractions;
@@ -20,6 +22,17 @@ namespace LibrarySystem.Repositories
             {
                 return this.Context as LibrarySystemDbContext;
             }
+        }
+
+        public IEnumerable<Book> GetBooksLendedByClient(string PIN)
+        {
+            return this.LibraryDbContext.Books
+                .Where(b => b.Lendings.Any(l => l.Client.PIN == PIN && l.ReturnDate == null)).ToList();
+        }
+
+        public IEnumerable<Book> GetBooksLendingHistoryForClient(string PIN)
+        {
+            return this.LibraryDbContext.Books.Where(b => b.Lendings.Any(l => l.Client.PIN == PIN && l.ReturnDate != null)).ToList();
         }
 
         public Book GetMostRecentBookByAuthor(string authorFirstName, string authorLastName)
@@ -60,7 +73,7 @@ namespace LibrarySystem.Repositories
                     b => b.Publisher.Name == publisherName &&
                          b.Authors.Any(a => a.FirstName == authorFirstName && a.LastName == authorLastName))
                 .ToList();
-        }   
+        }
 
         public Book GetBookByISBN(string ISBN)
         {
@@ -109,7 +122,7 @@ namespace LibrarySystem.Repositories
         public IEnumerable<Book> GetAllBooksLendedBeforeMoreThanAMonth()
         {
             return this.LibraryDbContext.Books.Where(
-                b => b.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < DateTime.Today)).ToList();
+                b => b.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < TimeProvider.Current.Today)).ToList();
         }
     }
 }

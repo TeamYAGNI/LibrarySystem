@@ -13,6 +13,8 @@ namespace LibrarySystem.Repositories.Contracts
 
         IEnumerable<Lending> GetLendingsByClientPIN(string PIN);
 
+        IEnumerable<Lending> GetLendingsHistoryByClientPIN(string PIN);
+
         IEnumerable<Lending> GetLendingsOlderThanAMonth();
     }
 }

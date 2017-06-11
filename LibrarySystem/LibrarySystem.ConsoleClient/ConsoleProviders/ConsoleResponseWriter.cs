@@ -15,7 +15,7 @@ namespace LibrarySystem.ConsoleClient.ConsoleProviders
     public class ConsoleResponseWriter : IResponseWriter
     {
         /// <summary>
-        /// Represent the method witch writes response message.
+        /// Represent the method which writes response message.
         /// </summary>
         /// <param name="message">Message to be written.</param>
         public void Write(string message)
@@ -24,7 +24,7 @@ namespace LibrarySystem.ConsoleClient.ConsoleProviders
         }
 
         /// <summary>
-        /// Represent the method witch writes response message in a separate line.
+        /// Represent the method which writes response message in a separate line.
         /// </summary>
         /// <param name="message">Message to be written in a separate line.</param>
         public void WriteLine(string message)

@@ -11,7 +11,7 @@ namespace LibrarySystem.Framework.Contracts
     public interface ICommandReader
     {
         /// <summary>
-        /// Represent the method witch provide a command.
+        /// Represent the method which provide a command.
         /// </summary>
         /// <returns>Command as string.</returns>
         string ReadLine();

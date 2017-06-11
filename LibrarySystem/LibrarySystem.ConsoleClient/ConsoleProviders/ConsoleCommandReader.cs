@@ -15,7 +15,7 @@ namespace LibrarySystem.ConsoleClient.ConsoleProviders
     public class ConsoleCommandReader : ICommandReader
     {
         /// <summary>
-        /// Represent the method witch provide a command.
+        /// Represent the method which provide a command.
         /// </summary>
         /// <returns>Command as string.</returns>
         public string ReadLine()

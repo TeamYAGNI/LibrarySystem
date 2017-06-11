@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LibrarySystem.Data;
+using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Enumerations;
 using LibrarySystem.Repositories.Abstractions;
@@ -81,7 +82,12 @@ namespace LibrarySystem.Repositories
         public IEnumerable<Client> GetAllClientsWithLendingsOlderThanAMonth()
         {
             return this.LibraryDbContext.Clients.Where(
-                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < DateTime.Today)).ToList();
+                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < TimeProvider.Current.Today)).ToList();
+        }
+
+        public Client GetClientByPin(string PIN)
+        {
+            return this.LibraryDbContext.Clients.FirstOrDefault(c => c.PIN == PIN);
         }
     }
 }

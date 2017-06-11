@@ -19,7 +19,7 @@ namespace LibrarySystem.Framework.Providers
     public class Validator : IValidator
     {
         /// <summary>
-        /// Represent the method witch validate a generic object.
+        /// Represent the method which validate a generic object.
         /// </summary>
         /// <typeparam name="T">The type of object to be validated.</typeparam>
         /// <param name="obj">Generic object to be validated by the <see cref="Validator"/> instance.</param>
@@ -40,7 +40,7 @@ namespace LibrarySystem.Framework.Providers
         }
 
         /// <summary>
-        /// Represent the method witch collect error messages while object validation.
+        /// Represent the method which collect error messages while object validation.
         /// </summary>
         /// <param name="obj">Object to be validated.</param>
         /// <returns>Collection of error messages.</returns>

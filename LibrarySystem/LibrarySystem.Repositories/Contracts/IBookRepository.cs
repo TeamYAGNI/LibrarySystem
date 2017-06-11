@@ -5,6 +5,10 @@ namespace LibrarySystem.Repositories.Contracts
 {
     public interface IBookRepository : IRepository<Book>
     {
+        IEnumerable<Book> GetBooksLendedByClient(string PIN);
+
+        IEnumerable<Book> GetBooksLendingHistoryForClient(string PIN);
+
         IEnumerable<Book> GetAllBooksInUse();
 
         int GetAvailableQuantityByISBN(string ISBN);
