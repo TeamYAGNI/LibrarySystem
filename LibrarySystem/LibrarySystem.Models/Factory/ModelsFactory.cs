@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 
 using LibrarySystem.Models.Enumerations;
+using LibrarySystem.Models.Logs;
+using LibrarySystem.Models.Users;
 
 namespace LibrarySystem.Models.Factory
 {
@@ -306,6 +308,82 @@ namespace LibrarySystem.Models.Factory
             };
 
             return subject;
+        }
+
+        /// <summary>
+        /// Represent the method witch provide a instance of <see cref="User"/> class with properties given as arguments.
+        /// </summary>
+        /// <param name="username">Username of the <see cref="User"/> instance.</param>
+        /// <param name="passHash">PassHash of the <see cref="User"/> instance.</param>
+        /// <param name="authKey">AuthKey of the <see cref="User"/> instance.</param>
+        /// <param name="userType">Type of the <see cref="User"/> instance.</param>
+        /// <param name="groups">Initial collection of groups related to the <see cref="User"/> instance.</param>
+        /// <returns>Instance of <see cref="User"/> class.</returns>
+        public User CreateUser(string username, string passHash, string authKey, UserType userType, ICollection<Group> groups)
+        {
+            User user = new User
+            {
+                Username = username,
+                PassHash = passHash,
+                AuthKey = authKey,
+                Type = userType,
+                Groups = groups
+            };
+
+            return user;
+        }
+
+        /// <summary>
+        /// Represent the method witch provide a instance of <see cref="Group"/> class with properties given as arguments.
+        /// </summary>
+        /// <param name="name">Name of the <see cref="Group"/> instance.</param>
+        /// <param name="users">Collection of groups related to the <see cref="User"/> instance.</param>
+        /// <returns>Instance of <see cref="Group"/> class.</returns>
+        public Group CreateGroup(string name, ICollection<User> users)
+        {
+            Group group = new Group
+            {
+                Name = name,
+                Users = users
+            };
+
+            return group;
+        }
+
+        /// <summary>
+        /// Represent the method witch provide a instance of <see cref="Log"/> class with properties given as arguments.
+        /// </summary>
+        /// <param name="message">Message of the <see cref="Log"/> instance.</param>
+        /// <param name="dateTime">DateTime when the log is logged.</param>
+        /// <param name="logType">LogType of the <see cref="Log"/> instance.</param>
+        /// <returns>Instance of <see cref="Log"/> class.</returns>
+        public Log CreateLog(string message, DateTime dateTime, LogType logType)
+        {
+            Log log = new Log
+            {
+                Message = message,
+                DateTime = dateTime,
+                LogType = logType
+            };
+
+            return log;
+        }
+
+        /// <summary>
+        /// Represent the method witch provide a instance of <see cref="LogType"/> class with properties given as arguments.
+        /// </summary>
+        /// <param name="name">Name of the <see cref="LogType"/> instance.</param>
+        /// <param name="logs">Collection of logs related to the <see cref="LogType"/> instance.</param>
+        /// <returns>Instance of <see cref="LogType"/> class.</returns>
+        public LogType CreateLogType(string name, ICollection<Log> logs)
+        {
+            LogType logType = new LogType
+            {
+                Name = name,
+                Logs = logs
+            };
+
+            return logType;
         }
     }
 }
