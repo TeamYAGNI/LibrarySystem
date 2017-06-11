@@ -4,12 +4,10 @@
 // <summary>Holds unit tests of LogType entity model constructor.</summary>
 
 using System.Collections.Generic;
-
 using LibrarySystem.Models.Logs;
-
 using NUnit.Framework;
 
-namespace LibrarySystem.Models.UnitTests.Logs.LogTypeTests
+namespace LibrarySystem.Models.UnitTests.Logs.LogTests
 {
     [TestFixture]
     public class Constructor_Should

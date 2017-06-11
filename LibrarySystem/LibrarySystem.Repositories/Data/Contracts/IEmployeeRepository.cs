@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Enumerations;
+using LibrarySystem.Repositories.Contracts;
 
-namespace LibrarySystem.Repositories.Contracts
+namespace LibrarySystem.Repositories.Data.Contracts
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {

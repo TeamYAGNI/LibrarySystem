@@ -7,6 +7,7 @@ using NUnit.Framework;
 using LibrarySystem.Models;
 using LibrarySystem.Framework.Providers;
 using System;
+using LibrarySystem.Repositories.Data.Contracts;
 
 namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandTests
 {

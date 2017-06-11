@@ -54,33 +54,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\Repository.cs" />
-    <Compile Include="AddressRepository.cs" />
-    <Compile Include="AuthorRepository.cs" />
-    <Compile Include="BookRepository.cs" />
-    <Compile Include="CityRepository.cs" />
-    <Compile Include="ClientRepository.cs" />
+    <Compile Include="Data.Users\UnitOfWork\UsersUnitOfWork.cs" />
+    <Compile Include="Data\AddressRepository.cs" />
+    <Compile Include="Data\AuthorRepository.cs" />
+    <Compile Include="Data\BookRepository.cs" />
+    <Compile Include="Data\CityRepository.cs" />
+    <Compile Include="Data\ClientRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
-    <Compile Include="Contracts\ILibraryUnitOfWork.cs" />
-    <Compile Include="EmployeeRepository.cs" />
-    <Compile Include="GenreRepository.cs" />
-    <Compile Include="Contracts\IBookRepository.cs" />
-    <Compile Include="Contracts\IJournalRepository.cs" />
-    <Compile Include="Contracts\IGenreRepository.cs" />
-    <Compile Include="Contracts\IAuthorRepository.cs" />
-    <Compile Include="Contracts\IPublisherRepository.cs" />
-    <Compile Include="Contracts\ISubjectRepository.cs" />
-    <Compile Include="Contracts\IClientRepository.cs" />
-    <Compile Include="Contracts\IEmployeeRepository.cs" />
-    <Compile Include="Contracts\IAddressRepository.cs" />
-    <Compile Include="Contracts\ICityRepository.cs" />
-    <Compile Include="Contracts\ILendingRepository.cs" />
-    <Compile Include="JournalRepository.cs" />
-    <Compile Include="LendingRepository.cs" />
-    <Compile Include="LibraryUnitOfWork.cs" />
+    <Compile Include="Data\Contracts\ILibraryUnitOfWork.cs" />
+    <Compile Include="Data\EmployeeRepository.cs" />
+    <Compile Include="Data\GenreRepository.cs" />
+    <Compile Include="Data\Contracts\IBookRepository.cs" />
+    <Compile Include="Data\Contracts\IJournalRepository.cs" />
+    <Compile Include="Data\Contracts\IGenreRepository.cs" />
+    <Compile Include="Data\Contracts\IAuthorRepository.cs" />
+    <Compile Include="Data\Contracts\IPublisherRepository.cs" />
+    <Compile Include="Data\Contracts\ISubjectRepository.cs" />
+    <Compile Include="Data\Contracts\IClientRepository.cs" />
+    <Compile Include="Data\Contracts\IEmployeeRepository.cs" />
+    <Compile Include="Data\Contracts\IAddressRepository.cs" />
+    <Compile Include="Data\Contracts\ICityRepository.cs" />
+    <Compile Include="Data\Contracts\ILendingRepository.cs" />
+    <Compile Include="Data\JournalRepository.cs" />
+    <Compile Include="Data\LendingRepository.cs" />
+    <Compile Include="Data\UnitOfWork\LibraryUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublisherRepository.cs" />
-    <Compile Include="SubjectRepository.cs" />
+    <Compile Include="Data\PublisherRepository.cs" />
+    <Compile Include="Data\SubjectRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -99,6 +100,9 @@
       <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data.Users\Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

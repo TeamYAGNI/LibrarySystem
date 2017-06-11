@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Models;
 using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 
 namespace LibrarySystem.Commands.Functional
 {

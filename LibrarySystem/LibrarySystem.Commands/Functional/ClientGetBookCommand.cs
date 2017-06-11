@@ -8,6 +8,7 @@ using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Factory;
 using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 
 namespace LibrarySystem.Commands.Functional
 {

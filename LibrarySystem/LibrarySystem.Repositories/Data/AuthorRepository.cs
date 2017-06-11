@@ -4,9 +4,9 @@ using LibrarySystem.Data;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Enumerations;
 using LibrarySystem.Repositories.Abstractions;
-using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 
-namespace LibrarySystem.Repositories
+namespace LibrarySystem.Repositories.Data
 {
     public class AuthorRepository : Repository<Author>, IAuthorRepository
     {

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
 using LibrarySystem.Repositories.Abstractions;
-using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 
-namespace LibrarySystem.Repositories
+namespace LibrarySystem.Repositories.Data
 {
     public class LendingRepository : Repository<Lending>, ILendingRepository
     {

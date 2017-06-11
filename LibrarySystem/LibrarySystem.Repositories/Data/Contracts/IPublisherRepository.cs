@@ -1,6 +1,7 @@
 ﻿using LibrarySystem.Models;
+using LibrarySystem.Repositories.Contracts;
 
-namespace LibrarySystem.Repositories.Contracts
+namespace LibrarySystem.Repositories.Data.Contracts
 {
     public interface IPublisherRepository : IRepository<Publisher>
     {

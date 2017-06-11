@@ -7,6 +7,7 @@ using LibrarySystem.Commands.Functional;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
 using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 using Moq;
 using NUnit.Framework;
 

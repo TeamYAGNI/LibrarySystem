@@ -1,8 +1,9 @@
 ﻿using Bytes2you.Validation;
 using LibrarySystem.Data;
 using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 
-namespace LibrarySystem.Repositories
+namespace LibrarySystem.Repositories.Data.UnitOfWork
 {
     public class LibraryUnitOfWork : IUnitOfWork, ILibraryUnitOfWork
     {
