@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 
 using LibrarySystem.Commands.Contracts;
-using LibrarySystem.ConsoleClient.ConsoleProviders;
+using LibrarySystem.ConsoleClient.LocalProviders;
 using LibrarySystem.ConsoleClient.Interceptors;
 using LibrarySystem.Framework;
 using LibrarySystem.Framework.Contracts;

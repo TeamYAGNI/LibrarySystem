@@ -7,7 +7,7 @@ using System;
 
 using LibrarySystem.Framework.Contracts;
 
-namespace LibrarySystem.ConsoleClient.ConsoleProviders
+namespace LibrarySystem.ConsoleClient.LocalProviders
 {
     /// <summary>
     /// Represent a <see cref="ConsoleResponseWriter"/> class, implementator of <see cref="IResponseWriter"/> interface.

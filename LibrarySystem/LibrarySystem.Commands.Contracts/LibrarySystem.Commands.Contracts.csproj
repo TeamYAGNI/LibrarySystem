@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandsFactory.cs" />
+    <Compile Include="IDateTimeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
