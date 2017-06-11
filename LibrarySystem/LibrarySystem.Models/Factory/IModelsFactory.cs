@@ -16,7 +16,7 @@ namespace LibrarySystem.Models.Factory
     public interface IModelsFactory
     {
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Address"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Address"/> class with properties given as arguments.
         /// </summary>
         /// <param name="street">Street of the <see cref="Address"/> instance.</param>
         /// <param name="streetNumber">Street number of the <see cref="Address"/> instance.</param>
@@ -27,7 +27,7 @@ namespace LibrarySystem.Models.Factory
         Address CreateAddress(string street, int? streetNumber, City city, ICollection<Client> clients, ICollection<Employee> employees);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Author"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Author"/> class with properties given as arguments.
         /// </summary>
         /// <param name="firstName">First name of the <see cref="Author"/> instance.</param>
         /// <param name="lastName">Last name of the <see cref="Author"/> instance.</param>
@@ -37,7 +37,7 @@ namespace LibrarySystem.Models.Factory
         Author CreateAuthor(string firstName, string lastName, GenderType genderType, ICollection<Book> books);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Book"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Book"/> class with properties given as arguments.
         /// </summary>
         /// <param name="title">Title of the <see cref="Book"/> instance.</param>
         /// <param name="isbn">ISBN of the <see cref="Book"/> instance.</param>
@@ -65,7 +65,7 @@ namespace LibrarySystem.Models.Factory
             ICollection<Lending> lendings);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="City"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="City"/> class with properties given as arguments.
         /// </summary>
         /// <param name="name">Name of the <see cref="City"/> instance.</param>
         /// <param name="addresses">Initial collection of addresses related to the <see cref="City"/> instance.</param>
@@ -73,7 +73,7 @@ namespace LibrarySystem.Models.Factory
         City CreateCity(string name, ICollection<Address> addresses);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Client"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Client"/> class with properties given as arguments.
         /// </summary>
         /// <param name="firstName">First name of the <see cref="Client"/> instance.</param>
         /// <param name="lastName">Last name of the <see cref="Client"/> instance.</param>
@@ -95,7 +95,7 @@ namespace LibrarySystem.Models.Factory
             ICollection<Lending> lendings);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Employee"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Employee"/> class with properties given as arguments.
         /// </summary>
         /// <param name="firstName">First name of the <see cref="Employee"/> instance.</param>
         /// <param name="lastName">Last name of the <see cref="Employee"/> instance.</param>
@@ -107,7 +107,7 @@ namespace LibrarySystem.Models.Factory
         Employee CreateEmployee(string firstName, string lastName, GenderType genderType, JobTitle jobTitle, Address address, Employee manager);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Genre"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Genre"/> class with properties given as arguments.
         /// </summary>
         /// <param name="name">Name of the <see cref="Genre"/> instance.</param>
         /// <param name="parrentGenre">Parrent genre of the <see cref="Book"/> instance.</param>
@@ -117,7 +117,7 @@ namespace LibrarySystem.Models.Factory
         Genre CreateGenre(string name, Genre parrentGenre, ICollection<Genre> childGenres, ICollection<Book> books);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Journal"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Journal"/> class with properties given as arguments.
         /// </summary>
         /// <param name="title">Title of the <see cref="Journal"/> instance.</param>
         /// <param name="impactFactor">Impact factor of the <see cref="Journal"/> instance.</param>
@@ -141,7 +141,7 @@ namespace LibrarySystem.Models.Factory
             ICollection<Subject> subjects);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Lending"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Lending"/> class with properties given as arguments.
         /// </summary>
         /// <param name="book">Lended <see cref="Book"/> instance.</param>
         /// <param name="client"><see cref="Client"/> instance borrowed the copy.</param>
@@ -149,10 +149,10 @@ namespace LibrarySystem.Models.Factory
         /// <param name="returnDate">Date when the copy is returned.</param>
         /// <param name="remarks">Remarks of the current <see cref="Lending"/> instance.</param>
         /// <returns>Instance of <see cref="Lending"/> class.</returns>
-        Lending CreateLending(Book book, Client client, DateTime borrowDate, DateTime returnDate, string remarks);
+        Lending CreateLending(Book book, Client client, DateTime borrowDate, DateTime? returnDate, string remarks);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Publisher"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Publisher"/> class with properties given as arguments.
         /// </summary>
         /// <param name="name">Name of the <see cref="Publisher"/> instance.</param>
         /// <param name="books">Collection of books of the <see cref="Publisher"/> instance.</param>
@@ -161,7 +161,7 @@ namespace LibrarySystem.Models.Factory
         Publisher CreatePublisher(string name, ICollection<Book> books, ICollection<Journal> journals);
 
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="Subject"/> class with properties given as arguments.
+        /// Represent the method which provide a instance of <see cref="Subject"/> class with properties given as arguments.
         /// </summary>
         /// <param name="name">Name of the <see cref="Subject"/> instance.</param>
         /// <param name="parrentSubject">Parent node of the <see cref="Subject"/> instance.</param>

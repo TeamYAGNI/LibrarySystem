@@ -18,12 +18,12 @@ namespace LibrarySystem.Data
     public class LibrarySystemDbContext : DbContext
     {
         /// <summary>
-        /// Name of the connection string that describe witch database server <see cref="LibrarySystemDbContext"/> instance to use and how.
+        /// Name of the connection string that describe which database server <see cref="LibrarySystemDbContext"/> instance to use and how.
         /// </summary>
         private const string ConnectionString = "LibrarySystemSQLExpress";
 
         /// <summary>
-        /// Name of the connection string that describe witch database server <see cref="LibrarySystemDbContext"/> instance to use and how.
+        /// Name of the connection string that describe which database server <see cref="LibrarySystemDbContext"/> instance to use and how.
         /// </summary>
         ////private const string ConnectionString = "LibrarySystemSQLServer";
 

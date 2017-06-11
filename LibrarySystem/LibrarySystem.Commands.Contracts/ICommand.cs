@@ -13,7 +13,7 @@ namespace LibrarySystem.Commands.Contracts
     public interface ICommand
     {
         /// <summary>
-        /// Represent the method witch execute the command with given parameters.
+        /// Represent the method which execute the command with given parameters.
         /// </summary>
         /// <param name="parameters">Parameters needed for execution of the command.</param>
         /// <returns>Response as string.</returns>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Models;
@@ -88,6 +89,11 @@ namespace LibrarySystem.Repositories
         public IEnumerable<Journal> GetAllJournalsThatAreInUse()
         {
             return this.Find(j => j.Quantity != j.Available);
+        }
+
+        public IEnumerable<Journal> GetAllClientJournals(string PIN)
+        {
+            return this.LibraryDbContext.Journals.Include(j => j.Client).Where(j => j.Client.PIN == PIN).ToList();
         }
     }
 }

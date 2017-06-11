@@ -91,6 +91,10 @@
       <Project>{61618aa7-d25b-4187-86da-5573d6aca674}</Project>
       <Name>LibrarySystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Framework\LibrarySystem.Framework.csproj">
+      <Project>{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}</Project>
+      <Name>LibrarySystem.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
       <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
       <Name>LibrarySystem.Models</Name>

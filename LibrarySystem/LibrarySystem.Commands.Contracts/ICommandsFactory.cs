@@ -11,7 +11,7 @@ namespace LibrarySystem.Commands.Contracts
     public interface ICommandsFactory
     {
         /// <summary>
-        /// Represent the method witch provide a instance of <see cref="ICommand"/> implementator by a given command name.
+        /// Represent the method which provide a instance of <see cref="ICommand"/> implementator by a given command name.
         /// </summary>
         /// <param name="commandName">Name of the command to be provided.</param>
         /// <returns>Instance of <see cref="ICommand"/> implementator</returns>

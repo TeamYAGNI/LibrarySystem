@@ -13,7 +13,7 @@ namespace LibrarySystem.Framework.Contracts
     public interface IValidator
     {
         /// <summary>
-        /// Represent the method witch validate a generic object.
+        /// Represent the method which validate a generic object.
         /// </summary>
         /// <typeparam name="T">The type of object to be validated.</typeparam>
         /// <param name="obj">Generic object to be validated by the <see cref="IValidator"/> implementator.</param>

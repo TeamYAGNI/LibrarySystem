@@ -26,5 +26,7 @@ namespace LibrarySystem.Repositories.Contracts
         IEnumerable<Journal> GetJournalsBySubject(string subject);
 
         IEnumerable<Journal> GetTop5JournalsOrderedByImpactFactor();
+
+        IEnumerable<Journal> GetAllClientJournals(string PIN);
     }
 }

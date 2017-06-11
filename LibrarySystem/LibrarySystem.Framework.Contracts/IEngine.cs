@@ -11,7 +11,7 @@ namespace LibrarySystem.Framework.Contracts
     public interface IEngine
     {
         /// <summary>
-        /// Represent the method witch holds the main logic of the <see cref="IEngine"/> implementator.
+        /// Represent the method which holds the main logic of the <see cref="IEngine"/> implementator.
         /// </summary>
         void Start();
     }
