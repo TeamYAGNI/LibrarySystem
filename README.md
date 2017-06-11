@@ -4,7 +4,16 @@ This is a course-project for the Databases Course in TelerikAcademy. It represen
 client application.The data is host on SQL Server database but it is used PostgreSQL server for hosting User information and
 SQLite one for hosting administrative logs.
 
-// TODO: Describe all the functionalities...
+## Commands
+
+| Command         | Parameters  | Description |
+| -------------       | :--------:   | :----------------: |
+| **ClientGetBook** | *clientPIN*, *bookISBN* | Lends a book for a period of One month. |
+| **ClientReturnBook**  | *clientPIN*, *bookISBN*, *Remarks* | Returns a lended book keeping history of Client's remarks.|
+| **ClientGetJournal**  | *clientPIN* | Gets a Journal only for In-Library usage.|
+| **ClientReturnJournals**  | *clientPIN* | Returns all Journals kept by the Client. |
+| **ClientExitLibrary**  | *clientPIN* | Client leaves the library if he has returned all Journals. |
+
 
 ## Installation
 
