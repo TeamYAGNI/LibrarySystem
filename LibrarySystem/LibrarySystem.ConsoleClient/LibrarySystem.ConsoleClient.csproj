@@ -72,7 +72,6 @@
     <Compile Include="ContainerConfiguration\LibrarySystemNinjectModule.cs" />
     <Compile Include="Interceptors\ModelValidation.cs" />
     <Compile Include="Interceptors\SQLLiteLogger.cs" />
-    <Compile Include="LocalProviders\DateTimeProvider.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

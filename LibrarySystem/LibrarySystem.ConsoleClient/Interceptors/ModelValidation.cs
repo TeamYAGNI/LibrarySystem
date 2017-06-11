@@ -3,10 +3,9 @@
 // </copyright>
 // <summary>Holds implementation of ModelValidation class.</summary>
 
-using System.ComponentModel.DataAnnotations;
-
 using Bytes2you.Validation;
 using LibrarySystem.Framework.Contracts;
+using LibrarySystem.Framework.Exceptions;
 using Ninject.Extensions.Interception;
 
 namespace LibrarySystem.ConsoleClient.Interceptors
@@ -39,7 +38,7 @@ namespace LibrarySystem.ConsoleClient.Interceptors
         public void Intercept(IInvocation invocation)
         {
             invocation.Proceed();
-            this.validator.Validate(invocation.ReturnValue, message => throw new ValidationException(message)); // TODO: Implement ModelValidationException
+            this.validator.Validate(invocation.ReturnValue, message => throw new ModelValidationException(message));
         }
     }
 }
