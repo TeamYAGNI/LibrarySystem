@@ -1,6 +1,7 @@
 // <copyright file="Configuration.cs" company="YAGNI">
 // All rights reserved.
 // </copyright>
+// <summary>Holds configuration of migrations to the Librarysystem database.</summary>
 
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -14,7 +15,7 @@ namespace LibrarySystem.Data.Migrations
     /// <summary>
     /// Represent a <see cref="Configuration"/> class, heir of <see cref="DbMigrationsConfiguration"/>.
     /// </summary>
-    internal sealed class Configuration : DbMigrationsConfiguration<LibrarySystem.Data.LibrarySystemDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<LibrarySystemDbContext>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration"/> class.
