@@ -1,5 +1,5 @@
 ﻿using LibrarySystem.Framework.Contracts;
-using LibrarySystem.Commands.Contracts.Exceptions;
+using LibrarySystem.Framework.Exceptions;
 
 using Moq;
 using NUnit.Framework;

@@ -5,7 +5,7 @@
 
 using System;
 
-namespace LibrarySystem.Commands.Contracts.Exceptions
+namespace LibrarySystem.Framework.Exceptions
 {
     /// <summary>
     /// Represent a <see cref="InvalidCommandException"/> class, inheritant of <see cref="ApplicationException"/> class.

@@ -6,11 +6,11 @@ using System;
 using System.Linq;
 
 using LibrarySystem.Commands.Contracts;
-using LibrarySystem.Commands.Contracts.Exceptions;
 using LibrarySystem.ConsoleClient.Interceptors;
 using LibrarySystem.ConsoleClient.LocalProviders;
 using LibrarySystem.Framework;
 using LibrarySystem.Framework.Contracts;
+using LibrarySystem.Framework.Exceptions;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models.Factory;
 

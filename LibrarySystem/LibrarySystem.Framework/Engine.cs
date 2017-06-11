@@ -9,7 +9,7 @@ using System.Text;
 using Bytes2you.Validation;
 
 using LibrarySystem.Framework.Contracts;
-using LibrarySystem.Commands.Contracts.Exceptions;
+using LibrarySystem.Framework.Exceptions;
 
 namespace LibrarySystem.Framework
 {

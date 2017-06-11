@@ -62,10 +62,14 @@
     <Compile Include="Factory\ModelsFactoryTests\CreateClient_Should.cs" />
     <Compile Include="Factory\ModelsFactoryTests\CreateEmployee_Should.cs" />
     <Compile Include="Factory\ModelsFactoryTests\CreateGenre_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateGroup_Should.cs" />
     <Compile Include="Factory\ModelsFactoryTests\CreateJournal_Should.cs" />
     <Compile Include="Factory\ModelsFactoryTests\CreateLending_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateLogType_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateLog_Should.cs" />
     <Compile Include="Factory\ModelsFactoryTests\CreatePublisher_Should.cs" />
     <Compile Include="Factory\ModelsFactoryTests\CreateSubject_Should.cs" />
+    <Compile Include="Factory\ModelsFactoryTests\CreateUser_Should.cs" />
     <Compile Include="GenreTests\Constructor_Should.cs" />
     <Compile Include="JournalTests\Constructor_Should.cs" />
     <Compile Include="LendingTests\Constructor_Should.cs" />
