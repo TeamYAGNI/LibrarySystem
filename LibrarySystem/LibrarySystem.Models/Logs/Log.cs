@@ -26,7 +26,7 @@ namespace LibrarySystem.Models.Logs
         /// </summary>
         /// <value>Message of the <see cref="Log"/> entity.</value>
         [Required]
-        [StringLength(1024, ErrorMessage = "LogType Name Invalid Length", MinimumLength = 1)]
+        [StringLength(1024, ErrorMessage = "Log Message Invalid Length", MinimumLength = 1)]
         public string Message { get; set; }
 
         /// <summary>

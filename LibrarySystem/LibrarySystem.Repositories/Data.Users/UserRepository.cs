@@ -52,6 +52,21 @@ namespace LibrarySystem.Repositories.Data.Users
             return true;
         }
 
+        public bool LogoutUser(string username, string password)
+        {
+            var user = this.UsersDbContext.Users.FirstOrDefault(u => u.Username == username &&
+                                                                     this.hashProvider.Verify(password, u.PassHash) &&
+                                                                     this.hashProvider.Verify((username + password),
+                                                                         u.AuthKey));
+            if (user == null)
+            {
+                return false;
+            }
+
+            user.AuthKeyExpirationDate = default(DateTime);
+            return true;
+        }
+
         public bool MasterIsLoggedIn()
         {
             return this.UsersDbContext.Users.Any(u => u.AuthKeyExpirationDate < TimeProvider.Current.Now && u.Type == UserType.Master);

@@ -66,6 +66,7 @@ namespace LibrarySystem.Models.Users
         /// </summary>
         /// <value>AuthKeyExpirationDate of the <see cref="User"/> entity.</value>
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime AuthKeyExpirationDate { get; set; }
 
         /// <summary>

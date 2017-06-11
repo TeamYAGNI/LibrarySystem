@@ -13,6 +13,8 @@ namespace LibrarySystem.Repositories.Data.Users.Contracts
 
         bool LoginUser(string username, string password);
 
+        bool LogoutUser(string username, string password);
+
         bool MasterIsLoggedIn();
 
         bool UserIsLoggedIn(string username);

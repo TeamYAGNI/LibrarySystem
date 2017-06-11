@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\Repository.cs" />
+    <Compile Include="Data.Logs\Contracts\ILogsRepository.cs" />
+    <Compile Include="Data.Logs\Contracts\ILogTypesRepository.cs" />
+    <Compile Include="Data.Logs\LogsRepository.cs" />
+    <Compile Include="Data.Logs\LogTypesRepository.cs" />
+    <Compile Include="Data.Logs\UnitOfWork\ILogsUnitOfWork.cs" />
+    <Compile Include="Data.Logs\UnitOfWork\LogsUnitOfWork.cs" />
     <Compile Include="Data.Users\Contracts\IUserRepository.cs" />
     <Compile Include="Data.Users\GroupRepository.cs" />
     <Compile Include="Data.Users\Contracts\IGroupRepository.cs" />
@@ -95,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Data.Logs\LibrarySystem.Data.Logs.csproj">
+      <Project>{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}</Project>
+      <Name>LibrarySystem.Data.Logs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Data.Users\LibrarySystem.Data.Users.csproj">
       <Project>{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}</Project>
       <Name>LibrarySystem.Data.Users</Name>

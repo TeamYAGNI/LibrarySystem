@@ -15,7 +15,7 @@ namespace LibrarySystem.Repositories.Data.Users
 {
     public class GroupRepository : Repository<Group>, IGroupRepository
     {
-        public GroupRepository(DbContext context) : base(context)
+        public GroupRepository(LibrarySystemUsersDbContext context) : base(context)
         {
         }
 
