@@ -1,6 +1,7 @@
 ﻿using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Data.Contracts;
 
-namespace LibrarySystem.Repositories.Data.Contracts
+namespace LibrarySystem.Repositories.Data.UnitOfWork
 {
     public interface ILibraryUnitOfWork : IUnitOfWork
     {

@@ -54,7 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\Repository.cs" />
+    <Compile Include="Data.Users\Contracts\IUserRepository.cs" />
+    <Compile Include="Data.Users\GroupRepository.cs" />
+    <Compile Include="Data.Users\Contracts\IGroupRepository.cs" />
+    <Compile Include="Data.Users\UnitOfWork\IUsersUnitOfWork.cs" />
     <Compile Include="Data.Users\UnitOfWork\UsersUnitOfWork.cs" />
+    <Compile Include="Data.Users\UserRepository.cs" />
+    <Compile Include="Data.Users\Utils\HashProvider.cs" />
+    <Compile Include="Data.Users\Utils\Contracts\IHashProvider.cs" />
     <Compile Include="Data\AddressRepository.cs" />
     <Compile Include="Data\AuthorRepository.cs" />
     <Compile Include="Data\BookRepository.cs" />
@@ -62,7 +69,7 @@
     <Compile Include="Data\ClientRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
-    <Compile Include="Data\Contracts\ILibraryUnitOfWork.cs" />
+    <Compile Include="Data\UnitOfWork\ILibraryUnitOfWork.cs" />
     <Compile Include="Data\EmployeeRepository.cs" />
     <Compile Include="Data\GenreRepository.cs" />
     <Compile Include="Data\Contracts\IBookRepository.cs" />
@@ -88,6 +95,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Data.Users\LibrarySystem.Data.Users.csproj">
+      <Project>{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}</Project>
+      <Name>LibrarySystem.Data.Users</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Data\LibrarySystem.Data.csproj">
       <Project>{61618aa7-d25b-4187-86da-5573d6aca674}</Project>
       <Name>LibrarySystem.Data</Name>
@@ -101,8 +112,6 @@
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data.Users\Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

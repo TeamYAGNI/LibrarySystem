@@ -7,7 +7,7 @@ namespace LibrarySystem.Repositories.Data.UnitOfWork
 {
     public class LibraryUnitOfWork : IUnitOfWork, ILibraryUnitOfWork
     {
-        private readonly LibrarySystemDbContext context;
+        private readonly LibrarySystemDbContext libraryContext;
 
         private IBookRepository books;
         private IJournalRepository journals;
@@ -21,10 +21,10 @@ namespace LibrarySystem.Repositories.Data.UnitOfWork
         private ICityRepository cities;
         private ILendingRepository lendings;
 
-        public LibraryUnitOfWork(LibrarySystemDbContext context, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients, IEmployeeRepository employees, IAddressRepository addresses, ICityRepository cities, ILendingRepository lendings)
+        public LibraryUnitOfWork(LibrarySystemDbContext libraryContext, IBookRepository books, IJournalRepository journals, IGenreRepository genres, IAuthorRepository authors, IPublisherRepository publishers, ISubjectRepository subjects, IClientRepository clients, IEmployeeRepository employees, IAddressRepository addresses, ICityRepository cities, ILendingRepository lendings)
         {
-            Guard.WhenArgument(context, "context").IsNull().Throw();
-            this.context = context;
+            Guard.WhenArgument(libraryContext, "libraryContext").IsNull().Throw();
+            this.libraryContext = libraryContext;
 
             this.Books = books;
             this.Journals = journals;
@@ -206,12 +206,12 @@ namespace LibrarySystem.Repositories.Data.UnitOfWork
 
         public int Commit()
         {
-            return this.context.SaveChanges();
+            return this.libraryContext.SaveChanges();
         }
 
         public void Dispose()
         {
-            this.context.Dispose();
+            this.libraryContext.Dispose();
         }
     }
 }

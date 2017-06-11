@@ -3,6 +3,7 @@
 // </copyright>
 // <summary>Holds implementation of User model.</summary>
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -59,6 +60,13 @@ namespace LibrarySystem.Models.Users
         [Required]
         [RegularExpression(@"(.{128})")]
         public string AuthKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AuthKeyExpirationDate of the <see cref="User"/> entity.
+        /// </summary>
+        /// <value>AuthKeyExpirationDate of the <see cref="User"/> entity.</value>
+        [Required]
+        public DateTime AuthKeyExpirationDate { get; set; }
 
         /// <summary>
         /// Gets or sets the Type of the <see cref="User"/> entity.

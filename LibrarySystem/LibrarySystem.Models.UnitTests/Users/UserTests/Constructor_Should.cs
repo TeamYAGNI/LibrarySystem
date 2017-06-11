@@ -74,6 +74,16 @@ namespace LibrarySystem.Models.UnitTests.Users.UserTests
             Assert.That(user, Has.Property("AuthKey"));
         }
 
+        public void InstantiateUserWithAuthKeyExpirationDateProperty_WhenNoArgumentsArePassed()
+        {
+            // Arrange
+            // Act
+            var user = new User();
+
+            // Assert
+            Assert.That(user, Has.Property("AuthKeyExpirationDate"));
+        }
+
         [Test]
         [Category("Models.Users.User.Constructor")]
         public void InstantiateUserWithTypeProperty_WhenNoArgumentsArePassed()
