@@ -26,7 +26,7 @@ namespace LibrarySystem.Models.Logs
         /// </summary>
         /// <value>Message of the <see cref="Log"/> entity.</value>
         [Required]
-        [Column(TypeName = "ntext")]
+        [StringLength(1024, ErrorMessage = "LogType Name Invalid Length", MinimumLength = 1)]
         public string Message { get; set; }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace LibrarySystem.Models.Logs
         /// </summary>
         /// <value>DateTime when the log is logged.</value>
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd hh:mm:ss.fff}")]
+        [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
 
         /// <summary>

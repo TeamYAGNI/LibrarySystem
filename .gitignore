@@ -286,5 +286,9 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
 /LibrarySystem/LibrarySystem.Repositories/Settings.StyleCop
 /LibrarySystem/LibrarySystem.Repositories/Settings.StyleCop
+
+# SQLite database
+LibrarySystem.sqlite

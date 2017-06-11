@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.ConsoleClient.UnitTests", "LibrarySystem.ConsoleClient.UnitTests\LibrarySystem.ConsoleClient.UnitTests.csproj", "{3EFD1A2D-267D-48BC-A3E0-DA1D5DC86A5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Data.Users", "LibrarySystem.Data.Users\LibrarySystem.Data.Users.csproj", "{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Data.Logs", "LibrarySystem.Data.Logs\LibrarySystem.Data.Logs.csproj", "{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}"
 EndProjectGlobal
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ EndProjectGlobal
 		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
