@@ -3,8 +3,8 @@
 // </copyright>
 // <summary>Holds implementation of JSON serializer wrapper.</summary>
 
-using System;
 using System.Collections.Generic;
+using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
 using Newtonsoft.Json;
@@ -21,12 +21,9 @@ namespace LibrarySystem.FileExporters.Utils
         /// </summary>
         /// <param name="journals">Collection of Journal DTOs.</param>
         /// <returns>A JSON string of the specified object.</returns>
-        public string Serialize(IEnumerable<DTOJournal> journals)
+        public string Serialize(IEnumerable<JournalDto> journals)
         {
-            if (journals == null)
-            {
-                throw new ArgumentNullException("Journals cannot be null.");
-            }
+            Guard.WhenArgument(journals, "Serialize").IsNull().Throw();
 
             return JsonConvert.SerializeObject(journals, Formatting.Indented);
         }

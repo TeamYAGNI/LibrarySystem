@@ -4,8 +4,8 @@
 // <summary>Holds unit tests of JsonWriter object constructor.</summary>
 
 using System;
-using NUnit.Framework;
 using LibrarySystem.FileExporters.Utils;
+using NUnit.Framework;
 
 namespace LibrarySystem.FileExporters.UnitTests.Utils.TextWriterWrapperTests
 {
@@ -14,10 +14,10 @@ namespace LibrarySystem.FileExporters.UnitTests.Utils.TextWriterWrapperTests
     {
         [Test]
         [Category("FileExplorers.JsonWriter.Constructor")]
-        public void ThrowArgumentException_WhenDirectoryArgumentIsNull()
+        public void ThrowArgumentNullException_WhenDirectoryArgumentIsNull()
         {
             // AAA
-            Assert.Throws<ArgumentException>(() => new TextWriterWrapper(null, "file"));
+            Assert.Throws<ArgumentNullException>(() => new TextWriterWrapper(null, "file"));
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace LibrarySystem.FileExporters.UnitTests.Utils.TextWriterWrapperTests
         public void ThrowArgumentException_WhenDirectoryArgumentIsEmpty()
         {
             // AAA
-            Assert.Throws<ArgumentException>(() => new TextWriterWrapper("", "file"));
+            Assert.Throws<ArgumentException>(() => new TextWriterWrapper(string.Empty, "file"));
         }
     }
 }

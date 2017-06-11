@@ -3,10 +3,9 @@
 // </copyright>
 // <summary>Holds implementation of JSON serializer wrapper.</summary>
 
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Xml.Serialization;
+using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
 
@@ -28,10 +27,7 @@ namespace LibrarySystem.FileExporters.Utils
         /// <param name="xmlSerializer"></param>
         public XmlSerializerWrapper(XmlSerializer xmlSerializer)
         {
-            if (xmlSerializer == null)
-            {
-                throw new ArgumentNullException("Text stream wrapper cannot be null.");
-            }
+            Guard.WhenArgument(xmlSerializer, "XmlSerializerWrapper").IsNull().Throw();
         
             this.xmlSerializer = xmlSerializer;
         }
@@ -39,9 +35,11 @@ namespace LibrarySystem.FileExporters.Utils
         /// <summary>
         /// 
         /// </summary>
-        public void Serialize(TextWriter textWriter, IEnumerable<DTOBook> books)
+        public void Serialize(ITextWriter textWriter, IEnumerable<BookDto> books)
         {
+            Guard.WhenArgument(books, "Serialize").IsNull().Throw();
 
+            this.xmlSerializer.Serialize(textWriter.GetTextWriter(), books);
         }
     }
 }

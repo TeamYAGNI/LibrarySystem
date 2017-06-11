@@ -51,7 +51,7 @@ namespace LibrarySystem.FileExporters
         /// Exports the specified collection of Book DTOs to XML text file.
         /// </summary>
         /// <param name="books">Collection of Book DTOs.</param>
-        public void ExportBooks(IEnumerable<DTOBook> books)
+        public void ExportBooks(IEnumerable<BookDto> books)
         {
             if (books == null)
             {
@@ -60,7 +60,7 @@ namespace LibrarySystem.FileExporters
 
             using (this.textWriterWrapper.GetTextWriter())
             {
-                this.xmlSerializerWrapper.Serialize(this.textWriterWrapper.GetTextWriter(), books);
+                this.xmlSerializerWrapper.Serialize(this.textWriterWrapper, books);
             }
         }
     }

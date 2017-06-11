@@ -3,8 +3,8 @@
 // </copyright>
 // <summary>Holds implementation of TextWriter wrapper.</summary>
 
-using System;
 using System.IO;
+using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
 
 namespace LibrarySystem.FileExporters.Utils
@@ -26,16 +26,10 @@ namespace LibrarySystem.FileExporters.Utils
         /// <param name="fileName"></param>
         public TextWriterWrapper(string directory, string fileName)
         {
-            if (string.IsNullOrEmpty(directory))
-            {
-                throw new ArgumentException("Direcotry path cannot be null or empty string!");
-            }
+            Guard.WhenArgument(directory, "TextWriterWrapper").IsNullOrEmpty().Throw();
 
-            if (string.IsNullOrEmpty(fileName))
-            {
-                throw new ArgumentException("File name cannot be null or empty string!");
-            }
-            
+            Guard.WhenArgument(fileName, "TextWriterWrapper").IsNullOrEmpty().Throw();
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);

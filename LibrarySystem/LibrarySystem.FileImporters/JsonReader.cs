@@ -3,10 +3,9 @@
 // </copyright>
 // <summary>Holds implementation of JSON file reader.</summary>
 
-using System;
 using System.Collections.Generic;
-using System.IO;
-using LibrarySystem.FileImporters.Utils;
+using Bytes2you.Validation;
+using LibrarySystem.FileImporters.Utils.Contracts;
 using LibrarySystem.Models;
 
 namespace LibrarySystem.FileImporters
@@ -19,43 +18,37 @@ namespace LibrarySystem.FileImporters
         /// <summary>
         /// Stream reader object handle.
         /// </summary>
-        private StreamReader streamReader;
+        private IStreamReader streamReaderWrapper;
 
         /// <summary>
         /// JSON Journals deserializer object handle.
         /// </summary>
-        private JsonJournalsDeserializer jsonJournalsDeserializer;
+        private IJsonDeserializer jsonDeserializerWrapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonReader"/> class.
         /// </summary>
-        /// <param name="streamReader">Stream reader to be used for reading text data.</param>
-        /// <param name="jsonJournalsDeserializer">JSON deserializer to be used for converting JSON text.</param>
-        public JsonReader(StreamReader streamReader, JsonJournalsDeserializer jsonJournalsDeserializer)
+        /// <param name="streamReaderWrapper">Stream reader wrapper to be used for reading text data.</param>
+        /// <param name="jsonDeserializerWrapper">JSON deserializer wrapper to be used for converting JSON text.</param>
+        public JsonReader(IStreamReader streamReaderWrapper, IJsonDeserializer jsonDeserializerWrapper)
         {
-            if (streamReader == null)
-            {
-                throw new ArgumentNullException("Stream reader cannot be null.");
-            }
+            Guard.WhenArgument(streamReaderWrapper, "JsonReader").IsNull().Throw();
 
-            if (jsonJournalsDeserializer == null)
-            {
-                throw new ArgumentNullException("JSON Journals deserializer cannot be null.");
-            }
+            Guard.WhenArgument(jsonDeserializerWrapper, "JsonReader").IsNull().Throw();
 
-            this.streamReader = streamReader;
-            this.jsonJournalsDeserializer = jsonJournalsDeserializer;
+            this.streamReaderWrapper = streamReaderWrapper;
+            this.jsonDeserializerWrapper = jsonDeserializerWrapper;
         }
 
         /// <summary>
         /// Imports the specified collection of Journal DTOs from JSON text file.
         /// </summary>
         /// <returns>Collection of Journal DTOs.</returns>
-        public IEnumerable<DTOJournal> ImportJournals()
+        public IEnumerable<JournalDto> ImportJournals()
         {
-            using (this.streamReader)
+            using (this.streamReaderWrapper.GetStreamReader())
             {
-                return this.jsonJournalsDeserializer.Deserialize(this.streamReader.ReadToEnd());
+                return this.jsonDeserializerWrapper.Deserialize(this.streamReaderWrapper.GetStreamReader().ReadToEnd());
             }
         }
     }

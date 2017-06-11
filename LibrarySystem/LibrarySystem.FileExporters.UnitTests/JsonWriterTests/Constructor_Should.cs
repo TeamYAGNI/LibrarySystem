@@ -30,7 +30,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
 
         [Test]
         [Category("FileExplorers.JsonWriter.Constructor")]
-        public void ThrowArgumentNullException_WhenTextStreamWriterArgumentIsNull()
+        public void ThrowArgumenNullException_WhenTextStreamWriterArgumentIsNull()
         {
             // Arrange
             var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();

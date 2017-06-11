@@ -3,8 +3,8 @@
 // </copyright>
 // <summary>Holds implementation of JSON file writer.</summary>
 
-using System;
 using System.Collections.Generic;
+using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
 
@@ -32,15 +32,9 @@ namespace LibrarySystem.FileExporters
         /// <param name="jsonJournalsSerializer">JSON serializer to be used for converting object data</param>
         public JsonWriter(ITextWriter textWriterWrapper, IJsonSerializer jsonSerializerWrapper)
         {
-            if (textWriterWrapper == null)
-            {
-                throw new ArgumentNullException("Text writer wrapper cannot be null.");
-            }
-
-            if (jsonSerializerWrapper == null)
-            {
-                throw new ArgumentNullException("JSON serializer wrapper cannot be null.");
-            }
+            Guard.WhenArgument(textWriterWrapper, "JsonWriter").IsNull().Throw();
+            
+            Guard.WhenArgument(jsonSerializerWrapper, "JsonWriter").IsNull().Throw();
 
             this.textWriterWrapper = textWriterWrapper;
             this.jsonSerializerWrapper = jsonSerializerWrapper;
@@ -50,12 +44,9 @@ namespace LibrarySystem.FileExporters
         /// Exports the specified collection of Journal DTOs to JSON text file.
         /// </summary>
         /// <param name="journals">Collection of Journal DTOs.</param>
-        public void ExportJournals(IEnumerable<DTOJournal> journals)
+        public void ExportJournals(IEnumerable<JournalDto> journals)
         {
-            if (journals == null)
-            {
-                throw new ArgumentNullException("Journals cannot be null.");
-            }
+            Guard.WhenArgument(journals, "ExportJournals").IsNull().Throw();
 
             using (this.textWriterWrapper.GetTextWriter())
             {

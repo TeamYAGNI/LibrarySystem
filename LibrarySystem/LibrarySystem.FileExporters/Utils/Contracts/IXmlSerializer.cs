@@ -17,6 +17,6 @@ namespace LibrarySystem.FileExporters.Utils.Contracts
         /// <summary>
         /// 
         /// </summary>
-        void Serialize(TextWriter textWriter, IEnumerable<DTOBook> books);
+        void Serialize(ITextWriter textWriter, IEnumerable<BookDto> books);
     }
 }

@@ -58,8 +58,8 @@
     <Compile Include="Book.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="DTOBook.cs" />
-    <Compile Include="DTOJournal.cs" />
+    <Compile Include="BookDto.cs" />
+    <Compile Include="JournalDto.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Enumerations\GenderType.cs" />
     <Compile Include="Enumerations\JobTitle.cs" />

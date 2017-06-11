@@ -18,6 +18,6 @@ namespace LibrarySystem.FileExporters.Utils.Contracts
         /// </summary>
         /// <param name="journals"></param>
         /// <returns></returns>
-        string Serialize(IEnumerable<DTOJournal> journals);
+        string Serialize(IEnumerable<JournalDto> journals);
     }
 }

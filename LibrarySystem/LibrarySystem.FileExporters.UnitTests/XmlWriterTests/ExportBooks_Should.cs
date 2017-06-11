@@ -9,7 +9,6 @@ using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
 using Moq;
 using NUnit.Framework;
-using System.IO;
 
 namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
 {
@@ -18,20 +17,20 @@ namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
     {
         [Test]
         [Category("FileExplorers.XmlWriter.Constructor")]
-        public void CallGetTextWriterMethodTwice_WhenAllArgumentsArePassed()
+        public void CallGetTextWriterMethodOnce_WhenAllArgumentsArePassed()
         {
             // Arrange
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter());
             var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
-            var books = new Mock<IEnumerable<DTOBook>>();
+            var books = new Mock<IEnumerable<BookDto>>();
             var xmlWriter = new XmlWriter(mockTextWriterWrapper.Object, mockXmlSerializerWrapper.Object);
 
             // Act
             xmlWriter.ExportBooks(books.Object);
 
             // Assert
-            mockTextWriterWrapper.Verify(x => x.GetTextWriter(), Times.Exactly(2));
+            mockTextWriterWrapper.Verify(x => x.GetTextWriter(), Times.Once);
         }
 
         [Test]
@@ -42,15 +41,15 @@ namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter());
             var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
-            var books = new Mock<IEnumerable<DTOBook>>();
-            mockXmlSerializerWrapper.Setup(p => p.Serialize(It.IsAny<TextWriter>(), books.Object));
+            var books = new Mock<IEnumerable<BookDto>>();
+            mockXmlSerializerWrapper.Setup(p => p.Serialize(It.IsAny<ITextWriter>(), books.Object));
             var xmlWriter = new XmlWriter(mockTextWriterWrapper.Object, mockXmlSerializerWrapper.Object);
 
             // Act
             xmlWriter.ExportBooks(books.Object);
 
             // Assert
-            mockXmlSerializerWrapper.Verify(x => x.Serialize(It.IsAny<TextWriter>(), books.Object), Times.Once());
+            mockXmlSerializerWrapper.Verify(x => x.Serialize(It.IsAny<ITextWriter>(), books.Object), Times.Once());
         }
 
         [Test]

@@ -3,10 +3,9 @@
 // </copyright>
 // <summary>Holds implementation of XML file reader.</summary>
 
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml.Serialization;
+using Bytes2you.Validation;
+using LibrarySystem.FileImporters.Utils.Contracts;
 using LibrarySystem.Models;
 
 namespace LibrarySystem.FileImporters
@@ -19,43 +18,37 @@ namespace LibrarySystem.FileImporters
         /// <summary>
         /// Stream reader object handle.
         /// </summary>
-        private StreamReader streamReader;
+        private IStreamReader streamReaderWrapper;
 
         /// <summary>
         /// XML Books deserializer object handle.
         /// </summary>
-        private XmlSerializer xmlBooksSerializer;
+        private IXmlDeserializer xmlDeserializerWrapper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XmlReader"/> class.
         /// </summary>
-        /// <param name="streamReader">Stream reader to be used for reading text data.</param>
+        /// <param name="streamReaderWrapper">Stream reader to be used for reading text data.</param>
         /// <param name="xmlBooksSerializer">XML deserializer to be used for converting XML text.</param>
-        public XmlReader(StreamReader streamReader, XmlSerializer xmlBooksSerializer)
+        public XmlReader(IStreamReader streamReaderWrapper, IXmlDeserializer xmlDeserializerWrapper)
         {
-            if (streamReader == null)
-            {
-                throw new ArgumentNullException("Stream reader cannot be null.");
-            }
+            Guard.WhenArgument(streamReaderWrapper, "JsonReader").IsNull().Throw();
 
-            if (xmlBooksSerializer == null)
-            {
-                throw new ArgumentNullException("XML Books serializer cannot be null.");
-            }
+            Guard.WhenArgument(xmlDeserializerWrapper, "JsonReader").IsNull().Throw();
 
-            this.streamReader = streamReader;
-            this.xmlBooksSerializer = xmlBooksSerializer;
+            this.streamReaderWrapper = streamReaderWrapper;
+            this.xmlDeserializerWrapper = xmlDeserializerWrapper;
         }
 
         /// <summary>
         /// Imports the specified collection of Book DTOs from XML text file.
         /// </summary>
         /// <returns>Collection of Journal DTOs</returns>
-        public IEnumerable<DTOBook> ImportBooks()
+        public IEnumerable<BookDto> ImportBooks()
         {
-            using (this.streamReader)
+            using (this.streamReaderWrapper.GetStreamReader())
             {
-                return (IEnumerable<DTOBook>)this.xmlBooksSerializer.Deserialize(this.streamReader);
+                return (IEnumerable<BookDto>)this.xmlDeserializerWrapper.Deserialize(this.streamReaderWrapper);
             }
         }
     }

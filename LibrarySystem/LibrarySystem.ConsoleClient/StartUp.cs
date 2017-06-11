@@ -26,8 +26,9 @@ namespace LibrarySystem.ConsoleClient
         {
             // Read XML Books
             var xmlFileReader = new XmlReader(
-                new StreamReader("./../../../books.xml"),
-                new XmlSerializer(typeof(List<DTOBook>)));
+                new StreamReaderWrapper("./../../../books.xml"),
+                new XmlDeserializerWrapper(
+                    new XmlSerializer(typeof(List<BookDto>))));
             var xmlBooks = xmlFileReader.ImportBooks();
             foreach (var xmlBook in xmlBooks)
             {
@@ -41,13 +42,13 @@ namespace LibrarySystem.ConsoleClient
             var xmlFileWriter = new XmlWriter(
                 new TextWriterWrapper("./../../../", "books-inventory.xml"),
                 new XmlSerializerWrapper(
-                    new XmlSerializer(typeof(List<DTOBook>))));
+                    new XmlSerializer(typeof(List<BookDto>))));
             xmlFileWriter.ExportBooks(xmlBooks);
 
             // Read JSON Journals
             var jsonImporter = new JsonReader(
-                new StreamReader("./../../../journals.json"),
-                new JsonJournalsDeserializer());
+                new StreamReaderWrapper("./../../../journals.json"),
+                new JsonDeserializerWrapper());
             var journals = jsonImporter.ImportJournals();
             foreach (var journal in journals)
             {

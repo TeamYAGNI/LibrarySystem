@@ -20,7 +20,7 @@ namespace LibrarySystem.FileExporters.UnitTests.Utils.JsonSerializerWrapperTests
         {
             // Arrange
             var jsonSerializerWrapper = new JsonSerializerWrapper();
-            var journals = new List<DTOJournal>();
+            var journals = new List<JournalDto>();
 
             // Act
             var result = jsonSerializerWrapper.Serialize(journals);
@@ -31,7 +31,7 @@ namespace LibrarySystem.FileExporters.UnitTests.Utils.JsonSerializerWrapperTests
 
         [Test]
         [Category("FileExplorers.XmlWriter.Constructor")]
-        public void ThrowArgumentException_WhenJournalsArgumentsIsNull()
+        public void ThrowArgumentNullException_WhenJournalsArgumentsIsNull()
         {
             // Arrange
             var jsonSerializerWrapper = new JsonSerializerWrapper();

@@ -23,7 +23,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
             var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
-            var journals = new Mock<IEnumerable<DTOJournal>>();
+            var journals = new Mock<IEnumerable<JournalDto>>();
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 
             // Act
@@ -41,7 +41,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
             var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
-            var journals = new Mock<IEnumerable<DTOJournal>>();
+            var journals = new Mock<IEnumerable<JournalDto>>();
             mockJsonSerializerWrapper.Setup(p => p.Serialize(journals.Object));
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 
