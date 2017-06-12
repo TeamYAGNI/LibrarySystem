@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Models;
@@ -34,6 +35,7 @@ namespace LibrarySystem.Repositories.Data
         public IEnumerable<Genre> GetTop5GenresWithMostBooks()
         {
             return this.LibraryDbContext.Genres
+                .Include(g => g.Books)
                 .Where(g => g.Books != null)
                 .OrderByDescending(g => g.Books.Count)
                 .Take(5)

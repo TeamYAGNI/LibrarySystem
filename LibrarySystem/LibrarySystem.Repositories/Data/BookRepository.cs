@@ -22,6 +22,11 @@ namespace LibrarySystem.Repositories.Data
             }
         }
 
+        public IEnumerable<Book> GetBooksByGenreName(string genreName)
+        {
+            return this.Find(b => b.Genres.Any(g => g.Name == genreName));
+        }
+
         public IEnumerable<Book> GetBooksLendedByClient(string PIN)
         {
             return this.LibraryDbContext.Books

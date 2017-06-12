@@ -6,6 +6,8 @@ namespace LibrarySystem.Repositories.Data.Contracts
 {
     public interface IBookRepository : IRepository<Book>
     {
+        IEnumerable<Book> GetBooksByGenreName(string genreName);
+
         IEnumerable<Book> GetBooksLendedByClient(string PIN);
 
         IEnumerable<Book> GetBooksLendingHistoryForClient(string PIN);

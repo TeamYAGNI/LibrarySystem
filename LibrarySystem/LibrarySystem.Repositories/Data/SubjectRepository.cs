@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using LibrarySystem.Data;
 using LibrarySystem.Models;
@@ -34,6 +35,7 @@ namespace LibrarySystem.Repositories.Data
         public IEnumerable<Subject> GetTop5SubjectsWithMostJournals()
         {
             return this.LibraryDbContext.Subjects
+                .Include(s => s.Journals)
                 .Where(s => s.Journals != null)
                 .OrderByDescending(s => s.Journals.Count)
                 .Take(5)
@@ -43,6 +45,7 @@ namespace LibrarySystem.Repositories.Data
         public IEnumerable<Subject> GetTop5SubjectsOrderedByJournalImpactFactor()
         {
             return this.LibraryDbContext.Subjects
+                .Include(s => s.Journals)
                 .Where(s => s.Journals != null)
                 .OrderByDescending(s => s.Journals.OrderByDescending(j => j.ImpactFactor).Take(5))
                 .ToList();

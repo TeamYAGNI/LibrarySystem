@@ -47,6 +47,19 @@
     <Compile Include="Functional\ClientReturnJournalsCommand.cs" />
     <Compile Include="Functional\UserLoginCommand.cs" />
     <Compile Include="Functional\UserLogoutCommand.cs" />
+    <Compile Include="Projection\Authors\GetAuthorsByBookTitleCommand.cs" />
+    <Compile Include="Projection\Books\GetBookByISBNCommand.cs" />
+    <Compile Include="Projection\Books\GetBooksByAuthorCommand.cs" />
+    <Compile Include="Projection\Books\GetBooksByGenreNameCommand.cs" />
+    <Compile Include="Projection\Books\GetBooksByPublisherCommand.cs" />
+    <Compile Include="Projection\Genres\GetGenresWithMostBooksCommand.cs" />
+    <Compile Include="Projection\Journals\GetJournalByISSNCommand.cs" />
+    <Compile Include="Projection\Journals\GetJournalsByPublisherNameCommand.cs" />
+    <Compile Include="Projection\Journals\GetJournalsBySubjectCommand.cs" />
+    <Compile Include="Projection\Publishers\GetPublisherByBookTitleCommand.cs" />
+    <Compile Include="Projection\Publishers\GetPublisherByJournalTitleCommand.cs" />
+    <Compile Include="Projection\Subjects\GetSubjectsWithHighestImpactFactorcs.cs" />
+    <Compile Include="Projection\Subjects\GetSubjectsWithMostJournalsCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,5 +80,6 @@
       <Name>LibrarySystem.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
