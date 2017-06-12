@@ -3,7 +3,9 @@
 // </copyright>
 // <summary>Holds implementation of LibrarySystemNinjectModule class.</summary>
 
+using System.IO;
 using System.Linq;
+using System.Reflection;
 
 using LibrarySystem.Commands.Administrative.Listings.Client;
 using LibrarySystem.Commands.Administrative.Listings.Employee;
@@ -26,6 +28,7 @@ using LibrarySystem.Models.Factory;
 
 using Ninject;
 using Ninject.Activation;
+using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Factory;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Modules;
@@ -74,6 +77,13 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         public override void Load()
         {
             // Basic Baindings
+            Kernel.Bind(x =>
+            {
+                x.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+                .SelectAllClasses()
+                .BindDefaultInterface();
+            });
+
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
             this.Bind<ICommandReader>().To<ConsoleCommandReader>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
