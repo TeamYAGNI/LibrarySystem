@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using LibrarySystem.Commands.Functional;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 using Moq;
 using NUnit.Framework;
 
@@ -22,7 +20,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
         {
             //Arrange
             var lendingRepositoryMock = new Mock<ILendingRepository>();
-            var command = new ClientReturnBookCommand(lendingRepositoryMock.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryMock.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             //Act
@@ -37,7 +37,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
         {
             //Arrange
             var lendingRepositoryStub = new Mock<ILendingRepository>();
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             var expected = $"Book with ISBN {parameters[1]} was not found in Client's collection.";
@@ -57,7 +59,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
             var lending = new Lending() { Book = book };
             var lendingList = new List<Lending>() { lending };
             lendingRepositoryStub.Setup(l => l.GetLendingsByClientPIN(It.IsAny<string>())).Returns(lendingList);
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             var expectedAvailableQuantity = book.Available + 1;
@@ -86,7 +90,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
             };
             var lendingList = new List<Lending>() { lending };
             lendingRepositoryStub.Setup(l => l.GetLendingsByClientPIN(It.IsAny<string>())).Returns(lendingList);
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             var expected = $"{parameters[2]}";
@@ -119,7 +125,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
             };
             var lendingList = new List<Lending>() { lending };
             lendingRepositoryStub.Setup(l => l.GetLendingsByClientPIN(It.IsAny<string>())).Returns(lendingList);
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             var expected = $"Delayed by 1 days.{Environment.NewLine}{parameters[2]}";
@@ -152,7 +160,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
             };
             var lendingList = new List<Lending>() { lending };
             lendingRepositoryStub.Setup(l => l.GetLendingsByClientPIN(It.IsAny<string>())).Returns(lendingList);
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             var expected = $"Delayed by 1 days.{Environment.NewLine}{parameters[2]}";
@@ -185,7 +195,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
             };
             var lendingList = new List<Lending>() { lending };
             lendingRepositoryStub.Setup(l => l.GetLendingsByClientPIN(It.IsAny<string>())).Returns(lendingList);
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2", "remarks" };
             var expected = $"{book.Title} was successfully returned.";

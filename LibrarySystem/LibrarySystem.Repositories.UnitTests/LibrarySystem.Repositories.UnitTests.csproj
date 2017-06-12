@@ -91,6 +91,10 @@
       <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Repositories.Contracts\LibrarySystem.Repositories.Contracts.csproj">
+      <Project>{612C971F-181D-4890-8FBC-97E84F7DF5CD}</Project>
+      <Name>LibrarySystem.Repositories.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Repositories\LibrarySystem.Repositories.csproj">
       <Project>{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}</Project>
       <Name>LibrarySystem.Repositories</Name>

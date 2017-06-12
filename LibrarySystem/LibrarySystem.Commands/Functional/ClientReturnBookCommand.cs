@@ -2,22 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Framework.Providers;
-using LibrarySystem.Models;
-using LibrarySystem.Models.Factory;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
     public class ClientReturnBookCommand : ICommand
     {
+        private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly ILendingRepository lendingRepository;
 
-        public ClientReturnBookCommand(ILendingRepository lendingRepository)
+        public ClientReturnBookCommand(ILibraryUnitOfWork libraryUnitOfWork, ILendingRepository lendingRepository)
         {
+            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
+            Guard.WhenArgument(lendingRepository, "lendingRepository").IsNull().Throw();
+
+            this.libraryUnitOfWork = libraryUnitOfWork;
             this.lendingRepository = lendingRepository;
         }
 
@@ -52,6 +55,8 @@ namespace LibrarySystem.Commands.Functional
             lending.ReturnDate = TimeProvider.Current.Today;
 
             sb.AppendLine($"{book.Title} was successfully returned.");
+
+            this.libraryUnitOfWork.Commit();
             return sb.ToString();
         }
     }

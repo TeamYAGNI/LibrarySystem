@@ -1,26 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Factory;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
     public class ClientGetBookCommand : ICommand
     {
+        private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly IModelsFactory modelsFactory;
         private readonly IClientRepository clientRepository;
         private readonly IBookRepository bookRepository;
         private readonly ILendingRepository lendingRepository;
 
-        public ClientGetBookCommand(IModelsFactory modelsFactory, IClientRepository clientRepository, IBookRepository bookRepository, ILendingRepository lendingRepository)
+        public ClientGetBookCommand(ILibraryUnitOfWork libraryUnitOfWork, IModelsFactory modelsFactory, IClientRepository clientRepository, IBookRepository bookRepository, ILendingRepository lendingRepository)
         {
+            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
+            Guard.WhenArgument(modelsFactory, "modelsFactory").IsNull().Throw();
+            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
+            Guard.WhenArgument(bookRepository, "bookRepository").IsNull().Throw();
+            Guard.WhenArgument(lendingRepository, "lendingRepository").IsNull().Throw();
+
+            this.libraryUnitOfWork = libraryUnitOfWork;
             this.modelsFactory = modelsFactory;
             this.clientRepository = clientRepository;
             this.bookRepository = bookRepository;
@@ -61,6 +67,8 @@ namespace LibrarySystem.Commands.Functional
 
             sb.AppendLine($"{client.FullName} got {book.Title}");
             sb.AppendLine($"Should return it by {TimeProvider.Current.Today.AddMonths(1).Date:D}");
+
+            this.libraryUnitOfWork.Commit();
             return sb.ToString();
         }
     }

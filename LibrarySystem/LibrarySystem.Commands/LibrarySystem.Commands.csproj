@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,12 +43,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrative\Listings\Client\GetAllClientsWithDelayedLendingsCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetAllClientsWithJournalsCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetClientAddressByPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetClientByPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetLendingsByClientPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetRemarksByClientPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Contracts\IAdministratorCommand.cs" />
+    <Compile Include="Administrative\Listings\Employee\GetAllEmployeesByManagerNameCommand.cs" />
+    <Compile Include="Administrative\Listings\Employee\GetAllEmployeesWithoutManagerCommand.cs" />
+    <Compile Include="Administrative\Listings\Employee\GetEmployeesByFullNameCommand.cs" />
+    <Compile Include="Administrative\Listings\User\GetLoggedInUsersCommand.cs" />
+    <Compile Include="Contracts\IAuthKeyProvider.cs" />
+    <Compile Include="Contracts\IAuthValidator.cs" />
+    <Compile Include="Contracts\IPassport.cs" />
     <Compile Include="Functional\ClientExitLibraryCommand.cs" />
     <Compile Include="Functional\ClientGetBookCommand.cs" />
     <Compile Include="Functional\ClientGetJournalCommand.cs" />
     <Compile Include="Functional\ClientReturnBookCommand.cs" />
     <Compile Include="Functional\ClientReturnJournalsCommand.cs" />
+    <Compile Include="Functional\UserLoginCommand.cs" />
+    <Compile Include="Functional\UserLogoutCommand.cs" />
+    <Compile Include="Projection\Authors\GetAuthorsByBookTitleCommand.cs" />
+    <Compile Include="Projection\Books\GetBookByISBNCommand.cs" />
+    <Compile Include="Projection\Books\GetBooksByAuthorCommand.cs" />
+    <Compile Include="Projection\Books\GetBooksByGenreNameCommand.cs" />
+    <Compile Include="Projection\Books\GetBooksByPublisherCommand.cs" />
+    <Compile Include="Projection\Genres\GetGenresWithMostBooksCommand.cs" />
+    <Compile Include="Projection\Journals\GetJournalByISSNCommand.cs" />
+    <Compile Include="Projection\Journals\GetJournalsByPublisherNameCommand.cs" />
+    <Compile Include="Projection\Journals\GetJournalsBySubjectCommand.cs" />
+    <Compile Include="Projection\Publishers\GetPublisherByBookTitleCommand.cs" />
+    <Compile Include="Projection\Publishers\GetPublisherByJournalTitleCommand.cs" />
+    <Compile Include="Projection\Subjects\GetSubjectsWithHighestImpactFactorcs.cs" />
+    <Compile Include="Projection\Subjects\GetSubjectsWithMostJournalsCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Contracts\IHashProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibrarySystem.Commands.Contracts\LibrarySystem.Commands.Contracts.csproj">
@@ -60,6 +93,10 @@
       <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Repositories.Contracts\LibrarySystem.Repositories.Contracts.csproj">
+      <Project>{612C971F-181D-4890-8FBC-97E84F7DF5CD}</Project>
+      <Name>LibrarySystem.Repositories.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Repositories\LibrarySystem.Repositories.csproj">
       <Project>{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}</Project>
       <Name>LibrarySystem.Repositories</Name>
@@ -67,6 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Administrative\Creational\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

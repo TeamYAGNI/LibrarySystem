@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using LibrarySystem.Commands.Functional;
 using LibrarySystem.Models;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 using Moq;
 using NUnit.Framework;
 
@@ -22,8 +20,10 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             //Arrange
             var clientsRepositoryMock = new Mock<IClientRepository>();
             var journalsRepositoryStub = new Mock<IJournalRepository>();
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryMock.Object, journalsRepositoryStub.Object);
+
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryMock.Object, journalsRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
             //Act
             command.Execute(parameters);
@@ -39,8 +39,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             //Arrange
             var clientsRepositoryStub = new Mock<IClientRepository>();
             var journalsRepositoryMock = new Mock<IJournalRepository>();
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryStub.Object, journalsRepositoryMock.Object);
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryStub.Object, journalsRepositoryMock.Object);
             var parameters = new List<string>() { "1", "2" };
             //Act
             command.Execute(parameters);
@@ -56,8 +57,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             //Arrange
             var clientsRepositoryStub = new Mock<IClientRepository>();
             var journalsRepositoryStub = new Mock<IJournalRepository>();
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryStub.Object, journalsRepositoryStub.Object);
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryStub.Object, journalsRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
             var expected = $"Client with PIN {parameters[0]} not found";
             //Act
@@ -78,8 +80,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             clientsRepositoryStub.Setup(c => c.GetClientByPin(It.IsAny<string>())).Returns(client);
 
             var journalsRepositoryStub = new Mock<IJournalRepository>();
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryStub.Object, journalsRepositoryStub.Object);
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryStub.Object, journalsRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
             var expected = $"Journal with ISSN {parameters[1]} not found";
             //Act
@@ -102,8 +105,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             var journalsRepositoryStub = new Mock<IJournalRepository>();
             var journal = new Journal() { Available = 0, Title = "test" };
             journalsRepositoryStub.Setup(j => j.FindJournalByISSN(It.IsAny<string>())).Returns(journal);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryStub.Object, journalsRepositoryStub.Object);
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryStub.Object, journalsRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
             var expected = $"Journal test is not available right now";
             //Act
@@ -126,8 +130,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             var journalsRepositoryStub = new Mock<IJournalRepository>();
             var journal = new Journal() { Available = 1, Title = "test" };
             journalsRepositoryStub.Setup(j => j.FindJournalByISSN(It.IsAny<string>())).Returns(journal);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryStub.Object, journalsRepositoryStub.Object);
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryStub.Object, journalsRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
             var expected = $"Journal test is not available right now";
             //Act
@@ -151,8 +156,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetJournalComma
             var journalsRepositoryStub = new Mock<IJournalRepository>();
             var journal = new Journal() { Available = 1, Title = "test" };
             journalsRepositoryStub.Setup(j => j.FindJournalByISSN(It.IsAny<string>())).Returns(journal);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var command = new ClientGetJournalCommand(clientsRepositoryStub.Object, journalsRepositoryStub.Object);
+            var command = new ClientGetJournalCommand(unitOfWorkStub.Object, clientsRepositoryStub.Object, journalsRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
             var expected = $"{client.FullName} got {journal.Title}{Environment.NewLine}This item can not be lended";
             //Act

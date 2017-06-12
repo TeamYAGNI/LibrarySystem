@@ -1,23 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
-using LibrarySystem.Models;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
     public class ClientReturnJournalsCommand : ICommand
     {
+        private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly IJournalRepository journalRepository;
 
-        public ClientReturnJournalsCommand(IJournalRepository journalRepository)
+        public ClientReturnJournalsCommand(ILibraryUnitOfWork libraryUnitOfWork, IJournalRepository journalRepository)
         {
+            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
+            Guard.WhenArgument(journalRepository, "journalRepository").IsNull().Throw();
+
+            this.libraryUnitOfWork = libraryUnitOfWork;
             this.journalRepository = journalRepository;
         }
+
         public string Execute(IList<string> parameters)
         {
             var sb = new StringBuilder();
@@ -46,6 +50,7 @@ namespace LibrarySystem.Commands.Functional
 
             client.Journals.Clear();
 
+            this.libraryUnitOfWork.Commit();
             return sb.ToString();
         }
     }

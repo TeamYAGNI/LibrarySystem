@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+
 using LibrarySystem.Commands.Functional;
+using LibrarySystem.Framework.Providers;
+using LibrarySystem.Models;
 using LibrarySystem.Models.Factory;
-using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+
 using Moq;
 using NUnit.Framework;
-using LibrarySystem.Models;
-using LibrarySystem.Framework.Providers;
 using System;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandTests
 {
@@ -23,7 +25,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
             var clientRepositoryMock = new Mock<IClientRepository>();
             var bookRepositoryStub = new Mock<IBookRepository>();
             var lendingRepositoryStub = new Mock<ILendingRepository>();
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryMock.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryMock.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2" };
             //Act
@@ -42,7 +46,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
             var clientRepositoryStub = new Mock<IClientRepository>();
             var bookRepositoryMock = new Mock<IBookRepository>();
             var lendingRepositoryStub = new Mock<ILendingRepository>();
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryMock.Object, lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryMock.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2"};
             //Act
@@ -61,7 +67,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
             var clientRepositoryStub = new Mock<IClientRepository>();
             var bookRepositoryStub = new Mock<IBookRepository>();
             var lendingRepositoryStub = new Mock<ILendingRepository>();
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
 
             var expected = $"Client with PIN {parameters[0]} not found";
@@ -83,7 +91,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
             clientRepositoryStub.Setup(c => c.GetClientByPin(It.IsAny<string>())).Returns(new Client() { PIN = "1" });
             var bookRepositoryStub = new Mock<IBookRepository>();
             var lendingRepositoryStub = new Mock<ILendingRepository>();
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
             var parameters = new List<string>() { "1", "2" };
 
             var expected = $"Book with ISBN {parameters[1]} not found";
@@ -109,8 +119,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
             bookRepositoryStub.Setup(b => b.GetBookByISBN(It.IsAny<string>())).Returns(new Book() { ISBN = "2", Available = 0, Title = "test" });
 
             var lendingRepositoryStub = new Mock<ILendingRepository>();
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
 
             var parameters = new List<string>() { "1", "2" };
             var expected = $"Book test is not available right now";
@@ -139,7 +150,8 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
 
             var lendingRepositoryStub = new Mock<ILendingRepository>();
 
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryMock.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryMock.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
 
             var timeProviderStub = new Mock<DefaultTimeProvider>();
             timeProviderStub.Setup(t => t.Today).Returns(DateTime.MinValue);
@@ -173,7 +185,8 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
 
             var lendingRepositoryMock = new Mock<ILendingRepository>();
 
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryMock.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryMock.Object);
 
             var timeProviderStub = new Mock<DefaultTimeProvider>();
             timeProviderStub.Setup(t => t.Today).Returns(DateTime.MinValue);
@@ -215,8 +228,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandT
             bookRepositoryStub.Setup(b => b.GetBookByISBN(It.IsAny<string>())).Returns(book);
 
             var lendingRepositoryStub = new Mock<ILendingRepository>();
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
 
-            var clientGetBookCommand = new ClientGetBookCommand(modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
+            var clientGetBookCommand = new ClientGetBookCommand(unitOfWorkStub.Object, modelsFactoryStub.Object, clientRepositoryStub.Object, bookRepositoryStub.Object, lendingRepositoryStub.Object);
 
             var timeProviderStub = new Mock<DefaultTimeProvider>();
             timeProviderStub.Setup(t => t.Today).Returns(DateTime.MinValue);

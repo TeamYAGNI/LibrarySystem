@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibrarySystem.Commands.Functional;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+﻿using LibrarySystem.Commands.Functional;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 using Moq;
 using NUnit.Framework;
 
@@ -20,7 +15,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnBookComma
         {
             //Arrange
             var lendingRepositoryStub = new Mock<ILendingRepository>();
-            var command = new ClientReturnBookCommand(lendingRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var command = new ClientReturnBookCommand(unitOfWorkStub.Object, lendingRepositoryStub.Object);
             //Act
             //Assert
             Assert.That(command, Is.InstanceOf<ClientReturnBookCommand>());
