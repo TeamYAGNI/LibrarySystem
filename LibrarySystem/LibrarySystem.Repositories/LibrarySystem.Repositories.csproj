@@ -92,9 +92,6 @@
     <Compile Include="Data\JournalRepository.cs" />
     <Compile Include="Data\LendingRepository.cs" />
     <Compile Include="Data\UnitOfWork\LibraryUnitOfWork.cs" />
-    <Compile Include="FileExport\UnitOfWork\JsonUnitOfWork.cs" />
-    <Compile Include="Generic\GenericDtoRepository.cs" />
-    <Compile Include="FileExport\UnitOfWork\XmlUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\PublisherRepository.cs" />
     <Compile Include="Data\SubjectRepository.cs" />
