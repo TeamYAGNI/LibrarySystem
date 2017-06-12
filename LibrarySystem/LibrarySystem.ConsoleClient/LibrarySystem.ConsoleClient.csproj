@@ -124,5 +124,19 @@
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.FileExporters\LibrarySystem.FileExporters.csproj">
+      <Project>{59500c07-feeb-4833-9e02-e13b14fcfaad}</Project>
+      <Name>LibrarySystem.FileExporters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.FileImporters\LibrarySystem.FileImporters.csproj">
+      <Project>{50cbcfe6-367f-4bec-9599-b960df8dd394}</Project>
+      <Name>LibrarySystem.FileImporters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
+      <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
+      <Name>LibrarySystem.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

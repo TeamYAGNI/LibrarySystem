@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <book>
+    <title>XML Developer's Guide</title>
+    <isbn>9780072126488</isbn>
+    <authors>
+      <author>
+        <first-name>Fabie</first-name>
+        <last-name>Arciniegas</last-name>
+        <gender>Male</gender>
+      </author>
+    </authors>
+    <page-count>200</page-count>
+    <year-of-publishing>2010</year-of-publishing>
+    <quantity>2</quantity>
+  </book>
+  <book>
+    <title>Midnight Rain</title>
+    <isbn>9780451411754</isbn>
+    <authors>
+      <author>
+        <first-name>Holly</first-name>
+        <last-name>Leslie</last-name>
+        <gender>Female</gender>
+      </author>
+    </authors>
+    <genres>
+      <genre>
+        <name>Romance</name>
+      </genre>
+      <genre>
+        <name>Comedy</name>
+      </genre>
+    </genres>
+    <page-count>300</page-count>
+    <year-of-publishing>2011</year-of-publishing>
+    <quantity>1</quantity>
+  </book>
+</ArrayOfBook>

@@ -91,6 +91,14 @@
       <Project>{61618aa7-d25b-4187-86da-5573d6aca674}</Project>
       <Name>LibrarySystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.FileExporters\LibrarySystem.FileExporters.csproj">
+      <Project>{59500c07-feeb-4833-9e02-e13b14fcfaad}</Project>
+      <Name>LibrarySystem.FileExporters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.FileImporters\LibrarySystem.FileImporters.csproj">
+      <Project>{50cbcfe6-367f-4bec-9599-b960df8dd394}</Project>
+      <Name>LibrarySystem.FileImporters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Framework\LibrarySystem.Framework.csproj">
       <Project>{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}</Project>
       <Name>LibrarySystem.Framework</Name>

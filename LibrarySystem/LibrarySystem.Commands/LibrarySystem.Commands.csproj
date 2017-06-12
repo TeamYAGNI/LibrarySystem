@@ -103,6 +103,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Administrative\Creational\" />
   </ItemGroup>
   <ItemGroup>
