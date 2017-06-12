@@ -40,6 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrative\Listings\Client\GetAllClientsWithDelayedLendingsCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetAllClientsWithJournalsCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetClientAddressByPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetClientByPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetLendingsByClientPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Client\GetRemarksByClientPINCommand.cs" />
+    <Compile Include="Administrative\Listings\Contracts\IAdministratorCommand.cs" />
+    <Compile Include="Administrative\Listings\Employee\GetAllEmployeesByManagerNameCommand.cs" />
+    <Compile Include="Administrative\Listings\Employee\GetAllEmployeesWithoutManagerCommand.cs" />
+    <Compile Include="Administrative\Listings\Employee\GetEmployeesByFullNameCommand.cs" />
+    <Compile Include="Administrative\Listings\User\GetLoggedInUsersCommand.cs" />
     <Compile Include="Functional\ClientExitLibraryCommand.cs" />
     <Compile Include="Functional\ClientGetBookCommand.cs" />
     <Compile Include="Functional\ClientGetJournalCommand.cs" />
@@ -80,6 +91,8 @@
       <Name>LibrarySystem.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Administrative\Creational\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

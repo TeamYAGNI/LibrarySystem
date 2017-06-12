@@ -81,7 +81,7 @@ namespace LibrarySystem.Repositories.Data
         public IEnumerable<Client> GetAllClientsWithLendingsOlderThanAMonth()
         {
             return this.LibraryDbContext.Clients.Where(
-                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < TimeProvider.Current.Today)).ToList();
+                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < TimeProvider.Current.Today && l.ReturnDate == null)).ToList();
         }
 
         public Client GetClientByPin(string PIN)

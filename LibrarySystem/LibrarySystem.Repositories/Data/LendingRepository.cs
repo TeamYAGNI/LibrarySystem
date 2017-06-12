@@ -51,7 +51,7 @@ namespace LibrarySystem.Repositories.Data
 
         public IEnumerable<string> GetAllLendingsRemarksByClientPIN(string PIN)
         {
-            return this.LibraryDbContext.Lendings.Where(l => l.Client.PIN == PIN)
+            return this.LibraryDbContext.Lendings.Include(l => l.Book).Where(l => l.Client.PIN == PIN)
                 .Select(l => l.Remarks).ToList();
         }
     }
