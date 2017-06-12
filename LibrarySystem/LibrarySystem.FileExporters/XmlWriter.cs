@@ -5,9 +5,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using LibrarySystem.FileExporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileExporters
 {
@@ -51,7 +50,7 @@ namespace LibrarySystem.FileExporters
         /// Exports the specified collection of Book DTOs to XML text file.
         /// </summary>
         /// <param name="books">Collection of Book DTOs.</param>
-        public void ExportBooks(IEnumerable<BookDto> books)
+        public void ExportBooks(IEnumerable<BookXmlDto> books)
         {
             if (books == null)
             {

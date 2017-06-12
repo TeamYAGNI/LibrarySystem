@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 using Newtonsoft.Json;
 
 namespace LibrarySystem.FileExporters.Utils
@@ -21,7 +21,7 @@ namespace LibrarySystem.FileExporters.Utils
         /// </summary>
         /// <param name="journals">Collection of Journal DTOs.</param>
         /// <returns>A JSON string of the specified object.</returns>
-        public string Serialize(IEnumerable<JournalDto> journals)
+        public string Serialize(IEnumerable<JournalJsonDto> journals)
         {
             Guard.WhenArgument(journals, "Serialize").IsNull().Throw();
 

@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using LibrarySystem.FileExporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 using Moq;
 using NUnit.Framework;
 
@@ -23,7 +23,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
             var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
-            var journals = new Mock<IEnumerable<JournalDto>>();
+            var journals = new Mock<IEnumerable<JournalJsonDto>>();
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 
             // Act
@@ -41,7 +41,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
             var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
-            var journals = new Mock<IEnumerable<JournalDto>>();
+            var journals = new Mock<IEnumerable<JournalJsonDto>>();
             mockJsonSerializerWrapper.Setup(p => p.Serialize(journals.Object));
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 

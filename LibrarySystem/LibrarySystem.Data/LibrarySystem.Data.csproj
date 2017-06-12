@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LibrarySystem.Data</RootNamespace>
     <AssemblyName>LibrarySystem.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -51,6 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LibrarySystemDbContext.cs" />
+    <Compile Include="Migrations\201706042101400_Initial.cs" />
+    <Compile Include="Migrations\201706042101400_Initial.Designer.cs">
+      <DependentUpon>201706042101400_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706051440320_Added Unique Constraints.cs" />
+    <Compile Include="Migrations\201706051440320_Added Unique Constraints.Designer.cs">
+      <DependentUpon>201706051440320_Added Unique Constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706090015391_Added client journals relation.cs" />
+    <Compile Include="Migrations\201706090015391_Added client journals relation.Designer.cs">
+      <DependentUpon>201706090015391_Added client journals relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +75,17 @@
       <Project>{9e5b3906-0b41-460f-b22f-5ae1ab2547c3}</Project>
       <Name>LibrarySystem.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706042101400_Initial.resx">
+      <DependentUpon>201706042101400_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051440320_Added Unique Constraints.resx">
+      <DependentUpon>201706051440320_Added Unique Constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706090015391_Added client journals relation.resx">
+      <DependentUpon>201706090015391_Added client journals relation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

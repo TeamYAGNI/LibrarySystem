@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 using LibrarySystem.FileExporters.Utils;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 using NUnit.Framework;
 
 namespace LibrarySystem.FileExporters.UnitTests.Utils.JsonSerializerWrapperTests
@@ -20,7 +20,7 @@ namespace LibrarySystem.FileExporters.UnitTests.Utils.JsonSerializerWrapperTests
         {
             // Arrange
             var jsonSerializerWrapper = new JsonSerializerWrapper();
-            var journals = new List<JournalDto>();
+            var journals = new List<JournalJsonDto>();
 
             // Act
             var result = jsonSerializerWrapper.Serialize(journals);

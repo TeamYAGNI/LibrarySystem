@@ -58,20 +58,29 @@
     <Compile Include="Book.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Client.cs" />
-    <Compile Include="BookDto.cs" />
-    <Compile Include="JournalDto.cs" />
+    <Compile Include="DTOs\JSON\PublisherJsonDto.cs" />
+    <Compile Include="DTOs\JSON\SubjectJsonDto.cs" />
+    <Compile Include="DTOs\XML\AuthorXmlDto.cs" />
+    <Compile Include="DTOs\XML\BookXmlDto.cs" />
+    <Compile Include="DTOs\XML\GenreXmlDto.cs" />
+    <Compile Include="DTOs\JSON\JournalJsonDto.cs" />
+    <Compile Include="DTOs\XML\PublisherXmlDto.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Enumerations\GenderType.cs" />
     <Compile Include="Enumerations\JobTitle.cs" />
+    <Compile Include="Enumerations\UserType.cs" />
+    <Compile Include="Factory\IModelsFactory.cs" />
+    <Compile Include="Factory\ModelsFactory.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Journal.cs" />
     <Compile Include="Lending.cs" />
+    <Compile Include="Logs\Log.cs" />
+    <Compile Include="Logs\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publisher.cs" />
     <Compile Include="Subject.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Users\Group.cs" />
+    <Compile Include="Users\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

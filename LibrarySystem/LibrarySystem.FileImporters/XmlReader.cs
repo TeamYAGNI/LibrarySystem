@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Bytes2you.Validation;
 using LibrarySystem.FileImporters.Utils.Contracts;
 using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileImporters
 {
@@ -44,11 +45,11 @@ namespace LibrarySystem.FileImporters
         /// Imports the specified collection of Book DTOs from XML text file.
         /// </summary>
         /// <returns>Collection of Journal DTOs</returns>
-        public IEnumerable<BookDto> ImportBooks()
+        public IEnumerable<BookXmlDto> ImportBooks()
         {
             using (this.streamReaderWrapper.GetStreamReader())
             {
-                return (IEnumerable<BookDto>)this.xmlDeserializerWrapper.Deserialize(this.streamReaderWrapper);
+                return this.xmlDeserializerWrapper.Deserialize(this.streamReaderWrapper);
             }
         }
     }

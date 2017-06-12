@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileImporters.Utils.Contracts
 {
     public interface IXmlDeserializer
     {
-        IEnumerable<BookDto> Deserialize(IStreamReader streamReader);
+        IEnumerable<BookXmlDto> Deserialize(IStreamReader streamReader);
     }
 }

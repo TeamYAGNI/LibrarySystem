@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 
 namespace LibrarySystem.FileExporters
 {
@@ -44,7 +44,7 @@ namespace LibrarySystem.FileExporters
         /// Exports the specified collection of Journal DTOs to JSON text file.
         /// </summary>
         /// <param name="journals">Collection of Journal DTOs.</param>
-        public void ExportJournals(IEnumerable<JournalDto> journals)
+        public void ExportJournals(IEnumerable<JournalJsonDto> journals)
         {
             Guard.WhenArgument(journals, "ExportJournals").IsNull().Throw();
 

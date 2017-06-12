@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using Bytes2you.Validation;
 using LibrarySystem.FileImporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 
 namespace LibrarySystem.FileImporters
 {
@@ -44,7 +44,7 @@ namespace LibrarySystem.FileImporters
         /// Imports the specified collection of Journal DTOs from JSON text file.
         /// </summary>
         /// <returns>Collection of Journal DTOs.</returns>
-        public IEnumerable<JournalDto> ImportJournals()
+        public IEnumerable<JournalJsonDto> ImportJournals()
         {
             using (this.streamReaderWrapper.GetStreamReader())
             {

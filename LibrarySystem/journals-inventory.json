@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Maxim",
+    "impactFactor": 1.2,
+    "issn": "0000-0000",
+    "issueNumber": 2,
+    "yearOfPublishing": 2017,
+    "publisher": {
+      "name": "Publisher1"
+    },
+    "quantity": 2,
+    "subjects": [
+      {
+        "name": "Mens'"
+      },
+      {
+        "name": "Gadgets"
+      }
+    ]
+  },
+  {
+    "title": "Playboy",
+    "impactFactor": 1.0,
+    "issn": "0000-0001",
+    "issueNumber": 2,
+    "yearOfPublishing": 2017,
+    "publisher": {
+      "name": "Publisher2"
+    },
+    "quantity": 2,
+    "subjects": [
+      {
+        "name": "Mens'"
+      }
+    ]
+  },
+  {
+    "title": "Egoist",
+    "impactFactor": null,
+    "issn": "0000-0002",
+    "issueNumber": 0,
+    "yearOfPublishing": 2017,
+    "publisher": {
+      "name": "Publisher3"
+    },
+    "quantity": 2,
+    "subjects": [
+      {
+        "name": "Mens'"
+      },
+      {
+        "name": "Fashion"
+      }
+    ]
+  }
+]

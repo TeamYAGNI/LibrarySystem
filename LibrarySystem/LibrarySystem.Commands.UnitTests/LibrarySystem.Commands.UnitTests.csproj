@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A704AE7F-1351-4677-8920-9856C6162F3D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibrarySystem.Commands.UnitTests</RootNamespace>
+    <AssemblyName>LibrarySystem.Commands.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.25.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.25\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FunctionalTests\ClientExitLibraryCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientExitLibraryCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetBookCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetBookCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetJournalCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientGetJournalCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnBookCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnBookCommandTests\Execute_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnJournalsCommandTests\Constructor_Should.cs" />
+    <Compile Include="FunctionalTests\ClientReturnJournalsCommandTests\Execute_Should.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarySystem.Commands.Contracts\LibrarySystem.Commands.Contracts.csproj">
+      <Project>{6796aa66-40a1-41d9-87a8-7b9a3c75fc54}</Project>
+      <Name>LibrarySystem.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Commands\LibrarySystem.Commands.csproj">
+      <Project>{303021b6-6799-4b4c-99dd-6bb7b7c734fb}</Project>
+      <Name>LibrarySystem.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Framework\LibrarySystem.Framework.csproj">
+      <Project>{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}</Project>
+      <Name>LibrarySystem.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
+      <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
+      <Name>LibrarySystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Repositories\LibrarySystem.Repositories.csproj">
+      <Project>{AF17F49F-D510-4D3A-8634-0D75DBAC1B85}</Project>
+      <Name>LibrarySystem.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

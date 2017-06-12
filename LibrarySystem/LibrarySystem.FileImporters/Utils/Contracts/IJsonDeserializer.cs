@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 
 namespace LibrarySystem.FileImporters.Utils.Contracts
 {
     public interface IJsonDeserializer
     {
-        IEnumerable<JournalDto> Deserialize(string jsonJournalsText);
+        IEnumerable<JournalJsonDto> Deserialize(string jsonJournalsText);
     }
 }

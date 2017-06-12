@@ -4,7 +4,7 @@
 // <summary>Holds implementation of JSON serializer wrapper interface.</summary>
 
 using System.Collections.Generic;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 
 namespace LibrarySystem.FileExporters.Utils.Contracts
 {
@@ -18,6 +18,6 @@ namespace LibrarySystem.FileExporters.Utils.Contracts
         /// </summary>
         /// <param name="journals"></param>
         /// <returns></returns>
-        string Serialize(IEnumerable<JournalDto> journals);
+        string Serialize(IEnumerable<JournalJsonDto> journals);
     }
 }

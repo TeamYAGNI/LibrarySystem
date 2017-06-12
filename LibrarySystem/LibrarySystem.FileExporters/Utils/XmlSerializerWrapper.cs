@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using Bytes2you.Validation;
 using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileExporters.Utils
 {
@@ -35,7 +36,7 @@ namespace LibrarySystem.FileExporters.Utils
         /// <summary>
         /// 
         /// </summary>
-        public void Serialize(ITextWriter textWriter, IEnumerable<BookDto> books)
+        public void Serialize(ITextWriter textWriter, IEnumerable<BookXmlDto> books)
         {
             Guard.WhenArgument(books, "Serialize").IsNull().Throw();
 

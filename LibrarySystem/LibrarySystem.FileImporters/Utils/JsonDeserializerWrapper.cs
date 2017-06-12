@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using Bytes2you.Validation;
 using LibrarySystem.FileImporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.JSON;
 using Newtonsoft.Json;
 
 namespace LibrarySystem.FileImporters.Utils
@@ -21,11 +21,11 @@ namespace LibrarySystem.FileImporters.Utils
         /// </summary>
         /// <param name="jsonText">The JSON to be deserialized.</param>
         /// <returns>Deserialized collection of Journal DTOs.</returns>
-        public IEnumerable<JournalDto> Deserialize(string jsonJournalsText)
+        public IEnumerable<JournalJsonDto> Deserialize(string jsonJournalsText)
         {
             Guard.WhenArgument(jsonJournalsText, "Deserialize").IsNullOrEmpty().Throw();
 
-            return JsonConvert.DeserializeObject<IEnumerable<JournalDto>>(jsonJournalsText);
+            return JsonConvert.DeserializeObject<IEnumerable<JournalJsonDto>>(jsonJournalsText);
         }
     }
 }

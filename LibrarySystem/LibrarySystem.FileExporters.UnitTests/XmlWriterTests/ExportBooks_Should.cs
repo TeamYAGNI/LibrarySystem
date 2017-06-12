@@ -6,9 +6,9 @@
 using System;
 using System.Collections.Generic;
 using LibrarySystem.FileExporters.Utils.Contracts;
-using LibrarySystem.Models;
 using Moq;
 using NUnit.Framework;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
 {
@@ -23,7 +23,7 @@ namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter());
             var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
-            var books = new Mock<IEnumerable<BookDto>>();
+            var books = new Mock<IEnumerable<BookXmlDto>>();
             var xmlWriter = new XmlWriter(mockTextWriterWrapper.Object, mockXmlSerializerWrapper.Object);
 
             // Act
@@ -41,7 +41,7 @@ namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
             var mockTextWriterWrapper = new Mock<ITextWriter>();
             mockTextWriterWrapper.Setup(p => p.GetTextWriter());
             var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
-            var books = new Mock<IEnumerable<BookDto>>();
+            var books = new Mock<IEnumerable<BookXmlDto>>();
             mockXmlSerializerWrapper.Setup(p => p.Serialize(It.IsAny<ITextWriter>(), books.Object));
             var xmlWriter = new XmlWriter(mockTextWriterWrapper.Object, mockXmlSerializerWrapper.Object);
 

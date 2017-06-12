@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using Bytes2you.Validation;
 using LibrarySystem.FileImporters.Utils.Contracts;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileImporters.Utils
 {
@@ -17,11 +17,11 @@ namespace LibrarySystem.FileImporters.Utils
             this.xmlSerializer = xmlSerializer;
         }
         
-        public IEnumerable<BookDto> Deserialize(IStreamReader streamReader)
+        public IEnumerable<BookXmlDto> Deserialize(IStreamReader streamReader)
         {
             Guard.WhenArgument(streamReader, "Deseralize").IsNull().Throw();
 
-            return (IEnumerable<BookDto>)this.xmlSerializer.Deserialize(streamReader.GetStreamReader());
+            return (IEnumerable<BookXmlDto>)this.xmlSerializer.Deserialize(streamReader.GetStreamReader());
         }
     }
 }

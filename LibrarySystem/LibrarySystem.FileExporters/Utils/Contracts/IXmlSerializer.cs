@@ -4,8 +4,7 @@
 // <summary>Holds implementation of text writer wrapper interface.</summary>
 
 using System.Collections.Generic;
-using System.IO;
-using LibrarySystem.Models;
+using LibrarySystem.Models.DTOs.XML;
 
 namespace LibrarySystem.FileExporters.Utils.Contracts
 {
@@ -17,6 +16,6 @@ namespace LibrarySystem.FileExporters.Utils.Contracts
         /// <summary>
         /// 
         /// </summary>
-        void Serialize(ITextWriter textWriter, IEnumerable<BookDto> books);
+        void Serialize(ITextWriter textWriter, IEnumerable<BookXmlDto> books);
     }
 }

@@ -1,5 +1,8 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿// <copyright file="AssemblyInfo.cs" company="YAGNI">
+// All rights reserved.
+// </copyright>
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -20,7 +23,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4feae5be-ced1-4902-81fe-5ae11a51ca40")]
+[assembly: Guid("c720eeaf-ee42-43f9-9444-2ee407267519")]
 
 // Version information for an assembly consists of the following four values:
 //
