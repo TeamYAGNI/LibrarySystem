@@ -1,4 +1,4 @@
-﻿namespace LibrarySystem.Repositories.Data.Users.Utils.Contracts
+﻿namespace LibrarySystem.Commands.Contracts
 {
     public interface IHashProvider
     {

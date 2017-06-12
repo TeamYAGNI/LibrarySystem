@@ -16,9 +16,9 @@ namespace LibrarySystem.Repositories.Contracts.Data
         /// <summary>
         /// Provide a journal by a given ISSN.
         /// </summary>
-        /// <param name="isbn">ISSN of the journal.</param>
+        /// <param name="issn">ISSN of the journal.</param>
         /// <returns>Journal with the given ISSN.</returns>
-        Journal FindJournalByISSN(string isbn);
+        Journal FindJournalByISSN(string issn);
 
         /// <summary>
         /// Provide collection of journal by a given title.
@@ -51,23 +51,23 @@ namespace LibrarySystem.Repositories.Contracts.Data
         /// <summary>
         /// Provide number of available copies of a specific journal by a given ISSN.
         /// </summary>
-        /// <param name="isbn">ISSN of the journal.</param>
+        /// <param name="issn">ISSN of the journal.</param>
         /// <returns>Number of available copies of the journal with the given ISSN.</returns>
-        int GetAvailableQuantityByISSN(string isbn);
+        int GetAvailableQuantityByISSN(string issn);
 
         /// <summary>
         /// Provide number of copies of a specific journal by a given ISSN.
         /// </summary>
-        /// <param name="isbn">ISSN of the journal.</param>
+        /// <param name="issn">ISSN of the journal.</param>
         /// <returns>Number of copies of the journal with the given ISSN.</returns>
-        int GetInitialQuantityByISSN(string isbn);
+        int GetInitialQuantityByISSN(string issn);
 
         /// <summary>
         /// Provide issue number of a specific journal by a given ISSN.
         /// </summary>
-        /// <param name="isbn">ISSN of the journal.</param>
+        /// <param name="issn">ISSN of the journal.</param>
         /// <returns>Issue number of the journal with the given ISSN.</returns>
-        int GetIssueNumberByISSN(string isbn);
+        int GetIssueNumberByISSN(string issn);
 
         /// <summary>
         /// Provide collection of journals by a given publisher name.

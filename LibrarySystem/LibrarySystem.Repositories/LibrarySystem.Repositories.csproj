@@ -60,8 +60,6 @@
     <Compile Include="Data.Users\GroupRepository.cs" />
     <Compile Include="Data.Users\UnitOfWork\UsersUnitOfWork.cs" />
     <Compile Include="Data.Users\UserRepository.cs" />
-    <Compile Include="Data.Users\Utils\Contracts\IHashProvider.cs" />
-    <Compile Include="Data.Users\Utils\HashProvider.cs" />
     <Compile Include="Data\AddressRepository.cs" />
     <Compile Include="Data\AuthorRepository.cs" />
     <Compile Include="Data\BookRepository.cs" />

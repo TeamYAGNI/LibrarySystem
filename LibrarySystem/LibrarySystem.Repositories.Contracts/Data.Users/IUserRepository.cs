@@ -31,17 +31,18 @@ namespace LibrarySystem.Repositories.Contracts.Data.Users
         /// Provide ability a specific user to logged in by given username and password.
         /// </summary>
         /// <param name="username">Username of the user.</param>
-        /// <param name="password">Password of the user.</param>
+        /// <param name="passHash">PassHash of the user.</param>
+        /// <param name="authKey">AuthKey of the user.</param>
         /// <returns>Wether the user is logged in.</returns>
-        bool LoginUser(string username, string password);
+        bool LoginUser(string username, string passHash, string authKey);
 
         /// <summary>
-        /// Provide ability a specific user to logged out by given username and password.
+        /// Provide ability a specific user to logged out by given username and auth key.
         /// </summary>
         /// <param name="username">Username of the user.</param>
-        /// <param name="password">Password of the user.</param>
+        /// <param name="authKey">AuthKey of the user.</param>
         /// <returns>Wether the user is logged out.</returns>
-        bool LogoutUser(string username, string password);
+        bool LogoutUser(string username, string authKey);
 
         /// <summary>
         /// Provide wether the master user is logged in.
@@ -53,7 +54,8 @@ namespace LibrarySystem.Repositories.Contracts.Data.Users
         /// Provide wether a specific user is logged in by a given username.
         /// </summary>
         /// <param name="username">Username of the user.</param>
+        /// <param name="authKey">AuthKey of the user.</param>
         /// <returns>Wether the user with the given username is logged in.</returns>
-        bool UserIsLoggedIn(string username);
+        bool UserIsLoggedIn(string username, string authKey);
     }
 }

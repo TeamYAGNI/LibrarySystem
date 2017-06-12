@@ -5,9 +5,9 @@
 
 using System;
 using System.Security.Cryptography;
-using LibrarySystem.Repositories.Data.Users.Utils.Contracts;
+using LibrarySystem.Commands.Contracts;
 
-namespace LibrarySystem.Repositories.Data.Users.Utils
+namespace LibrarySystem.ConsoleClient.LocalProviders
 {
     /// <summary>
     /// Represents a <see cref="HashProvider"/> entity model used for password hashing.
