@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Common;
-using System.Data.Entity.Validation;
-using System.Linq;
+
 using Effort;
+
 using LibrarySystem.Data;
 using LibrarySystem.Models;
 using LibrarySystem.Models.Enumerations;
-using LibrarySystem.Repositories.Contracts;
 using LibrarySystem.Repositories.Data;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+
 using NUnit.Framework;
 
 namespace LibrarySystem.Repositories.UnitTests.Abstractions.RepositoryTests

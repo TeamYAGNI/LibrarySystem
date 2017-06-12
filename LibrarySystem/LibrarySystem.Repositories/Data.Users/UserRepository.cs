@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using LibrarySystem.Data.Users;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models.Enumerations;
 using LibrarySystem.Models.Users;
 using LibrarySystem.Repositories.Abstractions;
-using LibrarySystem.Repositories.Data.Users.Contracts;
-using LibrarySystem.Repositories.Data.Users.Utils;
+using LibrarySystem.Repositories.Contracts.Data.Users;
 using LibrarySystem.Repositories.Data.Users.Utils.Contracts;
 
 namespace LibrarySystem.Repositories.Data.Users

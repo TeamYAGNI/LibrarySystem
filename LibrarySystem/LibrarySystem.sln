@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.ConsoleClient", "LibrarySystem.ConsoleClient\LibrarySystem.ConsoleClient.csproj", "{C824C31F-675B-4FDA-A12C-F9B9163DCFD5}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Data.Users", "LibrarySystem.Data.Users\LibrarySystem.Data.Users.csproj", "{7C88EE61-DB89-4AE3-A37D-7EF2B878210B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Data.Logs", "LibrarySystem.Data.Logs\LibrarySystem.Data.Logs.csproj", "{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySystem.Repositories.Contracts", "LibrarySystem.Repositories.Contracts\LibrarySystem.Repositories.Contracts.csproj", "{612C971F-181D-4890-8FBC-97E84F7DF5CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B9B3717-F4DB-4160-B8EF-3C9DEFCEBC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612C971F-181D-4890-8FBC-97E84F7DF5CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612C971F-181D-4890-8FBC-97E84F7DF5CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612C971F-181D-4890-8FBC-97E84F7DF5CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612C971F-181D-4890-8FBC-97E84F7DF5CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

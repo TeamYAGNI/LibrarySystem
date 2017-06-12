@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using LibrarySystem.Data.Logs;
 using LibrarySystem.Models.Logs;
 using LibrarySystem.Repositories.Abstractions;
-using LibrarySystem.Repositories.Data.Logs.Contracts;
+using LibrarySystem.Repositories.Contracts.Data.Logs;
 
 namespace LibrarySystem.Repositories.Data.Logs
 {

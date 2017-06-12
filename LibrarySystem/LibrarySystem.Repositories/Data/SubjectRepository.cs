@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+
 using LibrarySystem.Data;
 using LibrarySystem.Models;
 using LibrarySystem.Repositories.Abstractions;
-using LibrarySystem.Repositories.Data.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Repositories.Data
 {

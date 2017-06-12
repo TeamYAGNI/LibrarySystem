@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+
 using LibrarySystem.Commands.Functional;
+using LibrarySystem.Framework.Providers;
+using LibrarySystem.Models;
 using LibrarySystem.Models.Factory;
-using LibrarySystem.Repositories.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
+
 using Moq;
 using NUnit.Framework;
-using LibrarySystem.Models;
-using LibrarySystem.Framework.Providers;
 using System;
-using LibrarySystem.Repositories.Data.Contracts;
 
 namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientGetBookCommandTests
 {

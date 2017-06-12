@@ -1,10 +1,8 @@
-﻿using LibrarySystem.Commands.Administrative.Listings.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
+
+using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {

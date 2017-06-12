@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bytes2you.Validation;
+﻿using Bytes2you.Validation;
+
 using LibrarySystem.Data.Users;
 using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Users.Contracts;
+using LibrarySystem.Repositories.Contracts.Data.Users;
+using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 
 namespace LibrarySystem.Repositories.Data.Users.UnitOfWork
 {

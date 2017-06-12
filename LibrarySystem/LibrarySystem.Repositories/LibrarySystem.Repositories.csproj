@@ -54,41 +54,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\Repository.cs" />
-    <Compile Include="Data.Logs\Contracts\ILogsRepository.cs" />
-    <Compile Include="Data.Logs\Contracts\ILogTypesRepository.cs" />
     <Compile Include="Data.Logs\LogsRepository.cs" />
     <Compile Include="Data.Logs\LogTypesRepository.cs" />
-    <Compile Include="Data.Logs\UnitOfWork\ILogsUnitOfWork.cs" />
     <Compile Include="Data.Logs\UnitOfWork\LogsUnitOfWork.cs" />
-    <Compile Include="Data.Users\Contracts\IUserRepository.cs" />
     <Compile Include="Data.Users\GroupRepository.cs" />
-    <Compile Include="Data.Users\Contracts\IGroupRepository.cs" />
-    <Compile Include="Data.Users\UnitOfWork\IUsersUnitOfWork.cs" />
     <Compile Include="Data.Users\UnitOfWork\UsersUnitOfWork.cs" />
     <Compile Include="Data.Users\UserRepository.cs" />
-    <Compile Include="Data.Users\Utils\HashProvider.cs" />
     <Compile Include="Data.Users\Utils\Contracts\IHashProvider.cs" />
+    <Compile Include="Data.Users\Utils\HashProvider.cs" />
     <Compile Include="Data\AddressRepository.cs" />
     <Compile Include="Data\AuthorRepository.cs" />
     <Compile Include="Data\BookRepository.cs" />
     <Compile Include="Data\CityRepository.cs" />
     <Compile Include="Data\ClientRepository.cs" />
-    <Compile Include="Contracts\IRepository.cs" />
-    <Compile Include="Contracts\IUnitOfWork.cs" />
-    <Compile Include="Data\UnitOfWork\ILibraryUnitOfWork.cs" />
     <Compile Include="Data\EmployeeRepository.cs" />
     <Compile Include="Data\GenreRepository.cs" />
-    <Compile Include="Data\Contracts\IBookRepository.cs" />
-    <Compile Include="Data\Contracts\IJournalRepository.cs" />
-    <Compile Include="Data\Contracts\IGenreRepository.cs" />
-    <Compile Include="Data\Contracts\IAuthorRepository.cs" />
-    <Compile Include="Data\Contracts\IPublisherRepository.cs" />
-    <Compile Include="Data\Contracts\ISubjectRepository.cs" />
-    <Compile Include="Data\Contracts\IClientRepository.cs" />
-    <Compile Include="Data\Contracts\IEmployeeRepository.cs" />
-    <Compile Include="Data\Contracts\IAddressRepository.cs" />
-    <Compile Include="Data\Contracts\ICityRepository.cs" />
-    <Compile Include="Data\Contracts\ILendingRepository.cs" />
     <Compile Include="Data\JournalRepository.cs" />
     <Compile Include="Data\LendingRepository.cs" />
     <Compile Include="Data\UnitOfWork\LibraryUnitOfWork.cs" />
@@ -120,6 +100,10 @@
     <ProjectReference Include="..\LibrarySystem.Models\LibrarySystem.Models.csproj">
       <Project>{9E5B3906-0B41-460F-B22F-5AE1AB2547C3}</Project>
       <Name>LibrarySystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.Repositories.Contracts\LibrarySystem.Repositories.Contracts.csproj">
+      <Project>{612c971f-181d-4890-8fbc-97e84f7df5cd}</Project>
+      <Name>LibrarySystem.Repositories.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

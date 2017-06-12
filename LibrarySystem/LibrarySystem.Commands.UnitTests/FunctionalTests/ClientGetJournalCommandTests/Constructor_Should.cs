@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibrarySystem.Commands.Functional;
-using LibrarySystem.Repositories.Contracts;
-using LibrarySystem.Repositories.Data.Contracts;
+﻿using LibrarySystem.Commands.Functional;
+using LibrarySystem.Repositories.Contracts.Data;
+
 using Moq;
 using NUnit.Framework;
 
