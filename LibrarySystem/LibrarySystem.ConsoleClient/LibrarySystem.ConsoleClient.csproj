@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interceptors\UserAuth.cs" />
     <Compile Include="LocalProviders\AuthValidator.cs" />
     <Compile Include="LocalProviders\ConsoleCommandReader.cs" />
     <Compile Include="LocalProviders\ConsoleResponseWriter.cs" />
