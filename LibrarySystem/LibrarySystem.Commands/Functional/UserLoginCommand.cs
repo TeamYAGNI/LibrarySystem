@@ -1,16 +1,22 @@
 ﻿using System.Collections.Generic;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data.Users;
+using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
     public class UserLoginCommand : ICommand
     {
+        private readonly IUsersUnitOfWork usersUnitOfWork;
         private readonly IUserRepository usersRepository;
 
-        public UserLoginCommand(IUserRepository usersRepository)
+        public UserLoginCommand(IUsersUnitOfWork usersUnitOfWork ,IUserRepository usersRepository)
         {
+            Guard.WhenArgument(usersUnitOfWork, "usersUnitOfWork").IsNull().Throw();
+            Guard.WhenArgument(usersRepository, "usersRepository").IsNull().Throw();
+
+            this.usersUnitOfWork = usersUnitOfWork;
             this.usersRepository = usersRepository;
         }
 
@@ -26,7 +32,8 @@ namespace LibrarySystem.Commands.Functional
                 return $"User {username} authentication failed.";
             }
 
-            return $"User {username} has been logged in.";
+            this.usersUnitOfWork.Commit();
+            return $"User {username} has successfully been logged in.";
         }
     }
 }

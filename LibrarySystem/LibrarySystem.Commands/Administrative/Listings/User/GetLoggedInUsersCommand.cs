@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data.Users;
 
@@ -13,6 +13,8 @@ namespace LibrarySystem.Commands.Administrative.Listings.User
 
         public GetLoggedInUsersCommand(IUserRepository usersRepository)
         {
+            Guard.WhenArgument(usersRepository, "usersRepository").IsNull().Throw();
+
             this.usersRepository = usersRepository;
         }
 

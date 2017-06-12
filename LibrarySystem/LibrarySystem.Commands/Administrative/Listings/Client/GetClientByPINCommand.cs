@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
@@ -12,6 +12,8 @@ namespace LibrarySystem.Commands.Administrative.Listings.Client
 
         public GetClientByPINCommand(IClientRepository clientRepository)
         {
+            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
+
             this.clientRepository = clientRepository;
         }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
@@ -13,6 +13,8 @@ namespace LibrarySystem.Commands.Projection.Genres
 
         public GetGenresWithMostBooksCommand(IGenreRepository genreRepository)
         {
+            Guard.WhenArgument(genreRepository, "genreRepository").IsNull().Throw();
+
             this.genreRepository = genreRepository;
         }
 

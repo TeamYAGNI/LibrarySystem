@@ -10,14 +10,5 @@ namespace LibrarySystem.Repositories.Contracts.Data.Logs.UnitOfWork
     /// </summary>
     public interface ILogsUnitOfWork : IUnitOfWork
     {
-        /// <summary>
-        /// Gets or sets <see cref="ILogTypesRepository"/> implementator instance.
-        /// </summary>
-        ILogsRepository Logs { get; set; }
-
-        /// <summary>
-        /// Gets or sets <see cref="ILogTypesRepository"/> implementator instance.
-        /// </summary>
-        ILogTypesRepository LogTypes { get; set; }
     }
 }
