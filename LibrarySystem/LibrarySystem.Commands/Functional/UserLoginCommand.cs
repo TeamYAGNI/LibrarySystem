@@ -3,6 +3,8 @@
 using Bytes2you.Validation;
 
 using LibrarySystem.Commands.Contracts;
+
+using LibrarySystem.Repositories.Contracts.Data.Users;
 using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
@@ -11,6 +13,8 @@ namespace LibrarySystem.Commands.Functional
     {
         /// <summary>User repository.</summary>
         private readonly IUsersUnitOfWork usersUnitOfWork;
+
+        private readonly IUserRepository usersRepository;
 
         /// <summary>AuthKey provider for generating an authKey from passwords.</summary>
         private readonly IAuthKeyProvider authKeyProvider;
@@ -23,16 +27,19 @@ namespace LibrarySystem.Commands.Functional
 
         public UserLoginCommand(
             IUsersUnitOfWork usersUnitOfWork,
+            IUserRepository usersRepository,
             IAuthKeyProvider authKeyProvider,
             IHashProvider hashProvider,
             IUserPassport passport)
         {
             Guard.WhenArgument(usersUnitOfWork, "UserLoginCommand usersUnitOfWork").IsNull().Throw();
+            Guard.WhenArgument(usersRepository, "UserLoginCommand usersRepository").IsNull().Throw();
             Guard.WhenArgument(authKeyProvider, "UserLoginCommand authKeyProvider").IsNull().Throw();
             Guard.WhenArgument(hashProvider, "UserLoginCommand hashProvider").IsNull().Throw();
             Guard.WhenArgument(passport, "UserLoginCommand passport").IsNull().Throw();
 
             this.usersUnitOfWork = usersUnitOfWork;
+            this.usersRepository = usersRepository;
             this.authKeyProvider = authKeyProvider;
             this.hashProvider = hashProvider;
             this.passport = passport;
@@ -45,14 +52,16 @@ namespace LibrarySystem.Commands.Functional
             var passHash = this.hashProvider.Hash(password);
             var authKey = this.authKeyProvider.GenerateAuthKey(password);
 
-            var hasLogged = this.usersUnitOfWork.Users.LoginUser(username, passHash, authKey);
+            var hasLogged = this.usersRepository.LoginUser(username, passHash, authKey);
 
             if (!hasLogged)
             {
                 return $"Invalid username or password.";
             }
-            
-            return $"User {username} has been logged in.";
+
+            this.usersUnitOfWork.Commit();
+
+            return $"User {username} has successfully been logged in.";
         }
     }
 }

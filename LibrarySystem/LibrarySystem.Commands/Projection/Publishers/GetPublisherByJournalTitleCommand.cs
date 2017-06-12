@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
@@ -12,6 +12,8 @@ namespace LibrarySystem.Commands.Projection.Publishers
 
         public GetPublisherByJournalTitleCommand(IPublisherRepository publishersRepository)
         {
+            Guard.WhenArgument(publishersRepository, "publishersRepository").IsNull().Throw();
+
             this.publishersRepository = publishersRepository;
         }
 

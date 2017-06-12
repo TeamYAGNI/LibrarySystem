@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
@@ -11,6 +11,8 @@ namespace LibrarySystem.Commands.Functional
 
         public ClientExitLibraryCommand(IClientRepository clientRepository)
         {
+            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
+
             this.clientRepository = clientRepository;
         }
 

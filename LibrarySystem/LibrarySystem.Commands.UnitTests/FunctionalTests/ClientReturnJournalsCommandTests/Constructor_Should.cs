@@ -1,6 +1,6 @@
 ﻿using LibrarySystem.Commands.Functional;
 using LibrarySystem.Repositories.Contracts.Data;
-
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 using Moq;
 using NUnit.Framework;
 
@@ -15,7 +15,9 @@ namespace LibrarySystem.Commands.UnitTests.FunctionalTests.ClientReturnJournalsC
         {
             //Arrange
             var journalRepositoryStub = new Mock<IJournalRepository>();
-            var command = new ClientReturnJournalsCommand(journalRepositoryStub.Object);
+            var unitOfWorkStub = new Mock<ILibraryUnitOfWork>();
+
+            var command = new ClientReturnJournalsCommand(unitOfWorkStub.Object, journalRepositoryStub.Object);
             //Act
             //Assert
             Assert.That(command, Is.InstanceOf<ClientReturnJournalsCommand>());

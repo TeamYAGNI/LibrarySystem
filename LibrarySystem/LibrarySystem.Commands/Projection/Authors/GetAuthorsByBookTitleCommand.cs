@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
@@ -13,6 +13,8 @@ namespace LibrarySystem.Commands.Projection.Authors
 
         public GetAuthorsByBookTitleCommand(IAuthorRepository authorRepository)
         {
+            Guard.WhenArgument(authorRepository, "authorRepository").IsNull().Throw();
+
             this.authorRepository = authorRepository;
         }
 

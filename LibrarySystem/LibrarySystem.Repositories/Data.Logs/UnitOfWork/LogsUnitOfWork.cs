@@ -21,12 +21,6 @@ namespace LibrarySystem.Repositories.Data.Logs.UnitOfWork
         /// <summary>Context that provide connection to the database.</summary>
         private readonly LibrarySystemLogsDbContext logsContext;
 
-        /// <summary>Logs repository.</summary>
-        private ILogsRepository logs;
-
-        /// <summary>LogTypes repository.</summary>
-        private ILogTypesRepository logTypes;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="LogsUnitOfWork"/> class.
         /// </summary>
@@ -37,45 +31,6 @@ namespace LibrarySystem.Repositories.Data.Logs.UnitOfWork
         {
             Guard.WhenArgument(logsContext, "logsContext").IsNull().Throw();
             this.logsContext = logsContext;
-
-            this.Logs = logs;
-            this.LogTypes = logTypes;
-        }
-
-        /// <summary>
-        /// Gets or sets <see cref="ILogsRepository"/> instance.
-        /// </summary>
-        public ILogsRepository Logs
-        {
-            get
-            {
-                return this.logs;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, "Logs").IsNull().Throw();
-
-                this.logs = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets <see cref="ILogTypesRepository"/> instance.
-        /// </summary>
-        public ILogTypesRepository LogTypes
-        {
-            get
-            {
-                return this.logTypes;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, "LogTypes").IsNull().Throw();
-
-                this.logTypes = value;
-            }
         }
 
         /// <summary>

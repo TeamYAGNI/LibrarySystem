@@ -21,61 +21,10 @@ namespace LibrarySystem.Repositories.Data.Users.UnitOfWork
         /// <summary>Context that provide connection to the database.</summary>
         private readonly LibrarySystemUsersDbContext usersContext;
 
-        /// <summary>Users repository.</summary>
-        private IUserRepository users;
-
-        /// <summary>Groups repository.</summary>
-        private IGroupRepository groups;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UsersUnitOfWork"/> class.
-        /// </summary>
-        /// <param name="usersContext">Context that provide connection to the database.</param>
-        /// <param name="users">Users repository.</param>
-        /// <param name="groups">Groups repository.</param>
-        public UsersUnitOfWork(LibrarySystemUsersDbContext usersContext, IUserRepository users, IGroupRepository groups)
+        public UsersUnitOfWork(LibrarySystemUsersDbContext usersContext)
         {
             Guard.WhenArgument(usersContext, "usersContext").IsNull().Throw();
             this.usersContext = usersContext;
-
-            this.Users = users;
-            this.Groups = groups;
-        }
-
-        /// <summary>
-        /// Gets or sets <see cref="IUserRepository"/> instance.
-        /// </summary>
-        public IUserRepository Users
-        {
-            get
-            {
-                return this.users;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, "Users").IsNull().Throw();
-
-                this.users = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets <see cref="IGroupRepository"/> instance.
-        /// </summary>
-        public IGroupRepository Groups
-        {
-            get
-            {
-                return this.groups;
-            }
-
-            set
-            {
-                Guard.WhenArgument(value, "Groups").IsNull().Throw();
-
-                this.groups = value;
-            }
         }
 
         /// <summary>

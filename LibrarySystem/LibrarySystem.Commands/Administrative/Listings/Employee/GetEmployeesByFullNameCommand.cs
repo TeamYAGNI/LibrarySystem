@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Bytes2you.Validation;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
@@ -13,6 +13,8 @@ namespace LibrarySystem.Commands.Administrative.Listings.Employee
 
         public GetEmployeesByFullNameCommand(IEmployeeRepository employeesRepository)
         {
+            Guard.WhenArgument(employeesRepository, "employeesRepository").IsNull().Throw();
+
             this.employeesRepository = employeesRepository;
         }
 
