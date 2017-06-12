@@ -40,36 +40,36 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
     /// </summary>
     public class LibrarySystemNinjectModule : NinjectModule
     {
-        private const string GetAllClientsWithDelayedLendingsCommand = "GetAllClientsWithDelayedLendings";
-        private const string GetAllClientsWithJournalsCommand = "GetAllClientsWithJournals";
-        private const string GetClientAddressByPINCommand = "GetClientAddressByPIN";
-        private const string GetClientByPINCommand = "GetClientByPIN";
-        private const string GetLendingsByClientPINCommand = "GetLendingsByClientPIN";
-        private const string GetRemarksByClientPINCommand = "GetRemarksByClientPIN";
-        private const string GetAllEmployeesByManagerNameCommand = "GetAllEmployeesByManagerName";
-        private const string GetAllEmployeesWithoutManagerCommand = "GetAllEmployeesWithoutManager";
-        private const string GetEmployeesByFullNameCommand = "GetEmployeesByFullName";
-        private const string GetLoggedInUsersCommand = "GetLoggedInUsers";
-        private const string ClientExitLibraryCommand = "ClientExitLibrary";
-        private const string ClientGetBookCommand = "ClientGetBook";
-        private const string ClientGetJournalCommand = "ClientGetJournal";
-        private const string ClientReturnBookCommand = "ClientReturnBook";
-        private const string ClientReturnJournalsCommand = "ClientReturnJournals";
-        private const string UserLoginCommand = "UserLogin";
-        private const string UserLogoutCommand = "UserLogout";
-        private const string GetAuthorsByBookTitleCommand = "GetAuthorsByBookTitle";
-        private const string GetBookByISBNCommand = "GetBookByISBN";
-        private const string GetBooksByAuthorCommand = "GetBooksByAuthor";
-        private const string GetBooksByGenreNameCommand = "GetBooksByGenreName";
-        private const string GetBooksByPublisherCommand = "GetBooksByPublisher";
-        private const string GetGenresWithMostBooksCommand = "GetGenresWithMostBooks";
-        private const string GetJournalByISSNCommand = "GetJournalByISSN";
-        private const string GetJournalsByPublisherNameCommand = "GetJournalsByPublisherName";
-        private const string GetJournalsBySubjectCommand = "GetJournalsBySubject";
-        private const string GetPublisherByBookTitleCommand = "GetPublisherByBookTitle";
-        private const string GetPublisherByJournalTitleCommand = "GetPublisherByJournalTitle";
-        private const string GetSubjectsWithHighestImpactFactorcs = "GetSubjectsWithHighestImpactFactorcs";
-        private const string GetSubjectsWithMostJournalsCommand = "GetSubjectsWithMostJournals";
+        private const string GetAllClientsWithDelayedLendingsCommand = "getallclientswithdelayedlendings";
+        private const string GetAllClientsWithJournalsCommand = "getallclientswithjournals";
+        private const string GetClientAddressByPINCommand = "getclientaddressbypin";
+        private const string GetClientByPINCommand = "getclientbypin";
+        private const string GetLendingsByClientPINCommand = "getlendingsbyclientpin";
+        private const string GetRemarksByClientPINCommand = "getremarksbyclientpin";
+        private const string GetAllEmployeesByManagerNameCommand = "getallemployeesbymanagername";
+        private const string GetAllEmployeesWithoutManagerCommand = "getallemployeeswithoutmanager";
+        private const string GetEmployeesByFullNameCommand = "getemployeesbyfullname";
+        private const string GetLoggedInUsersCommand = "getloggedinusers";
+        private const string ClientExitLibraryCommand = "clientexitlibrary";
+        private const string ClientGetBookCommand = "clientgetbook";
+        private const string ClientGetJournalCommand = "clientgetjournal";
+        private const string ClientReturnBookCommand = "clientreturnbook";
+        private const string ClientReturnJournalsCommand = "clientreturnjournals";
+        private const string UserLoginCommand = "userlogin";
+        private const string UserLogoutCommand = "userlogout";
+        private const string GetAuthorsByBookTitleCommand = "getauthorsbybooktitle";
+        private const string GetBookByISBNCommand = "getbookbyisbn";
+        private const string GetBooksByAuthorCommand = "getbooksbyauthor";
+        private const string GetBooksByGenreNameCommand = "getbooksbygenrename";
+        private const string GetBooksByPublisherCommand = "getbooksbypublisher";
+        private const string GetGenresWithMostBooksCommand = "getgenreswithmostbooks";
+        private const string GetJournalByISSNCommand = "getjournalbyissn";
+        private const string GetJournalsByPublisherNameCommand = "getjournalsbypublishername";
+        private const string GetJournalsBySubjectCommand = "getjournalsbysubject";
+        private const string GetPublisherByBookTitleCommand = "getpublisherbybooktitle";
+        private const string GetPublisherByJournalTitleCommand = "getpublisherbyjournaltitle";
+        private const string GetSubjectsWithHighestImpactFactorcs = "getsubjectswithhighestimpactfactorcs";
+        private const string GetSubjectsWithMostJournalsCommand = "getsubjectswithmostjournals";
 
         /// <summary>
         /// Loads the module into the kernel.

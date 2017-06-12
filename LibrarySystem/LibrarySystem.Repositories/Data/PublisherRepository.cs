@@ -44,7 +44,7 @@ namespace LibrarySystem.Repositories.Data
         /// <returns>Publisher with the given name.</returns>
         public Publisher GetPublisherByName(string publisherName)
         {
-            return this.LibraryDbContext.Publishers.FirstOrDefault(p => p.Name == publisherName);
+            return this.LibraryDbContext.Publishers.SingleOrDefault(p => p.Name == publisherName);
         }
 
         /// <summary>
