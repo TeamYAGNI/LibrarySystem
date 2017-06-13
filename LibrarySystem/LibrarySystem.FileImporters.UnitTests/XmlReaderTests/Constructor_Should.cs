@@ -4,50 +4,50 @@
 // <summary>Holds unit tests of JsonWriter object constructor.</summary>
 
 using System;
-using LibrarySystem.FileExporters.Utils.Contracts;
+using LibrarySystem.FileImporters.Utils.Contracts;
 using Moq;
 using NUnit.Framework;
 
-namespace LibrarySystem.FileExporters.UnitTests.XmlWriterTests
+namespace LibrarySystem.FileImporters.UnitTests.XmlReaderTests
 {
     [TestFixture]
     public class Constructor_Should
     {
         [Test]
-        [Category("FileExplorers.XmlWriter.Constructor")]
-        public void InstantiateXmlWriter_WhenAllArgumentsArePassed()
+        [Category("FileImporters.XmlReader.Constructor")]
+        public void InstantiateXmlReader_WhenAllArgumentsArePassed()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriter>();
-            var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
+            var mockStreamReaderWrapper = new Mock<IStreamReader>();
+            var mockXmlDeserializerWrapper = new Mock<IXmlDeserializer>();
 
             // Act
-            var xmlWriter = new XmlWriter(mockTextWriterWrapper.Object, mockXmlSerializerWrapper.Object);
+            var xmlReader = new XmlReader(mockStreamReaderWrapper.Object, mockXmlDeserializerWrapper.Object);
 
             // Assert
-            Assert.That(xmlWriter, Is.InstanceOf<XmlWriter>());
+            Assert.That(xmlReader, Is.InstanceOf<XmlReader>());
         }
 
         [Test]
-        [Category("FileExplorers.XmlWriter.Constructor")]
-        public void ThrowArgumentNullException_WhenTextStreamWriterArgumentIsNull()
+        [Category("FileImporters.XmlReader.Constructor")]
+        public void ThrowArgumentNullException_WhenStreamReaderArgumentIsNull()
         {
             // Arrange
-            var mockXmlSerializerWrapper = new Mock<IXmlSerializer>();
+            var mockXmlDeserializerWrapper = new Mock<IXmlDeserializer>();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new XmlWriter(null, mockXmlSerializerWrapper.Object));
+            Assert.Throws<ArgumentNullException>(() => new XmlReader(null, mockXmlDeserializerWrapper.Object));
         }
 
         [Test]
-        [Category("FileExplorers.XmlWriter.Constructor")]
-        public void ThrowArgumentNullException_WhenJsonJournalsSerializerArgumentIsNull()
+        [Category("FileImporters.XmlReader.Constructor")]
+        public void ThrowArgumentNullException_WhenXmlDeserializerWrapperArgumentIsNull()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriter>();
+            var mockStreamReaderWrapper = new Mock<IStreamReader>();
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => new JsonWriter(mockTextWriterWrapper.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new XmlReader(mockStreamReaderWrapper.Object, null));
         }
     }
 }
