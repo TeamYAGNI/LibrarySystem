@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-
-using Bytes2you.Validation;
-
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
@@ -10,7 +8,7 @@ using LibrarySystem.Models.Factory;
 
 namespace LibrarySystem.Commands.Administrative.Creational
 {
-    class CreateBookCommand : ICommand
+    class CreateBookCommand : Command, ICommand
     {
         private const string SuccessMessage = "Book {0} was created succesfully!";
         private const string ErrorMessage = "There is already a book with title {0} in the library.";
@@ -27,29 +25,23 @@ namespace LibrarySystem.Commands.Administrative.Creational
             IPublisherRepository publishers,
             IBookRepository books,
             ILibraryUnitOfWork unitOfWork,
-            IModelsFactory factory)
+            IModelsFactory factory) : base(new List<object>() { publishers, books, unitOfWork, factory }, 6)
         {
-            Guard.WhenArgument(publishers, "CreateBookCommand publishers").IsNull().Throw();
-            Guard.WhenArgument(books, "CreateBookCommand books").IsNull().Throw();
-            Guard.WhenArgument(unitOfWork, "CreateBookCommand unitOfWork").IsNull().Throw();
-            Guard.WhenArgument(factory, "CreateBookCommand factory").IsNull().Throw();
-
             this.publishers = publishers;
             this.books = books;
             this.unitOfWork = unitOfWork;
             this.factory = factory;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, "CreateBookCommand parameters").IsNull().Throw();
-            Guard.WhenArgument(parameters.Count, "CreateBookCommand parameters count").IsNotEqual(6).Throw();
+            this.ValidateParameters(parameters);
 
             string bookTitle = parameters[0];
             string bookISBN = parameters[1];
             string publisherName = parameters[4];
 
-            
+
             int pageCount;
             if (int.TryParse(parameters[2], out pageCount))
             {
