@@ -11,6 +11,7 @@ using System.Reflection;
 using LibrarySystem.Commands.Administrative.Listings.Client;
 using LibrarySystem.Commands.Administrative.Listings.Employee;
 using LibrarySystem.Commands.Administrative.Listings.User;
+using LibrarySystem.Commands.Administrative.Logs;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Commands.Functional;
 using LibrarySystem.Commands.Projection.Authors;
@@ -71,6 +72,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string GetPublisherByJournalTitleCommand = "getpublisherbyjournaltitle";
         private const string GetSubjectsWithHighestImpactFactorcs = "getsubjectswithhighestimpactfactorcs";
         private const string GetSubjectsWithMostJournalsCommand = "getsubjectswithmostjournals";
+        private const string GetLatestLogsCommand = "getlatestlogs";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -127,10 +129,14 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<GetPublisherByJournalTitleCommand>().Named(GetPublisherByJournalTitleCommand);
             this.Bind<ICommand>().To<GetSubjectsWithHighestImpactFactorcs>().Named(GetSubjectsWithHighestImpactFactorcs);
             this.Bind<ICommand>().To<GetSubjectsWithMostJournalsCommand>().Named(GetSubjectsWithMostJournalsCommand);
+            this.Bind<ICommand>().To<GetLatestLogsCommand>().Named(GetLatestLogsCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
             this.Bind<IValidator>().To<Validator>().WhenInjectedExactlyInto<ModelValidation>().InSingletonScope();
+
+            // Log Interceptor Bindings
+            this.Bind<ILogger>().To<Logger>().Intercept().With<SQLLiteLogger>();
         }
 
         /// <summary>
@@ -175,6 +181,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetPublisherByJournalTitleCommand: return context.Kernel.Get<ICommand>(GetPublisherByJournalTitleCommand);
                 case GetSubjectsWithHighestImpactFactorcs: return context.Kernel.Get<ICommand>(GetSubjectsWithHighestImpactFactorcs);
                 case GetSubjectsWithMostJournalsCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithMostJournalsCommand);
+                case GetLatestLogsCommand: return context.Kernel.Get<ICommand>(GetLatestLogsCommand);
                 default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
             }
         }

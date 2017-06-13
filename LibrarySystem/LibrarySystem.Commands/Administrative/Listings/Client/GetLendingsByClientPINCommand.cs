@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Text;
 using LibrarySystem.Commands.Abstractions;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {
-    public class GetLendingsByClientPINCommand : Command, IAdministratorCommand
+    public class GetLendingsByClientPINCommand : Command, ICommand
     {
         private readonly ILendingRepository lendingRepository;
 

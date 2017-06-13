@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Text;
 using LibrarySystem.Commands.Abstractions;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Employee
 {
-    public class GetAllEmployeesByManagerNameCommand : Command, IAdministratorCommand
+    public class GetAllEmployeesByManagerNameCommand : Command, ICommand
     {
         private readonly IEmployeeRepository employeesRepository;
 

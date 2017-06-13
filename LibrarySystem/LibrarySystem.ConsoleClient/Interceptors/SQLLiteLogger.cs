@@ -4,8 +4,9 @@
 // <summary>Holds implementation of SQLLiteLogger class.</summary>
 
 using System;
+using System.Collections.Generic;
 using Bytes2you.Validation;
-using LibrarySystem.Framework.Contracts;
+using LibrarySystem.Commands.Administrative.Logs;
 using Ninject.Extensions.Interception;
 
 namespace LibrarySystem.ConsoleClient.Interceptors
@@ -15,13 +16,28 @@ namespace LibrarySystem.ConsoleClient.Interceptors
     /// </summary>
     public class SQLLiteLogger : IInterceptor
     {
+        private readonly AddLogCommand addLogCommand;
+
+        public SQLLiteLogger(AddLogCommand addLogCommand)
+        {
+            Guard.WhenArgument(addLogCommand, "addLogCommand").IsNull().Throw();
+
+            this.addLogCommand = addLogCommand;
+        }
         /// <summary>
         /// Intercepts the specified invocation.
         /// </summary>
         /// <param name="invocation">The invocation to intercept.</param>
         public void Intercept(IInvocation invocation)
         {
-            // TODO: Implement SQLLite Logging
+            var parameterObjects = invocation.Request.Arguments;
+            var message = parameterObjects.ToString();
+            var logType = parameterObjects.ToString();
+            var parameters = new List<string>() { message, logType };
+
+            this.addLogCommand.Execute(parameters);
+
+            invocation.Proceed();
         }
     }
 }

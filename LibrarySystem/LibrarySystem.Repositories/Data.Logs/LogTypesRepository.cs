@@ -27,7 +27,7 @@ namespace LibrarySystem.Repositories.Data.Logs
         }
 
         /// <summary>
-        /// Gets the context as a <see cref="LibrarySystemDbContext"/>.
+        /// Gets the context as a <see cref="LibrarySystemLogsDbContext"/>.
         /// </summary>
         private LibrarySystemLogsDbContext LogsDbContext
         {
@@ -38,13 +38,13 @@ namespace LibrarySystem.Repositories.Data.Logs
         }
 
         /// <summary>
-        /// Provide collection of logs by a given name.
+        /// Provide instance of log type by a given name.
         /// </summary>
         /// <param name="logTypeName">Name of the log type.</param>
-        /// <returns>collection of the logs with the given name.</returns>
-        public IEnumerable<LogType> GetLogTypeByName(string logTypeName)
+        /// <returns>Instance of the log type with the given name.</returns>
+        public LogType GetLogTypeByName(string logTypeName)
         {
-            return this.LogsDbContext.LogTypes.Where(lt => lt.Name == logTypeName).ToList();
+            return this.LogsDbContext.LogTypes.FirstOrDefault(lt => lt.Name == logTypeName);
         }
     }
 }

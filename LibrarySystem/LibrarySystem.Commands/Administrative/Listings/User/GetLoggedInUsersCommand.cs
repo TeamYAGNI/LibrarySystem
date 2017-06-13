@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Text;
 using LibrarySystem.Commands.Abstractions;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data.Users;
 
 namespace LibrarySystem.Commands.Administrative.Listings.User
 {
-    public class GetLoggedInUsersCommand : Command ,IAdministratorCommand
+    public class GetLoggedInUsersCommand : Command ,ICommand
     {
         private readonly IUserRepository usersRepository;
 

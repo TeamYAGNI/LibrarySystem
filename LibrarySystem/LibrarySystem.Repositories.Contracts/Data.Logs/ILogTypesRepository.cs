@@ -14,10 +14,10 @@ namespace LibrarySystem.Repositories.Contracts.Data.Logs
     public interface ILogTypesRepository : IRepository<LogType>
     {
         /// <summary>
-        /// Provide collection of logs by a given name.
+        /// Provide instance of log type by a given name.
         /// </summary>
         /// <param name="logTypeName">Name of the log type.</param>
-        /// <returns>collection of the logs with the given name.</returns>
-        IEnumerable<LogType> GetLogTypeByName(string logTypeName);
+        /// <returns>instance of the log type with the given name.</returns>
+        LogType GetLogTypeByName(string logTypeName);
     }
 }
