@@ -54,7 +54,7 @@ namespace LibrarySystem.Models
         /// </summary>
         /// <value>ISSN of the <see cref="Journal"/> entity.</value>
         [Required]
-        [RegularExpression(@"^[\S]{4}\-[\S]{4}$", ErrorMessage = "Journal ISSN Invalid Length")]
+        //[RegularExpression(@"^[\S]{4}\-[\S]{4}$", ErrorMessage = "Journal ISSN Invalid Length")]
         public string ISSN { get; set; }
 
         /// <summary>
@@ -90,8 +90,7 @@ namespace LibrarySystem.Models
         /// Gets or sets foreign key of the client of the <see cref="Journal"/> entity.
         /// </summary>
         /// <value>Primary key of the client of the <see cref="Journal"/> entity.</value>
-        [Required]
-        public int ClientId { get; set; }
+        public int? ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets the client of the <see cref="Journal"/> entity.
@@ -103,7 +102,7 @@ namespace LibrarySystem.Models
         /// Gets or sets the number of copies of the <see cref="Journal"/> entity in the library.
         /// </summary>
         /// <value>Current number of copies of the <see cref="Journal"/> entity in the library.</value>
-        [Required]
+        [Required(ErrorMessage = "Journal quantity is required!")]
         [Range(0, 2000, ErrorMessage = "Journal Quantity cannot be {0}. It must be between {1} and {2}.")]
         public int Quantity { get; set; }
 
@@ -117,7 +116,6 @@ namespace LibrarySystem.Models
         /// Gets or sets the subjects of the <see cref="Journal"/> entity.
         /// </summary>
         /// <value>Initial collection of subjects of the <see cref="Journal"/> entity.</value>
-        [Required]
         [Range(0, 2000, ErrorMessage = "Journal Available cannot be {0}. It must be between {1} and {2}.")]
         public virtual ICollection<Subject> Subjects
         {

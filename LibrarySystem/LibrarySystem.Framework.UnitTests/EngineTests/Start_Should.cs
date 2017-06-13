@@ -17,8 +17,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderMock = new Mock<ICommandReader>();
             var responseWriterStub = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderMock.Object, responseWriterStub.Object, commandProccessorStub.Object);
+            var engineUnderTest = new Engine(commandReaderMock.Object, responseWriterStub.Object, commandProccessorStub.Object, loggerStub.Object);
 
             string terminateCommand = "Exit";
 
@@ -39,8 +40,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterStub = new Mock<IResponseWriter>();
             var commandProccessorMock = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterStub.Object, commandProccessorMock.Object);
+            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterStub.Object, commandProccessorMock.Object, loggerStub.Object);
 
             string terminateCommand = "Exit";
 
@@ -61,8 +63,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderMock = new Mock<ICommandReader>();
             var responseWriterStub = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderMock.Object, responseWriterStub.Object, commandProccessorStub.Object);
+            var engineUnderTest = new Engine(commandReaderMock.Object, responseWriterStub.Object, commandProccessorStub.Object, loggerStub.Object);
 
             string singleOtherCommand = "SomeRandomCommand";
             string terminateCommand = "Exit";
@@ -84,8 +87,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterStub = new Mock<IResponseWriter>();
             var commandProccessorMock = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterStub.Object, commandProccessorMock.Object);
+            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterStub.Object, commandProccessorMock.Object, loggerStub.Object);
 
             string expectedCommand = "SomeRandomCommand";
             string terminateCommand = "Exit";
@@ -108,8 +112,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterMock = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object);
+            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object, loggerStub.Object);
 
             string terminateCommand = "Exit";
 
@@ -132,8 +137,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterMock = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object);
+            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object, loggerStub.Object);
 
             string singleOtherCommand = "SomeRandomCommand";
             string terminateCommand = "Exit";
@@ -161,8 +167,9 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterMock = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object);
+            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object, loggerStub.Object);
 
             string singleOtherCommand = "SomeRandomCommand";
             string terminateCommand = "Exit";
@@ -182,21 +189,22 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
 
         [Test]
         [Category("Framework.Engine.Start")]
-        public void CallResponseWriterWriteLineExactlyOnceWithExceptionMessage_WhenInvalidCommandExceptionOccurred()
+        public void CallResponseWriterWriteLineExactlyOnceWithExactMessage_WhenInvalidCommandExceptionOccurred()
         {
             // Arrange
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterMock = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
-            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object);
+            var engineUnderTest = new Engine(commandReaderStub.Object, responseWriterMock.Object, commandProccessorStub.Object, loggerStub.Object);
 
             string singleOtherCommand = "SomeRandomCommand";
             string terminateCommand = "Exit";
 
             commandReaderStub.SetupSequence(c => c.ReadLine()).Returns(singleOtherCommand).Returns(terminateCommand);
 
-            string exceptionMessage = "ExpectedCommandFailureMessage";
+            string exceptionMessage = "Invalid command! Please try again.";
 
             commandProccessorStub.Setup(c => c.ProcessCommand(It.IsAny<string>())).Throws(new InvalidCommandException(exceptionMessage));
 

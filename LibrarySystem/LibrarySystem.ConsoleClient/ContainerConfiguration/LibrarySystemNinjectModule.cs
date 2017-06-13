@@ -3,11 +3,18 @@
 // </copyright>
 // <summary>Holds implementation of LibrarySystemNinjectModule class.</summary>
 
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-
+using System.Reflection;
+using System.Xml.Serialization;
+using LibrarySystem.Commands.Administrative.Creational;
+using LibrarySystem.Commands.Administrative.File;
 using LibrarySystem.Commands.Administrative.Listings.Client;
 using LibrarySystem.Commands.Administrative.Listings.Employee;
 using LibrarySystem.Commands.Administrative.Listings.User;
+using LibrarySystem.Commands.Administrative.Logs;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Commands.Functional;
 using LibrarySystem.Commands.Projection.Authors;
@@ -29,6 +36,26 @@ using Ninject.Activation;
 using Ninject.Extensions.Factory;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Modules;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
+using LibrarySystem.Repositories.Data.UnitOfWork;
+using LibrarySystem.Data;
+using LibrarySystem.Data.Users;
+using LibrarySystem.Data.Logs;
+using LibrarySystem.FileExporters;
+using LibrarySystem.FileExporters.Utils;
+using LibrarySystem.FileExporters.Utils.Contracts;
+using LibrarySystem.FileImporters;
+using LibrarySystem.FileImporters.Utils;
+using LibrarySystem.FileImporters.Utils.Contracts;
+using LibrarySystem.Models.DTOs.XML;
+using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
+using LibrarySystem.Repositories.Data.Users.UnitOfWork;
+using LibrarySystem.Repositories.Contracts.Data.Logs.UnitOfWork;
+using LibrarySystem.Repositories.Data.Logs.UnitOfWork;
+using LibrarySystem.Repositories.Contracts.Data.Users;
+using LibrarySystem.Repositories.Data.Users;
 
 namespace LibrarySystem.ConsoleClient.ContainerConfiguration
 {
@@ -37,36 +64,46 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
     /// </summary>
     public class LibrarySystemNinjectModule : NinjectModule
     {
-        private const string GetAllClientsWithDelayedLendingsCommand = "GetAllClientsWithDelayedLendings";
-        private const string GetAllClientsWithJournalsCommand = "GetAllClientsWithJournals";
-        private const string GetClientAddressByPINCommand = "GetClientAddressByPIN";
-        private const string GetClientByPINCommand = "GetClientByPIN";
-        private const string GetLendingsByClientPINCommand = "GetLendingsByClientPIN";
-        private const string GetRemarksByClientPINCommand = "GetRemarksByClientPIN";
-        private const string GetAllEmployeesByManagerNameCommand = "GetAllEmployeesByManagerName";
-        private const string GetAllEmployeesWithoutManagerCommand = "GetAllEmployeesWithoutManager";
-        private const string GetEmployeesByFullNameCommand = "GetEmployeesByFullName";
-        private const string GetLoggedInUsersCommand = "GetLoggedInUsers";
-        private const string ClientExitLibraryCommand = "ClientExitLibrary";
-        private const string ClientGetBookCommand = "ClientGetBook";
-        private const string ClientGetJournalCommand = "ClientGetJournal";
-        private const string ClientReturnBookCommand = "ClientReturnBook";
-        private const string ClientReturnJournalsCommand = "ClientReturnJournals";
-        private const string UserLoginCommand = "UserLogin";
-        private const string UserLogoutCommand = "UserLogout";
-        private const string GetAuthorsByBookTitleCommand = "GetAuthorsByBookTitle";
-        private const string GetBookByISBNCommand = "GetBookByISBN";
-        private const string GetBooksByAuthorCommand = "GetBooksByAuthor";
-        private const string GetBooksByGenreNameCommand = "GetBooksByGenreName";
-        private const string GetBooksByPublisherCommand = "GetBooksByPublisher";
-        private const string GetGenresWithMostBooksCommand = "GetGenresWithMostBooks";
-        private const string GetJournalByISSNCommand = "GetJournalByISSN";
-        private const string GetJournalsByPublisherNameCommand = "GetJournalsByPublisherName";
-        private const string GetJournalsBySubjectCommand = "GetJournalsBySubject";
-        private const string GetPublisherByBookTitleCommand = "GetPublisherByBookTitle";
-        private const string GetPublisherByJournalTitleCommand = "GetPublisherByJournalTitle";
-        private const string GetSubjectsWithHighestImpactFactorcs = "GetSubjectsWithHighestImpactFactorcs";
-        private const string GetSubjectsWithMostJournalsCommand = "GetSubjectsWithMostJournals";
+        private const string GetAllClientsWithDelayedLendingsCommand = "getallclientswithdelayedlendings";
+        private const string GetAllClientsWithJournalsCommand = "getallclientswithjournals";
+        private const string GetClientAddressByPINCommand = "getclientaddressbypin";
+        private const string GetClientByPINCommand = "getclientbypin";
+        private const string GetLendingsByClientPINCommand = "getlendingsbyclientpin";
+        private const string GetRemarksByClientPINCommand = "getremarksbyclientpin";
+        private const string GetAllEmployeesByManagerNameCommand = "getallemployeesbymanagername";
+        private const string GetAllEmployeesWithoutManagerCommand = "getallemployeeswithoutmanager";
+        private const string GetEmployeesByFullNameCommand = "getemployeesbyfullname";
+        private const string GetLoggedInUsersCommand = "getloggedinusers";
+        private const string ClientExitLibraryCommand = "clientexitlibrary";
+        private const string ClientGetBookCommand = "clientgetbook";
+        private const string ClientGetJournalCommand = "clientgetjournal";
+        private const string ClientReturnBookCommand = "clientreturnbook";
+        private const string ClientReturnJournalsCommand = "clientreturnjournals";
+        private const string UserLoginCommand = "userlogin";
+        private const string UserLogoutCommand = "userlogout";
+        private const string GetAuthorsByBookTitleCommand = "getauthorsbybooktitle";
+        private const string GetBookByISBNCommand = "getbookbyisbn";
+        private const string GetBooksByAuthorCommand = "getbooksbyauthor";
+        private const string GetBooksByGenreNameCommand = "getbooksbygenrename";
+        private const string GetBooksByPublisherCommand = "getbooksbypublisher";
+        private const string GetGenresWithMostBooksCommand = "getgenreswithmostbooks";
+        private const string GetJournalByISSNCommand = "getjournalbyissn";
+        private const string GetJournalsByPublisherNameCommand = "getjournalsbypublishername";
+        private const string GetJournalsBySubjectCommand = "getjournalsbysubject";
+        private const string GetPublisherByBookTitleCommand = "getpublisherbybooktitle";
+        private const string GetPublisherByJournalTitleCommand = "getpublisherbyjournaltitle";
+        private const string GetSubjectsWithHighestImpactFactorcs = "getsubjectswithhighestimpactfactorcs";
+        private const string GetSubjectsWithMostJournalsCommand = "getsubjectswithmostjournals";
+        private const string CreateBookCommand = "createbook";
+        private const string CreateJournalCommand = "createjournal";
+        private const string RegisterUserCommand = "registeruser";
+        private const string GetLatestLogsCommand = "getlatestlogs";
+        private const string ExportBooksToFileCommand = "exportbookstofile";
+        private const string ImportBooksFromFileCommand = "importbooksfromfile";
+
+        private const string BooksForImportPath = "./../../../books.xml";
+        private const string bookExporterDirectory = "./../../../";
+        private const string bookExporterFileName = "books-inventory.xml";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -116,10 +153,47 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<GetPublisherByJournalTitleCommand>().Named(GetPublisherByJournalTitleCommand);
             this.Bind<ICommand>().To<GetSubjectsWithHighestImpactFactorcs>().Named(GetSubjectsWithHighestImpactFactorcs);
             this.Bind<ICommand>().To<GetSubjectsWithMostJournalsCommand>().Named(GetSubjectsWithMostJournalsCommand);
+            this.Bind<ICommand>().To<CreateBookCommand>().Named(CreateBookCommand);
+            this.Bind<ICommand>().To<CreateJournalCommand>().Named(CreateJournalCommand);
+            this.Bind<ICommand>().To<RegisterUserCommand>().Named(RegisterUserCommand);
+            this.Bind<ICommand>().To<GetLatestLogsCommand>().Named(GetLatestLogsCommand);
+            this.Bind<ICommand>().To<ImportBooksFromFileCommand>().Named(ImportBooksFromFileCommand);
+            this.Bind<ICommand>().To<ExportBooksToFileCommand>().Named(ExportBooksToFileCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
             this.Bind<IValidator>().To<Validator>().WhenInjectedExactlyInto<ModelValidation>().InSingletonScope();
+
+            this.Bind<IPublisherRepository>().To<PublisherRepository>();
+            this.Bind<IBookRepository>().To<BookRepository>();
+            this.Bind<IJournalRepository>().To<JournalRepository>();
+            this.Bind<IUserRepository>().To<UserRepository>();
+
+            this.Bind<ILibraryUnitOfWork>().To<LibraryUnitOfWork>();
+            this.Bind<IUsersUnitOfWork>().To<UsersUnitOfWork>();
+            this.Bind<ILogsUnitOfWork>().To<LogsUnitOfWork>();
+
+            this.Bind<LibrarySystemDbContext>().ToSelf().InSingletonScope();
+            this.Bind<LibrarySystemUsersDbContext>().ToSelf().InSingletonScope();
+            this.Bind<LibrarySystemLogsDbContext>().ToSelf().InSingletonScope();
+
+            this.Bind<IHashProvider>().To<HashProvider>();
+            this.Bind<IAuthKeyProvider>().To<AuthKeyProvider>();
+
+            // Log Interceptor Bindings
+            this.Bind<ILogger>().To<Logger>().Intercept().With<SQLLiteLogger>();
+
+            //Book Importer Bindings
+            this.Bind<XmlReader>().ToSelf().InSingletonScope();
+            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument(BooksForImportPath);
+            this.Bind<IXmlDeserializer>().To<XmlDeserializerWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
+            this.Bind<ICommand>().To<CreateBookCommand>().WhenInjectedInto<XmlReader>();
+
+            //Book Exporter Bindings
+            this.Bind<XmlWriter>().ToSelf().InSingletonScope();
+            this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(bookExporterDirectory, bookExporterFileName);
+            this.Bind<IXmlSerializer>().To<XmlSerializerWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
+
         }
 
         /// <summary>
@@ -130,6 +204,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private ICommand GetCommand(IContext context)
         {
             string commandName = context.Parameters.Single().GetValue(context, null).ToString();
+            string defaultMessage = "There is no such command as {0}!";
 
             switch (commandName.ToLower())
             {
@@ -163,7 +238,13 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetPublisherByJournalTitleCommand: return context.Kernel.Get<ICommand>(GetPublisherByJournalTitleCommand);
                 case GetSubjectsWithHighestImpactFactorcs: return context.Kernel.Get<ICommand>(GetSubjectsWithHighestImpactFactorcs);
                 case GetSubjectsWithMostJournalsCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithMostJournalsCommand);
-                default: throw new InvalidCommandException(commandName);
+                case CreateBookCommand: return context.Kernel.Get<ICommand>(CreateBookCommand);
+                case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);
+                case RegisterUserCommand: return context.Kernel.Get<ICommand>(RegisterUserCommand);
+                case GetLatestLogsCommand: return context.Kernel.Get<ICommand>(GetLatestLogsCommand);
+                case ImportBooksFromFileCommand: return context.Kernel.Get<ICommand>(ImportBooksFromFileCommand);
+                case ExportBooksToFileCommand: return context.Kernel.Get<ICommand>(ExportBooksToFileCommand);
+                default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
             }
         }
     }

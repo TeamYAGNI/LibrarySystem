@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Models;
 using LibrarySystem.Repositories.Contracts.Data;
@@ -8,25 +8,23 @@ using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
-    public class ClientGetJournalCommand : ICommand
+    public class ClientGetJournalCommand : Command, ICommand
     {
         private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly IClientRepository clientRepository;
         private readonly IJournalRepository journalRepository;
 
-        public ClientGetJournalCommand(ILibraryUnitOfWork libraryUnitOfWork, IClientRepository clientRepository, IJournalRepository journalRepository)
+        public ClientGetJournalCommand(ILibraryUnitOfWork libraryUnitOfWork, IClientRepository clientRepository, IJournalRepository journalRepository) : base(new List<object>() { libraryUnitOfWork, clientRepository, journalRepository }, 2)
         {
-            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
-            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
-            Guard.WhenArgument(journalRepository, "journalRepository").IsNull().Throw();
-
             this.libraryUnitOfWork = libraryUnitOfWork;
             this.clientRepository = clientRepository;
             this.journalRepository = journalRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var sb = new StringBuilder();
             string PIN = parameters[0];
             string ISSN = parameters[1];

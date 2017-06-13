@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Repositories.Contracts.Data;
@@ -10,22 +10,21 @@ using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
-    public class ClientReturnBookCommand : ICommand
+    public class ClientReturnBookCommand : Command, ICommand
     {
         private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly ILendingRepository lendingRepository;
 
-        public ClientReturnBookCommand(ILibraryUnitOfWork libraryUnitOfWork, ILendingRepository lendingRepository)
+        public ClientReturnBookCommand(ILibraryUnitOfWork libraryUnitOfWork, ILendingRepository lendingRepository) : base(new List<object>() { libraryUnitOfWork, lendingRepository }, 3)
         {
-            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
-            Guard.WhenArgument(lendingRepository, "lendingRepository").IsNull().Throw();
-
             this.libraryUnitOfWork = libraryUnitOfWork;
             this.lendingRepository = lendingRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var sb = new StringBuilder();
             var PIN = parameters[0];
             var ISBN = parameters[1];

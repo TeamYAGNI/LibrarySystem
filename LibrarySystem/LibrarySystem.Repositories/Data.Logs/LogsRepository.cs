@@ -30,7 +30,7 @@ namespace LibrarySystem.Repositories.Data.Logs
         }
 
         /// <summary>
-        /// Gets the context as a <see cref="LibrarySystemDbContext"/>.
+        /// Gets the context as a <see cref="LibrarySystemLogsDbContext"/>.
         /// </summary>
         private LibrarySystemLogsDbContext LogsDbContext
         {
@@ -46,7 +46,7 @@ namespace LibrarySystem.Repositories.Data.Logs
         /// <returns>Collection of at most ten topmost recent logs.</returns>
         public IEnumerable<Log> Get10LatestLogs()
         {
-            return this.LogsDbContext.Logs.OrderByDescending(l => l.DateTime).Take(10).ToList();
+            return this.LogsDbContext.Logs.Include(l => l.LogType).OrderByDescending(l => l.DateTime).Take(10).ToList();
         }
 
         /// <summary>

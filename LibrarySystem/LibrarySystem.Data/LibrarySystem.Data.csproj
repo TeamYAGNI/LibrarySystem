@@ -63,6 +63,14 @@
     <Compile Include="Migrations\201706090015391_Added client journals relation.Designer.cs">
       <DependentUpon>201706090015391_Added client journals relation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706130055313_Remove_Journal_ClientID_Requirement.cs" />
+    <Compile Include="Migrations\201706130055313_Remove_Journal_ClientID_Requirement.Designer.cs">
+      <DependentUpon>201706130055313_Remove_Journal_ClientID_Requirement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706130159500_Remove_Journal_Subject_Requirement.cs" />
+    <Compile Include="Migrations\201706130159500_Remove_Journal_Subject_Requirement.Designer.cs">
+      <DependentUpon>201706130159500_Remove_Journal_Subject_Requirement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,6 +93,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706090015391_Added client journals relation.resx">
       <DependentUpon>201706090015391_Added client journals relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130055313_Remove_Journal_ClientID_Requirement.resx">
+      <DependentUpon>201706130055313_Remove_Journal_ClientID_Requirement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130159500_Remove_Journal_Subject_Requirement.resx">
+      <DependentUpon>201706130159500_Remove_Journal_Subject_Requirement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

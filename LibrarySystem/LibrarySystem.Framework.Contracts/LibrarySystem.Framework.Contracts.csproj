@@ -36,6 +36,7 @@
     <Compile Include="ICommandProcessor.cs" />
     <Compile Include="IEngine.cs" />
     <Compile Include="ICommandReader.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="IResponseWriter.cs" />
     <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

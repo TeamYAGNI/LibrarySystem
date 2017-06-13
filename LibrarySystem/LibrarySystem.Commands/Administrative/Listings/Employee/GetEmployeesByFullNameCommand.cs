@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Abstractions;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Employee
 {
-    public class GetEmployeesByFullNameCommand : IAdministratorCommand
+    public class GetEmployeesByFullNameCommand : Command, ICommand
     {
         private readonly IEmployeeRepository employeesRepository;
 
-        public GetEmployeesByFullNameCommand(IEmployeeRepository employeesRepository)
+        public GetEmployeesByFullNameCommand(IEmployeeRepository employeesRepository) : base(new List<object>() { employeesRepository }, 2)
         {
-            Guard.WhenArgument(employeesRepository, "employeesRepository").IsNull().Throw();
-
             this.employeesRepository = employeesRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var employeeFirstName = parameters[0];
             var employeeLastName = parameters[1];
 

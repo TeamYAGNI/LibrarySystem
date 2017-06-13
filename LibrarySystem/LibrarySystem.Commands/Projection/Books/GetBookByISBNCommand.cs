@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Projection.Books
 {
-    public class GetBookByISBNCommand : ICommand
+    public class GetBookByISBNCommand : Command, ICommand
     {
         private readonly IBookRepository bookRepository;
 
-        public GetBookByISBNCommand(IBookRepository bookRepository)
+        public GetBookByISBNCommand(IBookRepository bookRepository) : base(new List<object>() { bookRepository }, 1)
         {
-            Guard.WhenArgument(bookRepository, "bookRepository").IsNull().Throw();
-
             this.bookRepository = bookRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var ISBN = parameters[0];
 
             var book = bookRepository.GetBookByISBN(ISBN);

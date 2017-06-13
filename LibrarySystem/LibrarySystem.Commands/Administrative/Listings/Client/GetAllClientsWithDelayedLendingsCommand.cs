@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Abstractions;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {
-    public class GetAllClientsWithDelayedLendingsCommand : IAdministratorCommand
+    public class GetAllClientsWithDelayedLendingsCommand : Command, ICommand
     {
         private readonly IClientRepository clientRepository;
 
-        public GetAllClientsWithDelayedLendingsCommand(IClientRepository clientRepository)
+        public GetAllClientsWithDelayedLendingsCommand(IClientRepository clientRepository) : base(new List<object>() { clientRepository }, 0)
         {
-            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
-
             this.clientRepository = clientRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var clients = this.clientRepository.GetAllClientsWithLendingsOlderThanAMonth();
 
             if (clients.Count() == 0)

@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Abstractions;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {
-    public class GetRemarksByClientPINCommand : IAdministratorCommand
+    public class GetRemarksByClientPINCommand : Command, ICommand
     {
         private readonly ILendingRepository lendingRepository;
 
-        public GetRemarksByClientPINCommand(ILendingRepository lendingRepository)
+        public GetRemarksByClientPINCommand(ILendingRepository lendingRepository) : base(new List<object>() { lendingRepository }, 1)
         {
-            Guard.WhenArgument(lendingRepository, "lendingRepository").IsNull().Throw();
-
             this.lendingRepository = lendingRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var PIN = parameters[0];
 
             var remarks = this.lendingRepository.GetAllLendingsRemarksByClientPIN(PIN);

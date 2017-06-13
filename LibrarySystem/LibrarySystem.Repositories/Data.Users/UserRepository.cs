@@ -125,5 +125,15 @@ namespace LibrarySystem.Repositories.Data.Users
         {
             return this.UsersDbContext.Users.Where(u => u.AuthKeyExpirationDate < TimeProvider.Current.Now).ToList();
         }
+
+        /// <summary>
+        /// Provide user by a given username.
+        /// </summary>
+        /// <param name="username">Username of the user.</param>
+        /// <returns>User with the given username.</returns>
+        public User GetUserByUsername(string username)
+        {
+            return this.UsersDbContext.Users.Where(u => u.Username == username).SingleOrDefault();
+        }
     }
 }

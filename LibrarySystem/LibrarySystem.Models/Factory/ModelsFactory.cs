@@ -319,13 +319,14 @@ namespace LibrarySystem.Models.Factory
         /// <param name="userType">Type of the <see cref="User"/> instance.</param>
         /// <param name="groups">Initial collection of groups related to the <see cref="User"/> instance.</param>
         /// <returns>Instance of <see cref="User"/> class.</returns>
-        public User CreateUser(string username, string passHash, string authKey, UserType userType, ICollection<Group> groups)
+        public User CreateUser(string username, string passHash, string authKey,DateTime expirationDate, UserType userType, ICollection<Group> groups)
         {
             User user = new User
             {
                 Username = username,
                 PassHash = passHash,
                 AuthKey = authKey,
+                AuthKeyExpirationDate = expirationDate,
                 Type = userType,
                 Groups = groups
             };
