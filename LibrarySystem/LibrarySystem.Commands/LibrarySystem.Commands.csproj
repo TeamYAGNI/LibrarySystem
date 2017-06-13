@@ -52,6 +52,8 @@
     <Compile Include="Administrative\Creational\CreateBookCommand.cs" />
     <Compile Include="Administrative\Creational\CreateJournalCommand.cs" />
     <Compile Include="Administrative\Creational\RegisterUserCommand.cs" />
+    <Compile Include="Administrative\File\ExportBooksToFileCommand.cs" />
+    <Compile Include="Administrative\File\ImportBooksFromFileCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetAllClientsWithDelayedLendingsCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetAllClientsWithJournalsCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetClientAddressByPINCommand.cs" />
@@ -94,6 +96,14 @@
     <ProjectReference Include="..\LibrarySystem.Commands.Contracts\LibrarySystem.Commands.Contracts.csproj">
       <Project>{6796aa66-40a1-41d9-87a8-7b9a3c75fc54}</Project>
       <Name>LibrarySystem.Commands.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.FileExporters\LibrarySystem.FileExporters.csproj">
+      <Project>{59500c07-feeb-4833-9e02-e13b14fcfaad}</Project>
+      <Name>LibrarySystem.FileExporters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LibrarySystem.FileImporters\LibrarySystem.FileImporters.csproj">
+      <Project>{50CBCFE6-367F-4BEC-9599-B960DF8DD394}</Project>
+      <Name>LibrarySystem.FileImporters</Name>
     </ProjectReference>
     <ProjectReference Include="..\LibrarySystem.Framework\LibrarySystem.Framework.csproj">
       <Project>{1B46B6F6-B19E-4170-B09E-F9B4EA2C8A38}</Project>

@@ -189,7 +189,7 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
 
         [Test]
         [Category("Framework.Engine.Start")]
-        public void CallResponseWriterWriteLineExactlyOnceWithExceptionMessage_WhenInvalidCommandExceptionOccurred()
+        public void CallResponseWriterWriteLineExactlyOnceWithExactMessage_WhenInvalidCommandExceptionOccurred()
         {
             // Arrange
             var commandReaderStub = new Mock<ICommandReader>();
@@ -204,7 +204,7 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
 
             commandReaderStub.SetupSequence(c => c.ReadLine()).Returns(singleOtherCommand).Returns(terminateCommand);
 
-            string exceptionMessage = "ExpectedCommandFailureMessage";
+            string exceptionMessage = "Invalid command! Please try again.";
 
             commandProccessorStub.Setup(c => c.ProcessCommand(It.IsAny<string>())).Throws(new InvalidCommandException(exceptionMessage));
 

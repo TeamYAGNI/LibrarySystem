@@ -4,11 +4,13 @@
 // <summary>Holds implementation of LibrarySystemNinjectModule class.</summary>
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-
+using System.Xml.Serialization;
 using LibrarySystem.Commands.Administrative.Creational;
+using LibrarySystem.Commands.Administrative.File;
 using LibrarySystem.Commands.Administrative.Listings.Client;
 using LibrarySystem.Commands.Administrative.Listings.Employee;
 using LibrarySystem.Commands.Administrative.Listings.User;
@@ -41,6 +43,13 @@ using LibrarySystem.Repositories.Data.UnitOfWork;
 using LibrarySystem.Data;
 using LibrarySystem.Data.Users;
 using LibrarySystem.Data.Logs;
+using LibrarySystem.FileExporters;
+using LibrarySystem.FileExporters.Utils;
+using LibrarySystem.FileExporters.Utils.Contracts;
+using LibrarySystem.FileImporters;
+using LibrarySystem.FileImporters.Utils;
+using LibrarySystem.FileImporters.Utils.Contracts;
+using LibrarySystem.Models.DTOs.XML;
 using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 using LibrarySystem.Repositories.Data.Users.UnitOfWork;
 using LibrarySystem.Repositories.Contracts.Data.Logs.UnitOfWork;
@@ -89,6 +98,12 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string CreateJournalCommand = "createjournal";
         private const string RegisterUserCommand = "registeruser";
         private const string GetLatestLogsCommand = "getlatestlogs";
+        private const string ExportBooksToFileCommand = "exportbookstofile";
+        private const string ImportBooksFromFileCommand = "importbooksfromfile";
+
+        private const string BooksForImportPath = "./../../../books.xml";
+        private const string bookExporterDirectory = "./../../../";
+        private const string bookExporterFileName = "books-inventory.xml";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -142,7 +157,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<CreateJournalCommand>().Named(CreateJournalCommand);
             this.Bind<ICommand>().To<RegisterUserCommand>().Named(RegisterUserCommand);
             this.Bind<ICommand>().To<GetLatestLogsCommand>().Named(GetLatestLogsCommand);
-
+            this.Bind<ICommand>().To<ImportBooksFromFileCommand>().Named(ImportBooksFromFileCommand);
+            this.Bind<ICommand>().To<ExportBooksToFileCommand>().Named(ExportBooksToFileCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
@@ -163,9 +179,21 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
 
             this.Bind<IHashProvider>().To<HashProvider>();
             this.Bind<IAuthKeyProvider>().To<AuthKeyProvider>();
-           
+
             // Log Interceptor Bindings
             this.Bind<ILogger>().To<Logger>().Intercept().With<SQLLiteLogger>();
+
+            //Book Importer Bindings
+            this.Bind<XmlReader>().ToSelf().InSingletonScope();
+            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument(BooksForImportPath);
+            this.Bind<IXmlDeserializer>().To<XmlDeserializerWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
+            this.Bind<ICommand>().To<CreateBookCommand>().WhenInjectedInto<XmlReader>();
+
+            //Book Exporter Bindings
+            this.Bind<XmlWriter>().ToSelf().InSingletonScope();
+            this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(bookExporterDirectory, bookExporterFileName);
+            this.Bind<IXmlSerializer>().To<XmlSerializerWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
+
         }
 
         /// <summary>
@@ -214,8 +242,9 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);
                 case RegisterUserCommand: return context.Kernel.Get<ICommand>(RegisterUserCommand);
                 case GetLatestLogsCommand: return context.Kernel.Get<ICommand>(GetLatestLogsCommand);
+                case ImportBooksFromFileCommand: return context.Kernel.Get<ICommand>(ImportBooksFromFileCommand);
+                case ExportBooksToFileCommand: return context.Kernel.Get<ICommand>(ExportBooksToFileCommand);
                 default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
-
             }
         }
     }
