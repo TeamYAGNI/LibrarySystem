@@ -5,44 +5,45 @@
 
 using System;
 using System.Collections.Generic;
-using LibrarySystem.FileExporters.Utils.Contracts;
+using LibrarySystem.FileImporters;
+using LibrarySystem.FileImporters.Utils.Contracts;
 using LibrarySystem.Models.DTOs.JSON;
 using Moq;
 using NUnit.Framework;
 
-namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
+namespace LibrarySystem.FileImporters.UnitTests.JsonReaderTests
 {
     [TestFixture]
-    public class ExportBooks_Should
+    public class ImportJournals_Should
     {
         [Test]
-        [Category("FileExplorers.JsonWriter.ExportBooks")]
-        public void CallGetTextWriterMethodOnce_WhenAllArgumentsArePassed()
+        [Category("FileImporters.JsonReader.ImportJournals")]
+        public void CallGetStreamReaderMethodTwice_WhenAllArgumentsArePassed()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriter>();
-            mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
+            var mockStreamReaderWrapper = new Mock<IStreamReader>();
+            mockStreamReaderWrapper.Setup(p => p.GetStreamReader());
+            var mockJsonDeserializerWrapper = new Mock<IJsonDeserializer>();
             var journals = new Mock<IEnumerable<JournalJsonDto>>();
-            var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
+            var jsonReader = new JsonReader(mockStreamReaderWrapper.Object, mockJsonDeserializerWrapper.Object);
 
             // Act
-            jsonWriter.ExportJournals(journals.Object);
+            jsonReader.ImportJournals();
 
             // Assert
-            mockTextWriterWrapper.Verify(x => x.GetTextWriter().Write(It.IsAny<string>()), Times.Once());
+            mockStreamReaderWrapper.Verify(x => x.GetStreamReader(), Times.Exactly(2));
         }
 
         [Test]
-        [Category("FileExplorers.JsonWriter.ExportBooks")]
+        [Category("FileImporters.JsonReader.ImportJournals")]
         public void CallSerializeMethodOnce_WhenAllArgumentsArePassed()
         {
             // Arrange
-            var mockTextWriterWrapper = new Mock<ITextWriter>();
-            mockTextWriterWrapper.Setup(p => p.GetTextWriter().Write(It.IsAny<string>()));
-            var mockJsonSerializerWrapper = new Mock<IJsonSerializer>();
+            var mockStreamReaderWrapper = new Mock<IStreamReader>();
+            mockStreamReaderWrapper.Setup(p => p.GetStreamReader());
+            var mockJsonDeserializerWrapper = new Mock<IJsonDeserializer>();
             var journals = new Mock<IEnumerable<JournalJsonDto>>();
-            mockJsonSerializerWrapper.Setup(p => p.Serialize(journals.Object));
+            mockJsonDeserializerWrapper.Setup(p => p.Deserialize(p.GetStreamReader()));
             var jsonWriter = new JsonWriter(mockTextWriterWrapper.Object, mockJsonSerializerWrapper.Object);
 
             // Act
@@ -53,7 +54,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
         }
 
         [Test]
-        [Category("FileExplorers.JsonWriter.ExportBooks")]
+        [Category("FileImporters.JsonReader.ImportJournals")]
         public void ThrowArgumentNullException_WhenJournalsArgumentIsNull()
         {
             // Arrange

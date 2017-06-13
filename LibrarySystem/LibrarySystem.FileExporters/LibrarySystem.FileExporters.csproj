@@ -56,9 +56,13 @@
     <Compile Include="PdfWriterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Contracts\IJsonSerializer.cs" />
+    <Compile Include="Utils\Contracts\IPdfStream.cs" />
+    <Compile Include="Utils\Contracts\IPdfTableGenerator.cs" />
     <Compile Include="Utils\Contracts\ITextWriter.cs" />
     <Compile Include="Utils\Contracts\IXmlSerializer.cs" />
     <Compile Include="Utils\JsonSerializerWrapper.cs" />
+    <Compile Include="Utils\PdfStreamWrapper.cs" />
+    <Compile Include="Utils\PdfTableGenerator.cs" />
     <Compile Include="Utils\TextWriterWrapper.cs" />
     <Compile Include="Utils\XmlSerializerWrapper.cs" />
     <Compile Include="XmlWriter.cs" />
