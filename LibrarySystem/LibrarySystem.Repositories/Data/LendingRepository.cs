@@ -99,5 +99,10 @@ namespace LibrarySystem.Repositories.Data
             return this.LibraryDbContext.Lendings.Include(l => l.Book).Where(l => l.Client.PIN == pin)
                 .Select(l => l.Remarks).ToList();
         }
+
+        public override IEnumerable<Lending> GetAll()
+        {
+            return this.LibraryDbContext.Lendings.Include(l => l.Book).Include(l => l.Client).ToList();
+        }
     }
 }

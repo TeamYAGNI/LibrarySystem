@@ -54,6 +54,7 @@
     <Compile Include="Administrative\Creational\RegisterUserCommand.cs" />
     <Compile Include="Administrative\File\ExportBooksToFileCommand.cs" />
     <Compile Include="Administrative\File\ExportJournalsToFileCommand.cs" />
+    <Compile Include="Administrative\File\GetPDFReportCommand.cs" />
     <Compile Include="Administrative\File\ImportJournalsFromFileCommand.cs" />
     <Compile Include="Administrative\File\ImportBooksFromFileCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetAllClientsWithDelayedLendingsCommand.cs" />

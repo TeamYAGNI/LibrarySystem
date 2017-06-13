@@ -102,6 +102,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string ImportBooksFromFileCommand = "importbooksfromfile";
         private const string ImportJournalsFromFileCommand = "importjournalsfromfile";
         private const string ExportJournalsToFileCommand = "exportjournalstofilecommand";
+        private const string GetPDFReportCommand = "getpdfreport";
 
         private const string BooksForImportPath = "./../../../books.xml";
         private const string bookExporterDirectory = "./../../../";
@@ -109,6 +110,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string JournalImporterFilePath = "./../../../journals.json";
         private const string JournalExporterDirectory = "./../../../";
         private const string JournalExporterFileName = "journals-inventory.json";
+        private const string PdfFileDirectory = "./../../../";
+        private const string PdfFileName = "lendings.pdf";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -166,6 +169,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<ExportBooksToFileCommand>().Named(ExportBooksToFileCommand);
             this.Bind<ICommand>().To<ImportJournalsFromFileCommand>().Named(ImportJournalsFromFileCommand);
             this.Bind<ICommand>().To<ExportJournalsToFileCommand>().Named(ExportJournalsToFileCommand);
+            this.Bind<ICommand>().To<GetPDFReportCommand>().Named(GetPDFReportCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
@@ -213,6 +217,9 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<JsonWriter>()
                 .WithConstructorArgument(JournalExporterDirectory, JournalExporterFileName);
             this.Bind<IJsonSerializer>().To<JsonSerializerWrapper>().WhenInjectedInto<JsonWriter>();
+
+            //PDF
+            this.Bind<PdfWriterProvider>().ToSelf().WithConstructorArgument(PdfFileDirectory, PdfFileName);
         }
 
         /// <summary>
@@ -265,6 +272,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case ExportBooksToFileCommand: return context.Kernel.Get<ICommand>(ExportBooksToFileCommand);
                 case ImportJournalsFromFileCommand: return context.Kernel.Get<ICommand>(ImportJournalsFromFileCommand);
                 case ExportJournalsToFileCommand: return context.Kernel.Get<ICommand>(ExportJournalsToFileCommand);
+                case GetPDFReportCommand: return context.Kernel.Get<ICommand>(GetPDFReportCommand);
                 default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
             }
         }
