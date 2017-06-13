@@ -146,7 +146,7 @@ namespace LibrarySystem.Repositories.Data
         public IEnumerable<Client> GetAllClientsWithLendingsOlderThanAMonth()
         {
             return this.LibraryDbContext.Clients.Where(
-                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < TimeProvider.Current.Today && l.ReturnDate == null)).ToList();
+                c => c.Lendings.Any(l => l.BorrоwDate.AddMonths(1).Date < TimeProvider.Current.Today.Date && l.ReturnDate == null)).ToList();
         }
 
         /// <summary>

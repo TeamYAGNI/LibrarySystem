@@ -21,10 +21,11 @@ namespace LibrarySystem.Data.Users
         /// <summary>
         /// Name of the connection string that describe witch database server <see cref="LibrarySystemUsersDbContext"/> instance to use and how.
         /// </summary>
-        private const string ConnectionString = "PostgreSQL";
+        private const string ConnectionString = "PostgresDotNet";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LibrarySystemUsersDbContext"/> class.
+        /// Initializes a new instance of the <see 
+        /// cref="LibrarySystemUsersDbContext"/> class.
         /// </summary>
         public LibrarySystemUsersDbContext()
             : base(ConnectionString)

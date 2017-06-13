@@ -7,11 +7,11 @@ using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Projection.Subjects
 {
-    public class GetSubjectsWithHighestImpactFactorcs : Command, ICommand
+    public class GetSubjectsWithHighestImpactFactorCommand : Command, ICommand
     {
         private readonly ISubjectRepository subjectRepository;
 
-        public GetSubjectsWithHighestImpactFactorcs(ISubjectRepository subjectRepository) : base(new List<object>() { subjectRepository }, 0)
+        public GetSubjectsWithHighestImpactFactorCommand(ISubjectRepository subjectRepository) : base(new List<object>() { subjectRepository }, 0)
         {
             this.subjectRepository = subjectRepository;
         }

@@ -53,7 +53,9 @@ namespace LibrarySystem.Commands.Administrative.File
 
                 if (journal.Publisher != null)
                 {
-                    dtoJournal.Publisher.Name = journal.Publisher.Name;
+                    var dtoPublisher = new PublisherJsonDto();
+                    dtoPublisher.Name = journal.Publisher.Name;
+                    dtoJournal.Publisher = dtoPublisher;
                 }
 
                 if (journal.Subjects.Count() != 0)

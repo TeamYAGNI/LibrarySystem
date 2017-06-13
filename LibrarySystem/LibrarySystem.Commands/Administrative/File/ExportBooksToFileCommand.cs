@@ -51,17 +51,19 @@ namespace LibrarySystem.Commands.Administrative.File
 
                 if (book.Publisher != null)
                 {
-                    dtoBook.Publisher.Name = book.Publisher.Name;
+                    var dtoPublisher = new PublisherXmlDto();
+                    dtoPublisher.Name = book.Publisher.Name;
+                    dtoBook.Publisher = dtoPublisher;
                 }
 
                 if (book.Authors.Count != 0)
                 {
                     var dtoAuthors = book.Authors.Select(author => new AuthorXmlDto
-                        {
-                            FirstName = author.FirstName,
-                            LastName = author.LastName,
-                            GenderType = author.GenderType
-                        })
+                    {
+                        FirstName = author.FirstName,
+                        LastName = author.LastName,
+                        GenderType = author.GenderType
+                    })
                         .ToList();
 
                     dtoBook.Authors = dtoAuthors;
@@ -69,7 +71,7 @@ namespace LibrarySystem.Commands.Administrative.File
 
                 if (book.Genres.Count() != 0)
                 {
-                    var dtoGenres = book.Genres.Select(genre => new GenreXmlDto {Name = genre.Name}).ToList();
+                    var dtoGenres = book.Genres.Select(genre => new GenreXmlDto { Name = genre.Name }).ToList();
 
                     dtoBook.Genres = dtoGenres;
                 }

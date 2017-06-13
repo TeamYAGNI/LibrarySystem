@@ -42,7 +42,15 @@ namespace LibrarySystem.Commands.Administrative.File
                 string bookISBN = book.ISBN;
                 string pageCount = book.PageCount.ToString();
                 string yearOfPublishing = book.YearOfPublishing.ToString();
-                string publisherName = book.Publisher.Name;
+                string publisherName;
+                if (book.Publisher != null)
+                {
+                    publisherName = book.Publisher.Name;
+                }
+                else
+                {
+                    publisherName = "Mark Twain";
+                }
                 string quantity = book.Quantity.ToString();
                 this.createBookCommand.Execute(new List<string>()
                 {

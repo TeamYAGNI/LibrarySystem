@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <book>
+    <title>Dependency Injection in .NET</title>
+    <isbn>9781935182504</isbn>
+    <authors>
+      <author>
+        <first-name>Mark</first-name>
+        <last-name>Seemann</last-name>
+        <gender>Male</gender>
+      </author>
+    </authors>
+    <genres>
+      <genre>
+        <name>Software</name>
+      </genre>
+    </genres>
+    <description>Dependency Injection in .NET introduces DI and provides a practical guide for applying it in .NET applications.
+                                The book presents the core patterns in plain C#, so you'll fully understand how DI works. Then you'll learn to integrate DI
+                                with standard Microsoft technologies like ASP.NET MVC, and to use DI frameworks like StructureMap, Castle Windsor, and Unity.
+                                By the end of the book, you'll be comfortable applying this powerful technique in your everyday .NET development.</description>
+    <page-count>584</page-count>
+    <year-of-publishing>2011</year-of-publishing>
+    <publisher>
+      <name>Manning</name>
+    </publisher>
+    <quantity>42</quantity>
+  </book>
+  <book>
+    <title>The Art of Unit Testing</title>
+    <isbn>9781933988276</isbn>
+    <authors>
+      <author>
+        <first-name>Roy</first-name>
+        <last-name>Osherove</last-name>
+        <gender>Male</gender>
+      </author>
+    </authors>
+    <genres>
+      <genre>
+        <name>Software</name>
+      </genre>
+    </genres>
+    <description>The Art of Unit Testing builds on top of what's already been written about this important topic. It guides you step by step
+                                from simple tests to tests that are maintainable, readable, and trustworthy. It covers advanced subjects like mocks, stubs,
+                                and frameworks such as Typemock Isolator and Rhino Mocks. And you'll learn about advanced test patterns and organization,
+                                working with legacy code and even untestable code. The book discusses tools you need when testing databases and other technologies.</description>
+    <page-count>320</page-count>
+    <year-of-publishing>2009</year-of-publishing>
+    <publisher>
+      <name>Manning</name>
+    </publisher>
+    <quantity>37</quantity>
+  </book>
+  <book>
+    <title>Patterns of Enterprise Application Architecture</title>
+    <isbn>9780321127426</isbn>
+    <authors>
+      <author>
+        <first-name>Martin</first-name>
+        <last-name>Fowler</last-name>
+        <gender>Male</gender>
+      </author>
+    </authors>
+    <genres>
+      <genre>
+        <name>Software</name>
+      </genre>
+    </genres>
+    <description>These pages are a brief overview of each of the patterns in P of EAA. They aren't intended to stand alone, but merely as a quick
+                                aide-memoire for those familiar with them, and a handy link if you want to refer to one online. In the future I may add some
+                                post-publication comments into the material here, but we'll see how that works out.</description>
+    <page-count>533</page-count>
+    <year-of-publishing>2003</year-of-publishing>
+    <publisher>
+      <name>Addison-Wesley</name>
+    </publisher>
+    <quantity>31</quantity>
+  </book>
+</ArrayOfBook>

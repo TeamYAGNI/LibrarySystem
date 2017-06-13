@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Maxim",
+    "impactFactor": null,
+    "issn": "0000-0000",
+    "issueNumber": 2,
+    "yearOfPublishing": 2017,
+    "publisher": {
+      "name": "Publisher1"
+    },
+    "quantity": 2,
+    "subjects": null
+  },
+  {
+    "title": "Playboy",
+    "impactFactor": null,
+    "issn": "0000-0001",
+    "issueNumber": 2,
+    "yearOfPublishing": 2017,
+    "publisher": {
+      "name": "Publisher2"
+    },
+    "quantity": 2,
+    "subjects": null
+  },
+  {
+    "title": "Egoist",
+    "impactFactor": null,
+    "issn": "0000-0002",
+    "issueNumber": 0,
+    "yearOfPublishing": 2017,
+    "publisher": {
+      "name": "Publisher3"
+    },
+    "quantity": 2,
+    "subjects": null
+  }
+]

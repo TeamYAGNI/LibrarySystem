@@ -50,12 +50,15 @@ using LibrarySystem.FileImporters;
 using LibrarySystem.FileImporters.Utils;
 using LibrarySystem.FileImporters.Utils.Contracts;
 using LibrarySystem.Models.DTOs.XML;
+using LibrarySystem.Repositories.Contracts.Data.Logs;
 using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 using LibrarySystem.Repositories.Data.Users.UnitOfWork;
 using LibrarySystem.Repositories.Contracts.Data.Logs.UnitOfWork;
 using LibrarySystem.Repositories.Data.Logs.UnitOfWork;
 using LibrarySystem.Repositories.Contracts.Data.Users;
+using LibrarySystem.Repositories.Data.Logs;
 using LibrarySystem.Repositories.Data.Users;
+using Ninject.Extensions.Conventions;
 
 namespace LibrarySystem.ConsoleClient.ContainerConfiguration
 {
@@ -92,7 +95,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string GetJournalsBySubjectCommand = "getjournalsbysubject";
         private const string GetPublisherByBookTitleCommand = "getpublisherbybooktitle";
         private const string GetPublisherByJournalTitleCommand = "getpublisherbyjournaltitle";
-        private const string GetSubjectsWithHighestImpactFactorcs = "getsubjectswithhighestimpactfactorcs";
+        private const string GetSubjectsWithHighestImpactFactorCommand = "getsubjectswithhighestimpactfactor";
         private const string GetSubjectsWithMostJournalsCommand = "getsubjectswithmostjournals";
         private const string CreateBookCommand = "createbook";
         private const string CreateJournalCommand = "createjournal";
@@ -101,7 +104,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string ExportBooksToFileCommand = "exportbookstofile";
         private const string ImportBooksFromFileCommand = "importbooksfromfile";
         private const string ImportJournalsFromFileCommand = "importjournalsfromfile";
-        private const string ExportJournalsToFileCommand = "exportjournalstofilecommand";
+        private const string ExportJournalsToFileCommand = "exportjournalstofile";
         private const string GetPDFReportCommand = "getpdfreport";
 
         private const string BooksForImportPath = "./../../../books.xml";
@@ -118,13 +121,19 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         /// </summary>
         public override void Load()
         {
-            // Basic Baindings
+            //Kernel.Bind(x =>
+            //{
+            //    x.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+            //        .SelectAllClasses()
+            //        .BindDefaultInterface();
+            //});
+            // Basic bindings
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
+            this.Bind<IUserPassport>().To<UserPassport>();
 
             this.Bind<ICommandReader>().To<ConsoleCommandReader>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
             this.Bind<IResponseWriter>().To<ConsoleResponseWriter>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
             this.Bind<ICommandProcessor>().To<CommandProcessor>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
-
             // CommandFactory Bindings
             this.Bind<ICommandsFactory>().ToFactory().WhenInjectedInto<ICommandProcessor>().InSingletonScope();
             this.Bind<ICommand>().ToMethod(context => this.GetCommand(context))
@@ -159,7 +168,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<GetJournalsBySubjectCommand>().Named(GetJournalsBySubjectCommand);
             this.Bind<ICommand>().To<GetPublisherByBookTitleCommand>().Named(GetPublisherByBookTitleCommand);
             this.Bind<ICommand>().To<GetPublisherByJournalTitleCommand>().Named(GetPublisherByJournalTitleCommand);
-            this.Bind<ICommand>().To<GetSubjectsWithHighestImpactFactorcs>().Named(GetSubjectsWithHighestImpactFactorcs);
+            this.Bind<ICommand>().To<GetSubjectsWithHighestImpactFactorCommand>().Named(GetSubjectsWithHighestImpactFactorCommand);
             this.Bind<ICommand>().To<GetSubjectsWithMostJournalsCommand>().Named(GetSubjectsWithMostJournalsCommand);
             this.Bind<ICommand>().To<CreateBookCommand>().Named(CreateBookCommand);
             this.Bind<ICommand>().To<CreateJournalCommand>().Named(CreateJournalCommand);
@@ -175,14 +184,23 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
             this.Bind<IValidator>().To<Validator>().WhenInjectedExactlyInto<ModelValidation>().InSingletonScope();
 
+            // Repository Bindings
             this.Bind<IPublisherRepository>().To<PublisherRepository>();
             this.Bind<IBookRepository>().To<BookRepository>();
             this.Bind<IJournalRepository>().To<JournalRepository>();
             this.Bind<IUserRepository>().To<UserRepository>();
-
+            this.Bind<ILendingRepository>().To<LendingRepository>();
             this.Bind<ILibraryUnitOfWork>().To<LibraryUnitOfWork>();
             this.Bind<IUsersUnitOfWork>().To<UsersUnitOfWork>();
             this.Bind<ILogsUnitOfWork>().To<LogsUnitOfWork>();
+            this.Bind<ILogsRepository>().To<LogsRepository>();
+            this.Bind<ILogTypesRepository>().To<LogTypesRepository>();
+            this.Bind<IAddressRepository>().To<AddressRepository>();
+            this.Bind<IAuthorRepository>().To<AuthorRepository>();
+            this.Bind<IGenreRepository>().To<GenreRepository>();
+            this.Bind<ISubjectRepository>().To<SubjectRepository>();
+            this.Bind<IClientRepository>().To<ClientRepository>();
+            this.Bind<IEmployeeRepository>().To<EmployeeRepository>();
 
             this.Bind<LibrarySystemDbContext>().ToSelf().InSingletonScope();
             this.Bind<LibrarySystemUsersDbContext>().ToSelf().InSingletonScope();
@@ -192,34 +210,45 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<IAuthKeyProvider>().To<AuthKeyProvider>();
 
             // Log Interceptor Bindings
+            this.Bind<SQLLiteLogger>().ToSelf().InSingletonScope();
+            this.Bind<ICommand>().To<AddLogCommand>().WhenInjectedInto<SQLLiteLogger>();
             this.Bind<ILogger>().To<Logger>().Intercept().With<SQLLiteLogger>();
 
             //Book Importer Bindings
             this.Bind<XmlReader>().ToSelf().InSingletonScope();
-            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument(BooksForImportPath);
-            this.Bind<IXmlDeserializer>().To<XmlDeserializerWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
-            this.Bind<ICommand>().To<CreateBookCommand>().WhenInjectedInto<XmlReader>();
+            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument("filePath", BooksForImportPath);
+            this.Bind<IXmlDeserializer>().To<XmlDeserializerWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument("xmlSerializer", new XmlSerializer(typeof(List<BookXmlDto>)));
+            this.Bind<ICommand>().To<CreateBookCommand>().WhenInjectedInto<ImportBooksFromFileCommand>();
 
             //Book Exporter Bindings
             this.Bind<XmlWriter>().ToSelf().InSingletonScope();
-            this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(bookExporterDirectory, bookExporterFileName);
-            this.Bind<IXmlSerializer>().To<XmlSerializerWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
+            this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<XmlWriter>()
+                .WithConstructorArgument("directory", bookExporterDirectory)
+                .WithConstructorArgument("fileName", bookExporterFileName);
+            this.Bind<IXmlSerializer>().To<XmlSerializerWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument("xmlSerializer", new XmlSerializer(typeof(List<BookXmlDto>)));
 
             //Journal Importer Bindings
             this.Bind<JsonReader>().ToSelf().InSingletonScope();
             this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<JsonReader>()
-                .WithConstructorArgument(JournalImporterFilePath);
+                .WithConstructorArgument("filePath", JournalImporterFilePath);
             this.Bind<IJsonDeserializer>().To<JsonDeserializerWrapper>().WhenInjectedInto<JsonReader>();
-            this.Bind<ICommand>().To<CreateJournalCommand>().WhenInjectedInto<JsonReader>();
+            this.Bind<ICommand>().To<CreateJournalCommand>().WhenInjectedInto<ImportJournalsFromFileCommand>();
 
             //Journal Exporter Bindings
             this.Bind<JsonWriter>().ToSelf().InSingletonScope();
             this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<JsonWriter>()
-                .WithConstructorArgument(JournalExporterDirectory, JournalExporterFileName);
+                .WithConstructorArgument("directory", JournalExporterDirectory)
+                .WithConstructorArgument("fileName", JournalExporterFileName);
             this.Bind<IJsonSerializer>().To<JsonSerializerWrapper>().WhenInjectedInto<JsonWriter>();
 
             //PDF
-            this.Bind<PdfWriterProvider>().ToSelf().WithConstructorArgument(PdfFileDirectory, PdfFileName);
+            this.Bind<IPdfStream>().To<PdfStreamWrapper>().WhenInjectedInto<PdfWriterProvider>()
+                .WithConstructorArgument("directory", PdfFileDirectory)
+                .WithConstructorArgument("fileName", PdfFileName);
+
+            this.Bind<IPdfTableGenerator>().To<PdfTableGenerator>().WhenInjectedInto<PdfWriterProvider>();
+            this.Bind<PdfWriterProvider>().ToSelf().WhenInjectedInto<AddLogCommand>().InSingletonScope();
+
         }
 
         /// <summary>
@@ -262,7 +291,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetJournalsBySubjectCommand: return context.Kernel.Get<ICommand>(GetJournalsBySubjectCommand);
                 case GetPublisherByBookTitleCommand: return context.Kernel.Get<ICommand>(GetPublisherByBookTitleCommand);
                 case GetPublisherByJournalTitleCommand: return context.Kernel.Get<ICommand>(GetPublisherByJournalTitleCommand);
-                case GetSubjectsWithHighestImpactFactorcs: return context.Kernel.Get<ICommand>(GetSubjectsWithHighestImpactFactorcs);
+                case GetSubjectsWithHighestImpactFactorCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithHighestImpactFactorCommand);
                 case GetSubjectsWithMostJournalsCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithMostJournalsCommand);
                 case CreateBookCommand: return context.Kernel.Get<ICommand>(CreateBookCommand);
                 case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);

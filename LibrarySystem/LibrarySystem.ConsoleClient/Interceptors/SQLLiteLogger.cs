@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Bytes2you.Validation;
 using LibrarySystem.Commands.Administrative.Logs;
+using LibrarySystem.Commands.Contracts;
 using Ninject.Extensions.Interception;
 
 namespace LibrarySystem.ConsoleClient.Interceptors
@@ -16,9 +17,9 @@ namespace LibrarySystem.ConsoleClient.Interceptors
     /// </summary>
     public class SQLLiteLogger : IInterceptor
     {
-        private readonly AddLogCommand addLogCommand;
+        private readonly ICommand addLogCommand;
 
-        public SQLLiteLogger(AddLogCommand addLogCommand)
+        public SQLLiteLogger(ICommand addLogCommand)
         {
             Guard.WhenArgument(addLogCommand, "addLogCommand").IsNull().Throw();
 

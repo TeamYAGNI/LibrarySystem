@@ -83,23 +83,24 @@ namespace LibrarySystem.Framework
                 }
                 catch (InvalidCommandException ex)
                 {
-                    this.logger.Log(ex.Message, "InvalidCommandException");
+                    this.responseWriter.WriteLine(ex.Message);
+
                     this.responseWriter.WriteLine("Invalid command! Please try again.");
                 }
                 catch (UserAuthException ex)
                 {
-                    this.logger.Log(ex.Message, "UserAuthException");
+                    this.responseWriter.WriteLine(ex.Message);
+
                     this.responseWriter.WriteLine("Unable to Authenticate user! Please Log in!");
                 }
                 catch (ModelValidationException ex)
                 {
-                    this.logger.Log(ex.Message, "ModelValidationException");
                     this.responseWriter.WriteLine("Unable to validate model. Please try again!");
                 }
                 catch (Exception ex)
                 {
-                    this.logger.Log(ex.Message, "GenericException");
                     this.responseWriter.WriteLine("Unexpected Error occured while handling your Command! Plese excuse us! You can try some other commands.");
+                    this.responseWriter.WriteLine(ex.Message);
                 }
 
                 commandLine = this.commandReader.ReadLine();
