@@ -37,6 +37,14 @@ using LibrarySystem.Repositories.Data;
 using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 using LibrarySystem.Repositories.Data.UnitOfWork;
 using LibrarySystem.Data;
+using LibrarySystem.Data.Users;
+using LibrarySystem.Data.Logs;
+using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
+using LibrarySystem.Repositories.Data.Users.UnitOfWork;
+using LibrarySystem.Repositories.Contracts.Data.Logs.UnitOfWork;
+using LibrarySystem.Repositories.Data.Logs.UnitOfWork;
+using LibrarySystem.Repositories.Contracts.Data.Users;
+using LibrarySystem.Repositories.Data.Users;
 
 namespace LibrarySystem.ConsoleClient.ContainerConfiguration
 {
@@ -77,6 +85,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string GetSubjectsWithMostJournalsCommand = "getsubjectswithmostjournals";
         private const string CreateBookCommand = "createbook";
         private const string CreateJournalCommand = "createjournal";
+        private const string RegisterUserCommand = "registeruser";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -128,15 +137,29 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<GetSubjectsWithMostJournalsCommand>().Named(GetSubjectsWithMostJournalsCommand);
             this.Bind<ICommand>().To<CreateBookCommand>().Named(CreateBookCommand);
             this.Bind<ICommand>().To<CreateJournalCommand>().Named(CreateJournalCommand);
+            this.Bind<ICommand>().To<RegisterUserCommand>().Named(RegisterUserCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
             this.Bind<IValidator>().To<Validator>().WhenInjectedExactlyInto<ModelValidation>().InSingletonScope();
+
             this.Bind<IPublisherRepository>().To<PublisherRepository>();
             this.Bind<IBookRepository>().To<BookRepository>();
             this.Bind<IJournalRepository>().To<JournalRepository>();
+            this.Bind<IUserRepository>().To<UserRepository>();
+            this.Bind<IJournalRepository>().To<JournalRepository>();
+
             this.Bind<ILibraryUnitOfWork>().To<LibraryUnitOfWork>();
+            this.Bind<IUsersUnitOfWork>().To<UsersUnitOfWork>();
+            this.Bind<ILogsUnitOfWork>().To<LogsUnitOfWork>();
+
             this.Bind<LibrarySystemDbContext>().ToSelf().InSingletonScope();
+            this.Bind<LibrarySystemUsersDbContext>().ToSelf().InSingletonScope();
+            this.Bind<LibrarySystemLogsDbContext>().ToSelf().InSingletonScope();
+
+            this.Bind<IHashProvider>().To<HashProvider>();
+            this.Bind<IAuthKeyProvider>().To<AuthKeyProvider>();
+           
         }
 
         /// <summary>
@@ -182,6 +205,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetSubjectsWithMostJournalsCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithMostJournalsCommand);
                 case CreateBookCommand: return context.Kernel.Get<ICommand>(CreateBookCommand);
                 case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);
+                case RegisterUserCommand: return context.Kernel.Get<ICommand>(RegisterUserCommand);
                 default: throw new InvalidCommandException(commandName);
             }
         }

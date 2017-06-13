@@ -57,5 +57,12 @@ namespace LibrarySystem.Repositories.Contracts.Data.Users
         /// <param name="authKey">AuthKey of the user.</param>
         /// <returns>Wether the user with the given username is logged in.</returns>
         bool UserIsLoggedIn(string username, string authKey);
+
+        /// <summary>
+        /// Provide user by a given username.
+        /// </summary>
+        /// <param name="username">Username of the user.</param>
+        /// <returns>User with the given username.</returns>
+        User GetUserByUsername(string username);
     }
 }

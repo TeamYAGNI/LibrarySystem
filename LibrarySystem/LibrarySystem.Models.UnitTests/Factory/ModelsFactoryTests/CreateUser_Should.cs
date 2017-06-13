@@ -6,6 +6,7 @@ using LibrarySystem.Models.Users;
 
 using Moq;
 using NUnit.Framework;
+using System;
 
 namespace LibrarySystem.Models.UnitTests.Factory.ModelsFactoryTests
 {
@@ -21,6 +22,9 @@ namespace LibrarySystem.Models.UnitTests.Factory.ModelsFactoryTests
             string passHash = "SomeHash";
             string authKey = "SomeAuthKey";
             UserType userType = UserType.Master;
+            DateTime expirationDate = default(DateTime);
+
+
             var groups = new HashSet<Group>
             {
                 new Mock<Group>().Object
@@ -29,7 +33,7 @@ namespace LibrarySystem.Models.UnitTests.Factory.ModelsFactoryTests
             ModelsFactory factoryUnderTest = new ModelsFactory();
 
             // Act
-            var user = factoryUnderTest.CreateUser(username, passHash, authKey, userType, groups);
+            var user = factoryUnderTest.CreateUser(username, passHash, authKey, expirationDate, userType, groups);
 
             // Assert
             Assert.That(user, Is.InstanceOf<User>());
@@ -44,6 +48,8 @@ namespace LibrarySystem.Models.UnitTests.Factory.ModelsFactoryTests
             string passHash = "SomeHash";
             string authKey = "SomeAuthKey";
             UserType userType = UserType.Master;
+            DateTime expirationDate = default(DateTime);
+
             var groups = new HashSet<Group>
             {
                 new Mock<Group>().Object
@@ -52,7 +58,7 @@ namespace LibrarySystem.Models.UnitTests.Factory.ModelsFactoryTests
             ModelsFactory factoryUnderTest = new ModelsFactory();
 
             // Act
-            var user = factoryUnderTest.CreateUser(username, passHash, authKey, userType, groups);
+            var user = factoryUnderTest.CreateUser(username, passHash, authKey, expirationDate, userType, groups);
 
             // Assert
             Assert.AreSame(username, user.Username);

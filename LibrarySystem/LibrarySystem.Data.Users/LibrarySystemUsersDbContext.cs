@@ -9,6 +9,7 @@ using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 using LibrarySystem.Models.Users;
+using LibrarySystem.Data.Users.Migrations;
 
 namespace LibrarySystem.Data.Users
 {
@@ -20,7 +21,7 @@ namespace LibrarySystem.Data.Users
         /// <summary>
         /// Name of the connection string that describe witch database server <see cref="LibrarySystemUsersDbContext"/> instance to use and how.
         /// </summary>
-        private const string ConnectionString = "PostgresDotNet";
+        private const string ConnectionString = "PostgreSQL";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LibrarySystemUsersDbContext"/> class.
@@ -28,6 +29,7 @@ namespace LibrarySystem.Data.Users
         public LibrarySystemUsersDbContext()
             : base(ConnectionString)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LibrarySystemUsersDbContext, Configuration>(true));
         }
 
         /// <summary>
