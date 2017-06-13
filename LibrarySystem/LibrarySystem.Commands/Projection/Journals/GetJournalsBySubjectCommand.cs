@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Projection.Journals
 {
-    public class GetJournalsBySubjectCommand : ICommand
+    public class GetJournalsBySubjectCommand : Command, ICommand
     {
         private readonly IJournalRepository journalRepository;
 
-        public GetJournalsBySubjectCommand(IJournalRepository journalRepository)
+        public GetJournalsBySubjectCommand(IJournalRepository journalRepository) : base(new List<object>() { journalRepository }, 1)
         {
-            Guard.WhenArgument(journalRepository, "journalRepository").IsNull().Throw();
-
             this.journalRepository = journalRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var subject = parameters[0];
 
             var journals = this.journalRepository.GetJournalsBySubject(subject);

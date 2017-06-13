@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Framework.Providers;
 using LibrarySystem.Models;
@@ -10,7 +10,7 @@ using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
-    public class ClientGetBookCommand : ICommand
+    public class ClientGetBookCommand : Command, ICommand
     {
         private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly IModelsFactory modelsFactory;
@@ -18,14 +18,8 @@ namespace LibrarySystem.Commands.Functional
         private readonly IBookRepository bookRepository;
         private readonly ILendingRepository lendingRepository;
 
-        public ClientGetBookCommand(ILibraryUnitOfWork libraryUnitOfWork, IModelsFactory modelsFactory, IClientRepository clientRepository, IBookRepository bookRepository, ILendingRepository lendingRepository)
+        public ClientGetBookCommand(ILibraryUnitOfWork libraryUnitOfWork, IModelsFactory modelsFactory, IClientRepository clientRepository, IBookRepository bookRepository, ILendingRepository lendingRepository) : base(new List<object>() { libraryUnitOfWork, modelsFactory, clientRepository, bookRepository, lendingRepository }, 2)
         {
-            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
-            Guard.WhenArgument(modelsFactory, "modelsFactory").IsNull().Throw();
-            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
-            Guard.WhenArgument(bookRepository, "bookRepository").IsNull().Throw();
-            Guard.WhenArgument(lendingRepository, "lendingRepository").IsNull().Throw();
-
             this.libraryUnitOfWork = libraryUnitOfWork;
             this.modelsFactory = modelsFactory;
             this.clientRepository = clientRepository;
@@ -33,8 +27,10 @@ namespace LibrarySystem.Commands.Functional
             this.lendingRepository = lendingRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var sb = new StringBuilder();
             string PIN = parameters[0];
             string ISBN = parameters[1];

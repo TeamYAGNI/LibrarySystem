@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-
-using Bytes2you.Validation;
-
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
@@ -10,7 +8,7 @@ using LibrarySystem.Models.Factory;
 
 namespace LibrarySystem.Commands.Administrative.Creational
 {
-    public class CreateJournalCommand : ICommand
+    public class CreateJournalCommand : Command, ICommand
     {
         private const string SuccessMessage = "Journal {0} was created succesfully!";
         private const string ErrorMessage = "There is already a journal with ISSN {0} and issue number {1} in the library.";
@@ -27,23 +25,17 @@ namespace LibrarySystem.Commands.Administrative.Creational
             IPublisherRepository publishers,
             IJournalRepository journals,
             ILibraryUnitOfWork unitOfWork,
-            IModelsFactory factory)
+            IModelsFactory factory) : base(new List<object>() { publishers, journals, unitOfWork, factory }, 6)
         {
-            Guard.WhenArgument(publishers, "CreateBookCommand publishers").IsNull().Throw();
-            Guard.WhenArgument(journals, "CreateBookCommand journals").IsNull().Throw();
-            Guard.WhenArgument(unitOfWork, "CreateBookCommand unitOfWork").IsNull().Throw();
-            Guard.WhenArgument(factory, "CreateBookCommand factory").IsNull().Throw();
-
             this.publishers = publishers;
             this.journals = journals;
             this.unitOfWork = unitOfWork;
             this.factory = factory;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, "CreateJournalCommand parameters").IsNull().Throw();
-            Guard.WhenArgument(parameters.Count, "CreateJournalCommand parameters count").IsNotEqual(6).Throw();
+            this.ValidateParameters(parameters);
 
             string journalTitle = parameters[0];
             string journalISSN = parameters[1];

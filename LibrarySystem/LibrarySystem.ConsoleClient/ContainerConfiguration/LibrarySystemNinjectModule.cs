@@ -3,6 +3,7 @@
 // </copyright>
 // <summary>Holds implementation of LibrarySystemNinjectModule class.</summary>
 
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -147,7 +148,6 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<IBookRepository>().To<BookRepository>();
             this.Bind<IJournalRepository>().To<JournalRepository>();
             this.Bind<IUserRepository>().To<UserRepository>();
-            this.Bind<IJournalRepository>().To<JournalRepository>();
 
             this.Bind<ILibraryUnitOfWork>().To<LibraryUnitOfWork>();
             this.Bind<IUsersUnitOfWork>().To<UsersUnitOfWork>();
@@ -170,6 +170,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private ICommand GetCommand(IContext context)
         {
             string commandName = context.Parameters.Single().GetValue(context, null).ToString();
+            string defaultMessage = "There is no such command as {0}!";
 
             switch (commandName.ToLower())
             {
@@ -206,7 +207,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case CreateBookCommand: return context.Kernel.Get<ICommand>(CreateBookCommand);
                 case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);
                 case RegisterUserCommand: return context.Kernel.Get<ICommand>(RegisterUserCommand);
-                default: throw new InvalidCommandException(commandName);
+                default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
+
             }
         }
     }

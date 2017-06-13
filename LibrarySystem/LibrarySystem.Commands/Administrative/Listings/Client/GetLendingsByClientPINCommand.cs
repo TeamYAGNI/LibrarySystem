@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {
-    public class GetLendingsByClientPINCommand : IAdministratorCommand
+    public class GetLendingsByClientPINCommand : Command, IAdministratorCommand
     {
         private readonly ILendingRepository lendingRepository;
 
-        public GetLendingsByClientPINCommand(ILendingRepository lendingRepository)
+        public GetLendingsByClientPINCommand(ILendingRepository lendingRepository) : base(new List<object>() { lendingRepository }, 1)
         {
-            Guard.WhenArgument(lendingRepository, "lendingRepository").IsNull().Throw();
-
             this.lendingRepository = lendingRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var PIN = parameters[0];
 
             var lendings = this.lendingRepository.GetLendingsByClientPIN(PIN);

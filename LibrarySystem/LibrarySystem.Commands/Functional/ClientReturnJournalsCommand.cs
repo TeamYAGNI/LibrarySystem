@@ -1,29 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
-    public class ClientReturnJournalsCommand : ICommand
+    public class ClientReturnJournalsCommand : Command, ICommand
     {
         private readonly ILibraryUnitOfWork libraryUnitOfWork;
         private readonly IJournalRepository journalRepository;
 
-        public ClientReturnJournalsCommand(ILibraryUnitOfWork libraryUnitOfWork, IJournalRepository journalRepository)
+        public ClientReturnJournalsCommand(ILibraryUnitOfWork libraryUnitOfWork, IJournalRepository journalRepository) : base(new List<object>() { libraryUnitOfWork, journalRepository }, 1)
         {
-            Guard.WhenArgument(libraryUnitOfWork, "libraryUnitOfWork").IsNull().Throw();
-            Guard.WhenArgument(journalRepository, "journalRepository").IsNull().Throw();
-
             this.libraryUnitOfWork = libraryUnitOfWork;
             this.journalRepository = journalRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var sb = new StringBuilder();
             var PIN = parameters[0];
 

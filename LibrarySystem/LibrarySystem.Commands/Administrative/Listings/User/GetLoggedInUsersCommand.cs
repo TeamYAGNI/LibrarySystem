@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data.Users;
 
 namespace LibrarySystem.Commands.Administrative.Listings.User
 {
-    public class GetLoggedInUsersCommand : IAdministratorCommand
+    public class GetLoggedInUsersCommand : Command ,IAdministratorCommand
     {
         private readonly IUserRepository usersRepository;
 
-        public GetLoggedInUsersCommand(IUserRepository usersRepository)
+        public GetLoggedInUsersCommand(IUserRepository usersRepository) : base(new List<object>() { usersRepository }, 0)
         {
-            Guard.WhenArgument(usersRepository, "usersRepository").IsNull().Throw();
-
             this.usersRepository = usersRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var users = this.usersRepository.GetAllUsersWhoAreLoggedIn();
 
             if (users.Count() == 0)

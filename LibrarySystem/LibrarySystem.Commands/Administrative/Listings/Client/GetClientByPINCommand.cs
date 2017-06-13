@@ -1,24 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {
-    public class GetClientByPINCommand : IAdministratorCommand
+    public class GetClientByPINCommand : Command, IAdministratorCommand
     {
         private readonly IClientRepository clientRepository;
 
-        public GetClientByPINCommand(IClientRepository clientRepository)
+        public GetClientByPINCommand(IClientRepository clientRepository) : base(new List<object>() { clientRepository }, 1)
         {
-            Guard.WhenArgument(clientRepository, "clientRepository").IsNull().Throw();
-
             this.clientRepository = clientRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var PIN = parameters[0];
 
             var client = this.clientRepository.GetClientByPin(PIN);

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\Command.cs" />
     <Compile Include="Administrative\Creational\CreateBookCommand.cs" />
     <Compile Include="Administrative\Creational\CreateJournalCommand.cs" />
     <Compile Include="Administrative\Creational\RegisterUserCommand.cs" />
@@ -110,7 +111,9 @@
       <Name>LibrarySystem.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
