@@ -16,7 +16,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
     public class ExportBooks_Should
     {
         [Test]
-        [Category("FileExplorers.JsonWriter.Constructor")]
+        [Category("FileExplorers.JsonWriter.ExportBooks")]
         public void CallGetTextWriterMethodOnce_WhenAllArgumentsArePassed()
         {
             // Arrange
@@ -34,7 +34,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
         }
 
         [Test]
-        [Category("FileExplorers.JsonWriter.Constructor")]
+        [Category("FileExplorers.JsonWriter.ExportBooks")]
         public void CallSerializeMethodOnce_WhenAllArgumentsArePassed()
         {
             // Arrange
@@ -53,7 +53,7 @@ namespace LibrarySystem.FileExporters.UnitTests.JsonWriterTests
         }
 
         [Test]
-        [Category("FileExplorers.JsonWriter.Constructor")]
+        [Category("FileExplorers.JsonWriter.ExportBooks")]
         public void ThrowArgumentNullException_WhenJournalsArgumentIsNull()
         {
             // Arrange

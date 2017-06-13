@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using LibrarySystem.FileExporters.Utils.Contracts;
 using LibrarySystem.Models.DTOs.XML;
+using Bytes2you.Validation;
 
 namespace LibrarySystem.FileExporters
 {
@@ -32,15 +33,8 @@ namespace LibrarySystem.FileExporters
         /// <param name="xmlSerializerWrapper">XML serializer to be used for converting object data</param>
         public XmlWriter(ITextWriter textWriterWrapper, IXmlSerializer xmlSerializerWrapper)
         {
-            if (textWriterWrapper == null)
-            {
-                throw new ArgumentNullException("Text stream wrapper cannot be null.");
-            }
-
-            if (xmlSerializerWrapper == null)
-            {
-                throw new ArgumentNullException("XML Books serializer cannot be null.");
-            }
+            Guard.WhenArgument(textWriterWrapper, "PdfStreamWrapper").IsNull().Throw();
+            Guard.WhenArgument(xmlSerializerWrapper, "PdfStreamWrapper").IsNull().Throw();
 
             this.textWriterWrapper = textWriterWrapper;
             this.xmlSerializerWrapper = xmlSerializerWrapper;
@@ -52,10 +46,7 @@ namespace LibrarySystem.FileExporters
         /// <param name="books">Collection of Book DTOs.</param>
         public void ExportBooks(IEnumerable<BookXmlDto> books)
         {
-            if (books == null)
-            {
-                throw new ArgumentNullException("Journals cannot be null.");
-            }
+            Guard.WhenArgument(books, "ExportBooks").IsNull().Throw();
 
             using (this.textWriterWrapper.GetTextWriter())
             {
