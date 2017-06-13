@@ -36,7 +36,15 @@ namespace LibrarySystem.Commands.Administrative.File
                 string journalISSN = journal.ISSN;
                 string issueNumber = journal.IssueNumber.ToString();
                 string yearOfPublishing = journal.YearOfPublishing.ToString();
-                string publisherName = journal.Publisher.Name;
+                string publisherName;
+                if (journal.Publisher != null)
+                {
+                    publisherName = journal.Publisher.Name;
+                }
+                else
+                {
+                    publisherName = "Unknown Publisher";
+                }
                 string quantity = journal.Quantity.ToString();
                 this.createJournalCommand.Execute(new List<string>()
                 {

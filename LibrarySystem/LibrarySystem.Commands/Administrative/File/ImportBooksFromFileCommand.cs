@@ -49,7 +49,7 @@ namespace LibrarySystem.Commands.Administrative.File
                 }
                 else
                 {
-                    publisherName = "Mark Twain";
+                    publisherName = "Unknown Publisher";
                 }
                 string quantity = book.Quantity.ToString();
                 this.createBookCommand.Execute(new List<string>()
