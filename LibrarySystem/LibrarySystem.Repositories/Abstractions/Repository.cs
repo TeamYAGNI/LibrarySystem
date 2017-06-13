@@ -96,7 +96,7 @@ namespace LibrarySystem.Repositories.Abstractions
         /// Provide all the entities.
         /// </summary>
         /// <returns>All the entities</returns>
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return this.Context.Set<TEntity>().ToList();
         }

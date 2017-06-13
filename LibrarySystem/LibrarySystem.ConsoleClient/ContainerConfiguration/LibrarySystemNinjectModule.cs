@@ -100,10 +100,15 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string GetLatestLogsCommand = "getlatestlogs";
         private const string ExportBooksToFileCommand = "exportbookstofile";
         private const string ImportBooksFromFileCommand = "importbooksfromfile";
+        private const string ImportJournalsFromFileCommand = "importjournalsfromfile";
+        private const string ExportJournalsToFileCommand = "exportjournalstofilecommand";
 
         private const string BooksForImportPath = "./../../../books.xml";
         private const string bookExporterDirectory = "./../../../";
         private const string bookExporterFileName = "books-inventory.xml";
+        private const string JournalImporterFilePath = "./../../../journals.json";
+        private const string JournalExporterDirectory = "./../../../";
+        private const string JournalExporterFileName = "journals-inventory.json";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -159,6 +164,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<GetLatestLogsCommand>().Named(GetLatestLogsCommand);
             this.Bind<ICommand>().To<ImportBooksFromFileCommand>().Named(ImportBooksFromFileCommand);
             this.Bind<ICommand>().To<ExportBooksToFileCommand>().Named(ExportBooksToFileCommand);
+            this.Bind<ICommand>().To<ImportJournalsFromFileCommand>().Named(ImportJournalsFromFileCommand);
+            this.Bind<ICommand>().To<ExportJournalsToFileCommand>().Named(ExportJournalsToFileCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
@@ -194,6 +201,18 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(bookExporterDirectory, bookExporterFileName);
             this.Bind<IXmlSerializer>().To<XmlSerializerWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument(new XmlSerializer(typeof(List<BookXmlDto>)));
 
+            //Journal Importer Bindings
+            this.Bind<JsonReader>().ToSelf().InSingletonScope();
+            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<JsonReader>()
+                .WithConstructorArgument(JournalImporterFilePath);
+            this.Bind<IJsonDeserializer>().To<JsonDeserializerWrapper>().WhenInjectedInto<JsonReader>();
+            this.Bind<ICommand>().To<CreateJournalCommand>().WhenInjectedInto<JsonReader>();
+
+            //Journal Exporter Bindings
+            this.Bind<JsonWriter>().ToSelf().InSingletonScope();
+            this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<JsonWriter>()
+                .WithConstructorArgument(JournalExporterDirectory, JournalExporterFileName);
+            this.Bind<IJsonSerializer>().To<JsonSerializerWrapper>().WhenInjectedInto<JsonWriter>();
         }
 
         /// <summary>
@@ -244,6 +263,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetLatestLogsCommand: return context.Kernel.Get<ICommand>(GetLatestLogsCommand);
                 case ImportBooksFromFileCommand: return context.Kernel.Get<ICommand>(ImportBooksFromFileCommand);
                 case ExportBooksToFileCommand: return context.Kernel.Get<ICommand>(ExportBooksToFileCommand);
+                case ImportJournalsFromFileCommand: return context.Kernel.Get<ICommand>(ImportJournalsFromFileCommand);
+                case ExportJournalsToFileCommand: return context.Kernel.Get<ICommand>(ExportJournalsToFileCommand);
                 default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
             }
         }

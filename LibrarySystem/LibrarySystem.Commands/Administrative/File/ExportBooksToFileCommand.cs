@@ -39,13 +39,15 @@ namespace LibrarySystem.Commands.Administrative.File
 
             foreach (var book in books)
             {
-                var dtoBook = new BookXmlDto();
-                dtoBook.ISBN = book.ISBN;
-                dtoBook.PageCount = book.PageCount;
-                dtoBook.Quantity = book.Quantity;
-                dtoBook.Title = book.Title;
-                dtoBook.YearOfPublishing = book.YearOfPublishing;
-                dtoBook.Description = book.Description;
+                var dtoBook = new BookXmlDto
+                {
+                    ISBN = book.ISBN,
+                    PageCount = book.PageCount,
+                    Quantity = book.Quantity,
+                    Title = book.Title,
+                    YearOfPublishing = book.YearOfPublishing,
+                    Description = book.Description
+                };
 
                 if (book.Publisher != null)
                 {
@@ -54,30 +56,20 @@ namespace LibrarySystem.Commands.Administrative.File
 
                 if (book.Authors.Count != 0)
                 {
-                    var dtoAuthors = new List<AuthorXmlDto>();
-
-                    foreach (var author in book.Authors)
-                    {
-                        var dtoAuthor = new AuthorXmlDto();
-                        dtoAuthor.FirstName = author.FirstName;
-                        dtoAuthor.LastName = author.LastName;
-                        dtoAuthor.GenderType = author.GenderType;
-                        dtoAuthors.Add(dtoAuthor);
-                    }
+                    var dtoAuthors = book.Authors.Select(author => new AuthorXmlDto
+                        {
+                            FirstName = author.FirstName,
+                            LastName = author.LastName,
+                            GenderType = author.GenderType
+                        })
+                        .ToList();
 
                     dtoBook.Authors = dtoAuthors;
                 }
 
                 if (book.Genres.Count() != 0)
                 {
-                    var dtoGenres = new List<GenreXmlDto>();
-
-                    foreach (var genre in book.Genres)
-                    {
-                        var dtoGenre = new GenreXmlDto();
-                        dtoGenre.Name = genre.Name;
-                        dtoGenres.Add(dtoGenre);
-                    }
+                    var dtoGenres = book.Genres.Select(genre => new GenreXmlDto {Name = genre.Name}).ToList();
 
                     dtoBook.Genres = dtoGenres;
                 }
@@ -91,7 +83,7 @@ namespace LibrarySystem.Commands.Administrative.File
             }
             catch (Exception)
             {
-                return $"Books could not export due to technical reasons";
+                return $"Books could not export due to technical issues.";
             }
 
             return $"Books successfully exported";

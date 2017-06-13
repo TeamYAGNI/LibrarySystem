@@ -171,5 +171,10 @@ namespace LibrarySystem.Repositories.Data
         {
             return this.LibraryDbContext.Journals.Include(j => j.Client).Where(j => j.Client.PIN == pin).ToList();
         }
+
+        public override IEnumerable<Journal> GetAll()
+        {
+            return this.LibraryDbContext.Journals.Include(j => j.Publisher).Include(j => j.Subjects).ToList();
+        }
     }
 }

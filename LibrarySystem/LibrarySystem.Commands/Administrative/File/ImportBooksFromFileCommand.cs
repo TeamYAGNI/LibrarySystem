@@ -36,21 +36,14 @@ namespace LibrarySystem.Commands.Administrative.File
                 return $"Sorry, there are no books in the file.";
             }
 
-            string bookTitle;
-            string bookISBN;
-            string pageCount;
-            string yearOfPublishing;
-            string publisherName;
-            string quantity;
-
             foreach (var book in books)
             {
-                bookTitle = book.Title;
-                bookISBN = book.ISBN;
-                pageCount = book.PageCount.ToString();
-                yearOfPublishing = book.YearOfPublishing.ToString();
-                publisherName = book.Publisher.Name;
-                quantity = book.Quantity.ToString();
+                string bookTitle = book.Title;
+                string bookISBN = book.ISBN;
+                string pageCount = book.PageCount.ToString();
+                string yearOfPublishing = book.YearOfPublishing.ToString();
+                string publisherName = book.Publisher.Name;
+                string quantity = book.Quantity.ToString();
                 this.createBookCommand.Execute(new List<string>()
                 {
                     bookTitle,

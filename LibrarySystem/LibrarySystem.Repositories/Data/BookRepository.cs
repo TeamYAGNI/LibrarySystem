@@ -4,6 +4,7 @@
 // <summary>Holds implementation of BookRepository class.</summary>
 
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 using LibrarySystem.Data;
@@ -224,6 +225,11 @@ namespace LibrarySystem.Repositories.Data
         {
             return this.LibraryDbContext.Books.Where(
                 b => b.Lendings.Any(l => l.BorrоwDate.AddMonths(1) < TimeProvider.Current.Today)).ToList();
+        }
+
+        public override IEnumerable<Book> GetAll()
+        {
+            return this.LibraryDbContext.Books.Include(b => b.Publisher).Include(b => b.Genres).Include(b => b.Authors).ToList();
         }
     }
 }
