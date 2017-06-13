@@ -4,6 +4,8 @@ This is a course-project for the Databases Course in TelerikAcademy. It represen
 client application. The data is hosted on SQL Server database, but PostgreSQL is used for hosting User information and
 SQLite for hosting administrative logs.
 
+## [*Assignment.*](https://github.com/TelerikAcademy/Databases/blob/master/Teamwork/2017/README.md)
+
 ## Commands
 
 ### Functional
@@ -43,7 +45,7 @@ SQLite for hosting administrative logs.
 | **GetClientByPIN** | *PIN* | Gets client by given PIN. |
 | **GetClientAddressByPIN** | *PIN* | Gets the client Address by given PIN. |
 | **GetLendingsByClientPIN** | *PIN* | Gets all actual Lendings of client with given PIN. |
-| **GetRemarksByClientPIN** | *PIN* | Gets Remarks of the client returned Lendings |
+| **GetRemarksByClientPIN** | *PIN* | Gets Remarks of the client returned Lendings. |
 ### Administrative - Listings - Clients
 | Command         | Parameters  | Description |
 | -------------       | :--------:   | :----------------: |
@@ -55,8 +57,9 @@ SQLite for hosting administrative logs.
 | -------------       | :--------:   | :----------------: |
 | **GetLoggedInUsers** | *takes no parameters* | Gets all the users who are currently logged in. |
 ### Administrative - Listings - Users
+| Command         | Parameters  | Description |
+| -------------       | :--------:   | :----------------: |
 | **GetLoggedInUsers** | *takes no parameters* | Gets all the users who are currently logged in. |
-
 ### Projection - Authors
 | Command         | Parameters  | Description |
 | -------------       | :--------:   | :----------------: |
@@ -132,6 +135,10 @@ Update-Database -Verbose -StartUpProjectName LibrarySystem.Data.Logs
 * [Ninject.Extensions.Interception.DynamicProxy](https://www.nuget.org/packages/Ninject.Extensions.Interception.DynamicProxy/) - Castle DynamicProxy Interception extension for Ninject.
 
 * [Bytes2you.Validation](https://github.com/veskokolev/Bytes2you.Validation) - Fast, extensible, intuitive and easy-to-use C# portable library providing fluent APIs for argument validation.
+
+* [Json.NET](http://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET.
+
+* [iTextSharp](http://itextpdf.com/) - iText is a PDF library that allows you to CREATE, ADAPT, INSPECT and MAINTAIN documents in the Portable Document Format (PDF).
 
 ## Tested With
 
