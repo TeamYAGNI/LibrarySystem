@@ -12,6 +12,7 @@ using LibrarySystem.Commands.Administrative.Creational;
 using LibrarySystem.Commands.Administrative.Listings.Client;
 using LibrarySystem.Commands.Administrative.Listings.Employee;
 using LibrarySystem.Commands.Administrative.Listings.User;
+using LibrarySystem.Commands.Administrative.Logs;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Commands.Functional;
 using LibrarySystem.Commands.Projection.Authors;
@@ -87,6 +88,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string CreateBookCommand = "createbook";
         private const string CreateJournalCommand = "createjournal";
         private const string RegisterUserCommand = "registeruser";
+        private const string GetLatestLogsCommand = "getlatestlogs";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -139,6 +141,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<CreateBookCommand>().Named(CreateBookCommand);
             this.Bind<ICommand>().To<CreateJournalCommand>().Named(CreateJournalCommand);
             this.Bind<ICommand>().To<RegisterUserCommand>().Named(RegisterUserCommand);
+            this.Bind<ICommand>().To<GetLatestLogsCommand>().Named(GetLatestLogsCommand);
+
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
@@ -160,6 +164,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<IHashProvider>().To<HashProvider>();
             this.Bind<IAuthKeyProvider>().To<AuthKeyProvider>();
            
+            // Log Interceptor Bindings
+            this.Bind<ILogger>().To<Logger>().Intercept().With<SQLLiteLogger>();
         }
 
         /// <summary>
@@ -207,6 +213,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case CreateBookCommand: return context.Kernel.Get<ICommand>(CreateBookCommand);
                 case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);
                 case RegisterUserCommand: return context.Kernel.Get<ICommand>(RegisterUserCommand);
+                case GetLatestLogsCommand: return context.Kernel.Get<ICommand>(GetLatestLogsCommand);
                 default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
 
             }

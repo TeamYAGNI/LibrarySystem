@@ -17,10 +17,11 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             // Arrange
             var responseWriterStub = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
             // Act
             // Assert
-            Assert.Throws<ArgumentNullException>(() => new Engine(null, responseWriterStub.Object, commandProccessorStub.Object));
+            Assert.Throws<ArgumentNullException>(() => new Engine(null, responseWriterStub.Object, commandProccessorStub.Object, loggerStub.Object));
         }
 
         [Test]
@@ -30,10 +31,11 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             // Arrange
             var commandReaderStub = new Mock<ICommandReader>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
             // Act
             // Assert
-            Assert.Throws<ArgumentNullException>(() => new Engine(commandReaderStub.Object, null, commandProccessorStub.Object));
+            Assert.Throws<ArgumentNullException>(() => new Engine(commandReaderStub.Object, null, commandProccessorStub.Object, loggerStub.Object));
         }
 
         [Test]
@@ -43,10 +45,11 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             // Arrange
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterStub = new Mock<IResponseWriter>();
+            var loggerStub = new Mock<ILogger>();
 
             // Act
             // Assert
-            Assert.Throws<ArgumentNullException>(() => new Engine(commandReaderStub.Object, responseWriterStub.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new Engine(commandReaderStub.Object, responseWriterStub.Object, null, loggerStub.Object));
         }
 
         [Test]
@@ -57,10 +60,11 @@ namespace LibrarySystem.Framework.UnitTests.EngineTests
             var commandReaderStub = new Mock<ICommandReader>();
             var responseWriterStub = new Mock<IResponseWriter>();
             var commandProccessorStub = new Mock<ICommandProcessor>();
+            var loggerStub = new Mock<ILogger>();
 
             // Act
             // Assert
-            Assert.DoesNotThrow(() => new Engine(commandReaderStub.Object, responseWriterStub.Object, commandProccessorStub.Object));
+            Assert.DoesNotThrow(() => new Engine(commandReaderStub.Object, responseWriterStub.Object, commandProccessorStub.Object, loggerStub.Object));
         }
     }
 }

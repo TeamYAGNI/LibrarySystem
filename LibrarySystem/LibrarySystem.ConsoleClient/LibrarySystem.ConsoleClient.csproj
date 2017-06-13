@@ -87,6 +87,7 @@
     <Compile Include="Interceptors\ModelValidation.cs" />
     <Compile Include="Interceptors\SQLLiteLogger.cs" />
     <Compile Include="LocalProviders\HashProvider.cs" />
+    <Compile Include="LocalProviders\Logger.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using LibrarySystem.Commands.Abstractions;
-using LibrarySystem.Commands.Administrative.Listings.Contracts;
+using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Client
 {
-    public class GetClientByPINCommand : Command, IAdministratorCommand
+    public class GetClientByPINCommand : Command, ICommand
     {
         private readonly IClientRepository clientRepository;
 
