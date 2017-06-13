@@ -3,6 +3,7 @@
 // </copyright>
 // <summary>Holds implementation of LibrarySystemNinjectModule class.</summary>
 
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -140,6 +141,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private ICommand GetCommand(IContext context)
         {
             string commandName = context.Parameters.Single().GetValue(context, null).ToString();
+            string defaultMessage = "There is no such command as {0}!";
 
             switch (commandName.ToLower())
             {
@@ -173,7 +175,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetPublisherByJournalTitleCommand: return context.Kernel.Get<ICommand>(GetPublisherByJournalTitleCommand);
                 case GetSubjectsWithHighestImpactFactorcs: return context.Kernel.Get<ICommand>(GetSubjectsWithHighestImpactFactorcs);
                 case GetSubjectsWithMostJournalsCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithMostJournalsCommand);
-                default: throw new InvalidCommandException(commandName);
+                default: throw new InvalidCommandException(string.Format(defaultMessage, commandName));
             }
         }
     }

@@ -1,30 +1,29 @@
 ﻿using System.Collections.Generic;
 using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data.Users;
 using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
-    public class UserLogoutCommand : ICommand
+    public class UserLogoutCommand : Command, ICommand
     {
         private readonly IUsersUnitOfWork usersUnitOfWork;
         private readonly IUserRepository usersRepository;
         private readonly IUserPassport passport;
 
-        public UserLogoutCommand(IUsersUnitOfWork usersUnitOfWork, IUserRepository usersRepository, IUserPassport passport)
+        public UserLogoutCommand(IUsersUnitOfWork usersUnitOfWork, IUserRepository usersRepository, IUserPassport passport) : base(new List<object>() { usersUnitOfWork, usersRepository, passport }, 1)
         {
-            Guard.WhenArgument(usersUnitOfWork, "UserLogoutCommand usersUnitOfWork").IsNull().Throw();
-            Guard.WhenArgument(usersRepository, "UserLogoutCommand usersRepository").IsNull().Throw();
-            Guard.WhenArgument(passport, "UserLogoutCommand passport").IsNull().Throw();
-
             this.usersUnitOfWork = usersUnitOfWork;
             this.usersRepository = usersRepository;
             this.passport = passport;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var username = parameters[0];
             var authKey = passport.AuthKey;
 

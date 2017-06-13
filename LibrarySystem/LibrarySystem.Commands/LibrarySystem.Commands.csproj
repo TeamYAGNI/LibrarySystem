@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\Command.cs" />
     <Compile Include="Administrative\Creational\CreateBookCommand.cs" />
     <Compile Include="Administrative\Creational\CreateJournalCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetAllClientsWithDelayedLendingsCommand.cs" />
@@ -107,7 +108,6 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

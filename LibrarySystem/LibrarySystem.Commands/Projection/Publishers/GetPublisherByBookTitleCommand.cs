@@ -1,24 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Projection.Publishers
 {
-    public class GetPublisherByBookTitleCommand : ICommand
+    public class GetPublisherByBookTitleCommand : Command, ICommand
     {
         private readonly IPublisherRepository publishersRepository;
 
-        public GetPublisherByBookTitleCommand(IPublisherRepository publishersRepository)
+        public GetPublisherByBookTitleCommand(IPublisherRepository publishersRepository) : base(new List<object>() { publishersRepository }, 1)
         {
-            Guard.WhenArgument(publishersRepository, "publishersRepository").IsNull().Throw();
-
             this.publishersRepository = publishersRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var bookTitle = parameters[0];
 
             var publisher = this.publishersRepository.GetPublisherByBookTitle(bookTitle);
