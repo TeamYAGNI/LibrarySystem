@@ -10,7 +10,7 @@ using LibrarySystem.Models.Factory;
 
 namespace LibrarySystem.Commands.Administrative.Creational
 {
-    class CreateJournalCommand : ICommand
+    public class CreateJournalCommand : ICommand
     {
         private const string SuccessMessage = "Journal {0} was created succesfully!";
         private const string ErrorMessage = "There is already a journal with ISSN {0} and issue number {1} in the library.";
@@ -51,19 +51,19 @@ namespace LibrarySystem.Commands.Administrative.Creational
 
 
             int issueNumber;
-            if (int.TryParse(parameters[2], out issueNumber))
+            if (!int.TryParse(parameters[2], out issueNumber))
             {
                 return string.Format(InvalidIssueNumberMessage, parameters[2]);
             }
 
             int yearOfPublishing;
-            if (int.TryParse(parameters[3], out yearOfPublishing))
+            if (!int.TryParse(parameters[3], out yearOfPublishing))
             {
                 return string.Format(InvalidYearOfPublishingMessage, parameters[3]);
             }
 
             int quantity;
-            if (int.TryParse(parameters[5], out quantity))
+            if (!int.TryParse(parameters[5], out quantity))
             {
                 return string.Format(InvalidQuantityMessage, parameters[5]);
             }

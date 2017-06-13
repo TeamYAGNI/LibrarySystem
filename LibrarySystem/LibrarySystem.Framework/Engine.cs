@@ -86,10 +86,10 @@ namespace LibrarySystem.Framework
                 {
                     this.responseWriter.WriteLine(ex.Message);
                 }
-                catch (Exception)
-                {
-                    this.responseWriter.WriteLine("Unexpected Error occur while handling your Command! Plese excuse us! You can try some other commands.");
-                }
+                //catch (Exception)
+                //{
+                //    this.responseWriter.WriteLine("Unexpected Error occur while handling your Command! Plese excuse us! You can try some other commands.");
+                //}
 
                 commandLine = this.commandReader.ReadLine();
             }

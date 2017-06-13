@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
+using LibrarySystem.Commands.Administrative.Creational;
 using LibrarySystem.Commands.Administrative.Listings.Client;
 using LibrarySystem.Commands.Administrative.Listings.Employee;
 using LibrarySystem.Commands.Administrative.Listings.User;
@@ -28,10 +29,14 @@ using LibrarySystem.Models.Factory;
 
 using Ninject;
 using Ninject.Activation;
-using Ninject.Extensions.Conventions;
 using Ninject.Extensions.Factory;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Modules;
+using LibrarySystem.Repositories.Contracts.Data;
+using LibrarySystem.Repositories.Data;
+using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
+using LibrarySystem.Repositories.Data.UnitOfWork;
+using LibrarySystem.Data;
 
 namespace LibrarySystem.ConsoleClient.ContainerConfiguration
 {
@@ -70,6 +75,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string GetPublisherByJournalTitleCommand = "getpublisherbyjournaltitle";
         private const string GetSubjectsWithHighestImpactFactorcs = "getsubjectswithhighestimpactfactorcs";
         private const string GetSubjectsWithMostJournalsCommand = "getsubjectswithmostjournals";
+        private const string CreateBookCommand = "createbook";
+        private const string CreateJournalCommand = "createjournal";
 
         /// <summary>
         /// Loads the module into the kernel.
@@ -77,13 +84,6 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         public override void Load()
         {
             // Basic Baindings
-            Kernel.Bind(x =>
-            {
-                x.FromAssembliesInPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
-                .SelectAllClasses()
-                .BindDefaultInterface();
-            });
-
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
 
             this.Bind<ICommandReader>().To<ConsoleCommandReader>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
@@ -126,10 +126,17 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<ICommand>().To<GetPublisherByJournalTitleCommand>().Named(GetPublisherByJournalTitleCommand);
             this.Bind<ICommand>().To<GetSubjectsWithHighestImpactFactorcs>().Named(GetSubjectsWithHighestImpactFactorcs);
             this.Bind<ICommand>().To<GetSubjectsWithMostJournalsCommand>().Named(GetSubjectsWithMostJournalsCommand);
+            this.Bind<ICommand>().To<CreateBookCommand>().Named(CreateBookCommand);
+            this.Bind<ICommand>().To<CreateJournalCommand>().Named(CreateJournalCommand);
 
             // Command Dependancies Bindings
             this.Bind<IModelsFactory>().To<ModelsFactory>().WhenInjectedInto<ICommand>().InSingletonScope().Intercept().With<ModelValidation>();
             this.Bind<IValidator>().To<Validator>().WhenInjectedExactlyInto<ModelValidation>().InSingletonScope();
+            this.Bind<IPublisherRepository>().To<PublisherRepository>();
+            this.Bind<IBookRepository>().To<BookRepository>();
+            this.Bind<IJournalRepository>().To<JournalRepository>();
+            this.Bind<ILibraryUnitOfWork>().To<LibraryUnitOfWork>();
+            this.Bind<LibrarySystemDbContext>().ToSelf().InSingletonScope();
         }
 
         /// <summary>
@@ -173,6 +180,8 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
                 case GetPublisherByJournalTitleCommand: return context.Kernel.Get<ICommand>(GetPublisherByJournalTitleCommand);
                 case GetSubjectsWithHighestImpactFactorcs: return context.Kernel.Get<ICommand>(GetSubjectsWithHighestImpactFactorcs);
                 case GetSubjectsWithMostJournalsCommand: return context.Kernel.Get<ICommand>(GetSubjectsWithMostJournalsCommand);
+                case CreateBookCommand: return context.Kernel.Get<ICommand>(CreateBookCommand);
+                case CreateJournalCommand: return context.Kernel.Get<ICommand>(CreateJournalCommand);
                 default: throw new InvalidCommandException(commandName);
             }
         }

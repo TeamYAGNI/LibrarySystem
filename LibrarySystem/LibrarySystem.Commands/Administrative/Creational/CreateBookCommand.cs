@@ -10,7 +10,7 @@ using LibrarySystem.Models.Factory;
 
 namespace LibrarySystem.Commands.Administrative.Creational
 {
-    class CreateBookCommand : ICommand
+    public class CreateBookCommand : ICommand
     {
         private const string SuccessMessage = "Book {0} was created succesfully!";
         private const string ErrorMessage = "There is already a book with title {0} in the library.";
@@ -51,19 +51,19 @@ namespace LibrarySystem.Commands.Administrative.Creational
 
             
             int pageCount;
-            if (int.TryParse(parameters[2], out pageCount))
+            if (!int.TryParse(parameters[2], out pageCount))
             {
                 return string.Format(InvalidPageCountMessage, parameters[2]);
             }
 
             int yearOfPublishing;
-            if (int.TryParse(parameters[3], out yearOfPublishing))
+            if (!int.TryParse(parameters[3], out yearOfPublishing))
             {
                 return string.Format(InvalidYearOfPublishingMessage, parameters[3]);
             }
 
             int quantity;
-            if (int.TryParse(parameters[5], out quantity))
+            if (!int.TryParse(parameters[5], out quantity))
             {
                 return string.Format(InvalidQuantityMessage, parameters[5]);
             }
