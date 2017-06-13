@@ -12,14 +12,12 @@ namespace LibrarySystem.Framework.Exceptions
     /// </summary>
     public class InvalidCommandException : ApplicationException
     {
-        private const string DefaultMessage = "There is no such command as {0}!";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidCommandException"/> class.
         /// </summary>
-        /// <param name="commandName">The name of the invalid command.</param>
-        public InvalidCommandException(string commandName)
-            : base(string.Format(DefaultMessage, commandName))
+        /// <param name="message">The message of the invalid command.</param>
+        public InvalidCommandException(string message)
+            : base(message)
         {
 
         }
@@ -27,13 +25,13 @@ namespace LibrarySystem.Framework.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidCommandException"/> class.
         /// </summary>
-        /// <param name="commandName">The name of the invalid command.</param>
+        /// <param name="message">The message of the invalid command.</param>
         /// <param name="innerException">
         /// The exception that is the cause of the current exception. If the innerException parameter is not a null reference,
         /// the current exception is raised in a catch block that handles the inner exception.
         /// </param>
-        public InvalidCommandException(string commandName, Exception innerException)
-            : base(string.Format(DefaultMessage, commandName), innerException)
+        public InvalidCommandException(string message, Exception innerException)
+            : base(message, innerException)
         {
 
         }

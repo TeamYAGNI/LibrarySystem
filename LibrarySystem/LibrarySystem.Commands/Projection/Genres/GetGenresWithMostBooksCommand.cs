@@ -2,24 +2,25 @@
 using System.Linq;
 using System.Text;
 using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Projection.Genres
 {
-    public class GetGenresWithMostBooksCommand : ICommand
+    public class GetGenresWithMostBooksCommand : Command, ICommand
     {
         private readonly IGenreRepository genreRepository;
 
-        public GetGenresWithMostBooksCommand(IGenreRepository genreRepository)
+        public GetGenresWithMostBooksCommand(IGenreRepository genreRepository) : base(new List<object>() { genreRepository }, 0)
         {
-            Guard.WhenArgument(genreRepository, "genreRepository").IsNull().Throw();
-
             this.genreRepository = genreRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var genres = this.genreRepository.GetTop5GenresWithMostBooks();
 
             if (genres.Count() == 0)

@@ -1,23 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Projection.Subjects
 {
-    public class GetSubjectsWithMostJournalsCommand : ICommand
+    public class GetSubjectsWithMostJournalsCommand : Command, ICommand
     {
         private readonly ISubjectRepository subjectRepository;
 
-        public GetSubjectsWithMostJournalsCommand(ISubjectRepository subjectRepository)
+        public GetSubjectsWithMostJournalsCommand(ISubjectRepository subjectRepository) : base(new List<object>() { subjectRepository }, 0)
         {
             this.subjectRepository = subjectRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var subjects = this.subjectRepository.GetTop5SubjectsWithMostJournals();
 
             if (subjects.Count() == 0)

@@ -2,24 +2,25 @@
 using System.Linq;
 using System.Text;
 using Bytes2you.Validation;
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Administrative.Listings.Contracts;
 using LibrarySystem.Repositories.Contracts.Data;
 
 namespace LibrarySystem.Commands.Administrative.Listings.Employee
 {
-    public class GetAllEmployeesByManagerNameCommand : IAdministratorCommand
+    public class GetAllEmployeesByManagerNameCommand : Command, IAdministratorCommand
     {
         private readonly IEmployeeRepository employeesRepository;
 
-        public GetAllEmployeesByManagerNameCommand(IEmployeeRepository employeesRepository)
+        public GetAllEmployeesByManagerNameCommand(IEmployeeRepository employeesRepository) : base(new List<object>() { employeesRepository }, 2)
         {
-            Guard.WhenArgument(employeesRepository, "employeesRepository").IsNull().Throw();
-
             this.employeesRepository = employeesRepository;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var managerFirstName = parameters[0];
             var managerLastName = parameters[1];
 

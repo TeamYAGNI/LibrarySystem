@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using Bytes2you.Validation;
-
+using LibrarySystem.Commands.Abstractions;
 using LibrarySystem.Commands.Contracts;
 
 using LibrarySystem.Repositories.Contracts.Data.Users;
@@ -9,7 +9,7 @@ using LibrarySystem.Repositories.Contracts.Data.Users.UnitOfWork;
 
 namespace LibrarySystem.Commands.Functional
 {
-    public class UserLoginCommand : ICommand
+    public class UserLoginCommand : Command, ICommand
     {
         /// <summary>User repository.</summary>
         private readonly IUsersUnitOfWork usersUnitOfWork;
@@ -30,14 +30,8 @@ namespace LibrarySystem.Commands.Functional
             IUserRepository usersRepository,
             IAuthKeyProvider authKeyProvider,
             IHashProvider hashProvider,
-            IUserPassport passport)
+            IUserPassport passport) : base(new List<object>() { usersUnitOfWork, usersRepository, authKeyProvider, hashProvider, passport }, 2)
         {
-            Guard.WhenArgument(usersUnitOfWork, "UserLoginCommand usersUnitOfWork").IsNull().Throw();
-            Guard.WhenArgument(usersRepository, "UserLoginCommand usersRepository").IsNull().Throw();
-            Guard.WhenArgument(authKeyProvider, "UserLoginCommand authKeyProvider").IsNull().Throw();
-            Guard.WhenArgument(hashProvider, "UserLoginCommand hashProvider").IsNull().Throw();
-            Guard.WhenArgument(passport, "UserLoginCommand passport").IsNull().Throw();
-
             this.usersUnitOfWork = usersUnitOfWork;
             this.usersRepository = usersRepository;
             this.authKeyProvider = authKeyProvider;
@@ -45,8 +39,10 @@ namespace LibrarySystem.Commands.Functional
             this.passport = passport;
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
+            this.ValidateParameters(parameters);
+
             var username = parameters[0];
             var password = parameters[1];
             var passHash = this.hashProvider.Hash(password);

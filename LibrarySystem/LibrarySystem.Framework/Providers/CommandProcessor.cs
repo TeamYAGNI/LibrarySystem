@@ -3,6 +3,7 @@
 // </copyright>
 // <summary>Holds implementation of CommandProcessor class.</summary>
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -43,7 +44,7 @@ namespace LibrarySystem.Framework.Providers
         {
             Guard.WhenArgument(fullCommand, "No command has been provided!").IsNullOrWhiteSpace().Throw();
 
-            List<string> commandList = fullCommand.Split(' ').ToList();
+            List<string> commandList = fullCommand.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             string commandName = commandList.FirstOrDefault();
             List<string> commandParameters = commandList.Skip(1).ToList();
