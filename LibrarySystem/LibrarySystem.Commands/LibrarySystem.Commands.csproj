@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrative\Creational\CreateBookCommand.cs" />
+    <Compile Include="Administrative\Creational\CreateJournalCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetAllClientsWithDelayedLendingsCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetAllClientsWithJournalsCommand.cs" />
     <Compile Include="Administrative\Listings\Client\GetClientAddressByPINCommand.cs" />
