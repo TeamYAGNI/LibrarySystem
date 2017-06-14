@@ -4,7 +4,9 @@
 // <summary>Holds implementation of SQLLiteLogger class.</summary>
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Bytes2you.Validation;
 using LibrarySystem.Commands.Administrative.Logs;
 using LibrarySystem.Commands.Contracts;
@@ -32,9 +34,9 @@ namespace LibrarySystem.ConsoleClient.Interceptors
         public void Intercept(IInvocation invocation)
         {
             var parameterObjects = invocation.Request.Arguments;
-            var message = parameterObjects.ToString();
-            var logType = parameterObjects.ToString();
-            var parameters = new List<string>() { message, logType };
+            var parameters = parameterObjects.Cast<string>().ToList();
+            //var logType = parameterObjects.GetValue(1).ToString();
+            //var parameters = new List<string>() { message, logType };
 
             this.addLogCommand.Execute(parameters);
 

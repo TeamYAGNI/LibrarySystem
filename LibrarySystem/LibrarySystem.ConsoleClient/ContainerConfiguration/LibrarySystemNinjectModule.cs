@@ -36,6 +36,7 @@ using Ninject.Activation;
 using Ninject.Extensions.Factory;
 using Ninject.Extensions.Interception.Infrastructure.Language;
 using Ninject.Modules;
+
 using LibrarySystem.Repositories.Contracts.Data;
 using LibrarySystem.Repositories.Data;
 using LibrarySystem.Repositories.Contracts.Data.UnitOfWork;
@@ -210,10 +211,12 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             this.Bind<IAuthKeyProvider>().To<AuthKeyProvider>();
 
             // Log Interceptor Bindings
-            this.Bind<SQLLiteLogger>().ToSelf().InSingletonScope();
+            this.Bind<ILogger>().To<Logger>();
             this.Bind<ICommand>().To<AddLogCommand>().WhenInjectedInto<SQLLiteLogger>();
-            this.Bind<ILogger>().To<Logger>().Intercept().With<SQLLiteLogger>();
-
+            this.Bind<SQLLiteLogger>().ToSelf().InSingletonScope();
+            var mytest = this.Kernel.Get<SQLLiteLogger>();
+            this.Kernel.InterceptReplace<Logger>(logger => logger.Log(null, null),
+                invocation => mytest.Intercept(invocation));
             //Book Importer Bindings
             this.Bind<XmlReader>().ToSelf().InSingletonScope();
             this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument("filePath", BooksForImportPath);

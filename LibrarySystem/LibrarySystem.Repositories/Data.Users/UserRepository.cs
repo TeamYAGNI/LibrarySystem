@@ -31,7 +31,7 @@ namespace LibrarySystem.Repositories.Data.Users
         }
 
         /// <summary>
-        /// Gets the context as a <see cref="LibrarySystemDbContext"/>.
+        /// Gets the context as a <see cref="LibrarySystemUsersDbContext"/>.
         /// </summary>
         private LibrarySystemUsersDbContext UsersDbContext
         {
