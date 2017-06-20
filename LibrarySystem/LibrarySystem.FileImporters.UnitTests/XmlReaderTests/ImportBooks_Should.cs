@@ -3,14 +3,11 @@
 // </copyright>
 // <summary>Holds unit tests of JsonWriter object constructor.</summary>
 
-using System;
-using System.Collections.Generic;
 using LibrarySystem.FileImporters.Utils.Contracts;
 using Moq;
 using NUnit.Framework;
-using LibrarySystem.Models.DTOs.XML;
 
-namespace LibrarySystem.FileImporters.UnitTests.XmlWriterTests
+namespace LibrarySystem.FileImporters.UnitTests.XmlReaderTests
 {
     [TestFixture]
     public class ImportBooks_Should

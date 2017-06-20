@@ -77,4 +77,24 @@
     </publisher>
     <quantity>31</quantity>
   </book>
+  <book>
+    <title>XML Developer's Guide</title>
+    <isbn>9780072126488</isbn>
+    <page-count>200</page-count>
+    <year-of-publishing>2010</year-of-publishing>
+    <publisher>
+      <name>Mark Twain</name>
+    </publisher>
+    <quantity>2</quantity>
+  </book>
+  <book>
+    <title>Midnight Rain</title>
+    <isbn>9780451411754</isbn>
+    <page-count>300</page-count>
+    <year-of-publishing>2011</year-of-publishing>
+    <publisher>
+      <name>Mark Twain</name>
+    </publisher>
+    <quantity>1</quantity>
+  </book>
 </ArrayOfBook>

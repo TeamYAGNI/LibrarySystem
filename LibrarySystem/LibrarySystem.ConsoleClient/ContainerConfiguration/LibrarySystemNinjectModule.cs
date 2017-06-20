@@ -108,15 +108,6 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
         private const string ExportJournalsToFileCommand = "exportjournalstofile";
         private const string GetPDFReportCommand = "getpdfreport";
 
-        private const string BooksForImportPath = "./../../../books.xml";
-        private const string bookExporterDirectory = "./../../../";
-        private const string bookExporterFileName = "books-inventory.xml";
-        private const string JournalImporterFilePath = "./../../../journals.json";
-        private const string JournalExporterDirectory = "./../../../";
-        private const string JournalExporterFileName = "journals-inventory.json";
-        private const string PdfFileDirectory = "./../../../";
-        private const string PdfFileName = "lendings.pdf";
-
         /// <summary>
         /// Loads the module into the kernel.
         /// </summary>
@@ -130,7 +121,7 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             //});
             // Basic bindings
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
-            this.Bind<IUserPassport>().To<UserPassport>();
+            this.Bind<IUserPassport>().To<UserPassport>().InSingletonScope();
 
             this.Bind<ICommandReader>().To<ConsoleCommandReader>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
             this.Bind<IResponseWriter>().To<ConsoleResponseWriter>().WhenInjectedExactlyInto<Engine>().InSingletonScope();
@@ -217,37 +208,42 @@ namespace LibrarySystem.ConsoleClient.ContainerConfiguration
             var mytest = this.Kernel.Get<SQLLiteLogger>();
             this.Kernel.InterceptReplace<Logger>(logger => logger.Log(null, null),
                 invocation => mytest.Intercept(invocation));
+
+            //Configuration provider binding
+            this.Bind<IConfigurationProvider>().To<ConfigurationProvider>().InSingletonScope();
+            var configProvider = this.Kernel.Get<IConfigurationProvider>();
+
             //Book Importer Bindings
             this.Bind<XmlReader>().ToSelf().InSingletonScope();
-            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument("filePath", BooksForImportPath);
+            this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument("filePath", configProvider.BooksForImportFilePath);
             this.Bind<IXmlDeserializer>().To<XmlDeserializerWrapper>().WhenInjectedInto<XmlReader>().WithConstructorArgument("xmlSerializer", new XmlSerializer(typeof(List<BookXmlDto>)));
             this.Bind<ICommand>().To<CreateBookCommand>().WhenInjectedInto<ImportBooksFromFileCommand>();
 
             //Book Exporter Bindings
             this.Bind<XmlWriter>().ToSelf().InSingletonScope();
             this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<XmlWriter>()
-                .WithConstructorArgument("directory", bookExporterDirectory)
-                .WithConstructorArgument("fileName", bookExporterFileName);
+                .WithConstructorArgument("directory", configProvider.FileDirectory)
+                .WithConstructorArgument("fileName", configProvider.BooksForExportFileName);
             this.Bind<IXmlSerializer>().To<XmlSerializerWrapper>().WhenInjectedInto<XmlWriter>().WithConstructorArgument("xmlSerializer", new XmlSerializer(typeof(List<BookXmlDto>)));
 
             //Journal Importer Bindings
             this.Bind<JsonReader>().ToSelf().InSingletonScope();
             this.Bind<IStreamReader>().To<StreamReaderWrapper>().WhenInjectedInto<JsonReader>()
-                .WithConstructorArgument("filePath", JournalImporterFilePath);
+                .WithConstructorArgument("filePath", configProvider.JournalsForImportFilePath);
             this.Bind<IJsonDeserializer>().To<JsonDeserializerWrapper>().WhenInjectedInto<JsonReader>();
             this.Bind<ICommand>().To<CreateJournalCommand>().WhenInjectedInto<ImportJournalsFromFileCommand>();
 
             //Journal Exporter Bindings
             this.Bind<JsonWriter>().ToSelf().InSingletonScope();
             this.Bind<ITextWriter>().To<TextWriterWrapper>().WhenInjectedInto<JsonWriter>()
-                .WithConstructorArgument("directory", JournalExporterDirectory)
-                .WithConstructorArgument("fileName", JournalExporterFileName);
+                .WithConstructorArgument("directory", configProvider.FileDirectory)
+                .WithConstructorArgument("fileName", configProvider.JournalsForExportFileName);
             this.Bind<IJsonSerializer>().To<JsonSerializerWrapper>().WhenInjectedInto<JsonWriter>();
 
             //PDF
             this.Bind<IPdfStream>().To<PdfStreamWrapper>().WhenInjectedInto<PdfWriterProvider>()
-                .WithConstructorArgument("directory", PdfFileDirectory)
-                .WithConstructorArgument("fileName", PdfFileName);
+                .WithConstructorArgument("directory", configProvider.FileDirectory)
+                .WithConstructorArgument("fileName", configProvider.PdfFileName);
 
             this.Bind<IPdfTableGenerator>().To<PdfTableGenerator>().WhenInjectedInto<PdfWriterProvider>();
             this.Bind<PdfWriterProvider>().ToSelf().WhenInjectedInto<AddLogCommand>().InSingletonScope();
